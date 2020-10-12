@@ -53,8 +53,7 @@ const app = express();
 const dev = app.get('env') //!== 'production'
 
 // Production environment modules
-//if(!dev){
-if(true){
+if(!dev){
     app.disable('x-powered-by');
     app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
     app.use(morgan('common'));
@@ -64,16 +63,29 @@ if(true){
 }
 
 // Development environment modules
-//if(dev){
-//    app.use(morgan('dev'));
-//}
+if(dev){
+    app.use(morgan('dev'));
+}
 
 app.get('/api', function (req, res) {
     res.set('Content-Type', 'application/json');
     res.send('{"message":"Hello from the custom server!"}');
   });
 
+/* TEST API HOOK. WE WOULD GET THE "CUSTOMER" VALUES FROM OUR DB. */
+app.get('/api/customers', (req, res) => {
+    const customers = [
+        {id: 1, firstName: 'Yvonne', lastName: 'MARCIINKKKKYYY'},
+        {id: 2, firstName: 'Tim', lastName: 'WITHERRRSSS'},
+        {id: 3, firstName: 'Jenny', lastName: 'HUUUANNGGG'}
+    ];
+
+    res.json(customers);
+})
+
+
+
 app.listen(PORT, err => {
     if (err) throw err    
-    console.log('Server started! Awesome!');
+    console.log(`Server started on port ${PORT}! Awesome!`);
 });
