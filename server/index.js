@@ -50,7 +50,7 @@ const normalizePort = port => parseInt(port, 10);
 const PORT = normalizePort(process.env.PORT || 5000)
 
 const app = express();
-const dev = app.get('env') //!== 'production'
+const dev = app.get('env') !== 'production';
 
 // Production environment modules
 if(!dev){
