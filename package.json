@@ -10,7 +10,7 @@
     "server": "nodemon server",
     "client": "npm start --prefix react-ui",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "cd react-ui/ && npm install && npm run build"
+    "heroku-postbuild": "cd react-ui/ && npm install && npm run build"
   },
   "cacheDirectories": [
     "node_modules",
