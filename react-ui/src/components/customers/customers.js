@@ -11,18 +11,20 @@ class Customers extends Component {
     }
 
     componentDidMount() {
-        fetch('https://petlinked.herokuapp.com/api/customers/')
-            .then(res => res.json())
-            .then(customers => this.setState({customers}, () => console.log('Customers fetched..',
-            customers)));
+      //  fetch('/api/customers')
+      //      .then(res => res.json())
+      //      .then(customers => this.setState({customers}, () => console.log('Customers fetched..',
+      //      customers)));
         
-        fetch('https://petlinked.herokuapp.com/api/')
-            .then((data) => data.text())
+        fetch('/api')
+            .then((data) => {
+                return data.json()
+            })
             .then((res) => {
-                this.setState({
-                    message: res 
-                });    
                 console.log(res); 
+                this.setState({
+                    message: res.message
+                });    
             })
     }
 
