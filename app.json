@@ -1,0 +1,21 @@
+{
+    "name": "petlinked",
+    "description": "petlinked react + express app",
+    "scripts": {
+    },
+    "env": {
+    },
+    "formation": {
+      "web": {
+        "quantity": 1
+      }
+    },
+    "addons": [
+  
+    ],
+    "buildpacks": [
+      {
+        "url": "heroku/nodejs"
+      }
+    ]
+  }
