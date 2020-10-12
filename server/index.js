@@ -74,6 +74,7 @@ app.get('/api', function (req, res) {
 
 /* TEST API HOOK. WE WOULD GET THE "CUSTOMER" VALUES FROM OUR DB. */
 app.get('/api/customers', (req, res) => {
+    res.set('Content-Type', 'application/json');
     const customers = [
         {id: 1, firstName: 'Yvonne', lastName: 'MARCIINKKKKYYY'},
         {id: 2, firstName: 'Tim', lastName: 'WITHERRRSSS'},
@@ -82,8 +83,6 @@ app.get('/api/customers', (req, res) => {
 
     res.json(customers);
 })
-
-
 
 app.listen(PORT, err => {
     if (err) throw err    

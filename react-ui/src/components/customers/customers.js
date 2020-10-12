@@ -5,7 +5,8 @@ class Customers extends Component {
     constructor() {
         super();
         this.state = {
-            customers: []
+            customers: [],
+            message: "",
         };
     }
 
@@ -14,6 +15,17 @@ class Customers extends Component {
             .then(res => res.json())
             .then(customers => this.setState({customers}, () => console.log('Customers fetched..',
             customers)));
+        
+        fetch('/api/')
+            .then(response => {
+                return response.json();
+            })
+            .then(json => {
+                this.setState({
+                    message: json.message
+                });    
+                console.log(json.message); 
+            })
     }
 
   render() {
@@ -25,6 +37,7 @@ class Customers extends Component {
                     <li key={customer.id}>{customer.firstName} {customer.lastName}</li>  
                 )}
             </ul>
+            <p>{this.state.message}</p>
         </div>
       )
   };
