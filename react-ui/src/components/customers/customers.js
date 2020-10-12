@@ -16,8 +16,9 @@ class Customers extends Component {
       //      .then(customers => this.setState({customers}, () => console.log('Customers fetched..',
       //      customers)));
         
-        fetch('/api')
+        fetch('https://petlinked.herokuapp.com/api')
             .then((data) => {
+                console.log(data.json())
                 return data.json()
             })
             .then((res) => {
