@@ -16,17 +16,15 @@ class Customers extends Component {
       //      .then(customers => this.setState({customers}, () => console.log('Customers fetched..',
       //      customers)));
         
-        fetch('https://petlinked.herokuapp.com/api')
-            .then((data) => {
-                console.log(data.json())
-                return data.json()
-            })
+        fetch('/api')
+            .then(res => res.json()) 
             .then((res) => {
                 console.log(res); 
                 this.setState({
                     message: res.message
                 });    
             })
+
     }
 
   render() {
