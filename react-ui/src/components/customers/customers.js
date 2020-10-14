@@ -6,6 +6,7 @@ class Customers extends Component {
         super();
         this.state = {
             customers: [],
+            db_data: [],
             message: "",
         };
     }
@@ -19,11 +20,20 @@ class Customers extends Component {
         fetch('/api')
             .then(res => res.json()) 
             .then((res) => {
-                console.log(res); 
                 this.setState({
                     message: res.message
                 });    
-            })
+            });
+
+        fetch('/api/getcustomers')
+            .then(res => res.json())
+            .then((res) => {
+                this.setState({
+                    db_data: res
+                })
+            }).then(() => {
+                console.log("Updated state value. this.state.db_data: " + JSON.stringify(this.state.db_data));
+            });
 
     }
 
@@ -37,6 +47,13 @@ class Customers extends Component {
                 )}
             </ul>
             <p>{this.state.message}</p>
+
+            <h2>Data retrieved from DB via the Server</h2>
+            <ul>
+                {this.state.db_data.map(data =>
+                    <li key={data.user_id}>{data.firstname} {data.lastname} -- {data.email}</li>    
+                )}
+            </ul>
         </div>
       )
   };
