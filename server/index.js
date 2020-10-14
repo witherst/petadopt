@@ -28,16 +28,17 @@ app.get('/api/customers', (req, res) => {
 })
 
 /*     POSTGRES DATABASE RIGHT HERE       */
-const { Client } = require('pg');
+const { Client, Pool } = require('pg');
 const client = new Client({
     connectionString: process.env.DATABASE_URL,
     ssl:{
         rejectUnauthorized: false
     }
-    
 });
 
-//client.connect();
+const pool = new Pool();
+
+client.connect();
 //
 //const createquery = `
 //    CREATE TABLE IF NOT EXISTS users(
@@ -84,23 +85,21 @@ app.get('/api/getcustomers', (req, res) => {
         FROM users
     `;
 
-    client.connect();
-
     client.query(retrievequery)
             .then(data => {
-                res.send(data.rows)
                 return data
             })
             .then(passed_data => {
                 // Do something else with the data that was passed in if you want.
                 //console.log(passed_data.rows);
+                res.send(passed_data.rows)
             })
             .catch(err => {
                 console.error(err);
                 client.end();
             })
             .finally(() => {
-                client.end();
+                // Clean up. May need this eventually?
             });
  });
 
