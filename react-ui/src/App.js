@@ -8,6 +8,7 @@ import Messages from './components/messages/Messages'
 import Settings from './components/settings/Settings'
 import Search from './components/search/Search'
 import Pet from './components/pet/Pet'
+import Profile from './components/profile/Profile'
 import {DropdownMenu, Navbar, NavItem} from './components/navbar/Navbar'
 
 // Icons
@@ -43,11 +44,11 @@ const App = () => {
     <Router>
       {/* TEMPORARY NAV - REPLACE, TW*/}
       <Navbar>
-        <NavItem icon={<HomeIcon/>} />
-        <NavItem icon={<SearchIcon/>} />
-        <NavItem icon={<MessageIcon/>} />
-        <NavItem icon={<NotificationIcon/>} />
-        <NavItem icon={<SettingsIcon/>}>
+        <NavItem icon={<HomeIcon/>} route='/' />
+        <NavItem icon={<SearchIcon/>} route='/search'/>
+        <NavItem icon={<MessageIcon/>} route='/messages'/>
+        <NavItem icon={<NotificationIcon/>} route='/notifications' />
+        <NavItem icon={<SettingsIcon/>} route='#'>
           <DropdownMenu/>
         </NavItem>
       </Navbar>
@@ -56,9 +57,6 @@ const App = () => {
         <Link to='/'><li>home</li></Link>
         <Link to='/signup'><li>signup</li></Link>
         <Link to='/signin'><li>signin</li></Link>
-        <Link to='/messages'><li>messages</li></Link>
-        <Link to='/settings'><li>settings</li></Link>
-        <Link to='/search'><li>search</li></Link>
         <Link to='/pet'><li>pet</li></Link> 
       </ul>
       {/* END OF TEMP*/}
@@ -93,6 +91,10 @@ const App = () => {
           <Route
             path="/pet" 
             render={(props) => <Pet {...props}/>}
+          />
+          <Route
+            path="/profile" 
+            render={(props) => <Profile {...props}/>}
           />
         </Switch>
       </div>
