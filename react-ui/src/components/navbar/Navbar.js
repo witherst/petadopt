@@ -1,13 +1,20 @@
 import React, { useState, useRef, useEffect} from 'react'
 import './styles/styles.css'
+import {ReactComponent as PawIcon} from './icons/paw.svg'
 
 export function Navbar(props) {
     return (
-        <nav className="navbar">
-            <ul className="navbar-nav"> 
-                {props.children}
-            </ul>
-        </nav>
+        <div className="navbar-div">
+            <div className="paw-div">
+                <svg viewBox="0 0 278 278"><PawIcon/></svg>
+                <h1>PetLinked</h1>
+            </div>
+            <nav className="navbar">
+                <ul className="navbar-nav"> 
+                    {props.children}
+                </ul>
+            </nav>
+        </div>
     )
 }
 
@@ -32,12 +39,10 @@ export function NavItem(props){
 
     return(
         <li className="nav-item">
-            <a href="#" className="icon-button" onClick={() => setOpen(!open)} ref={wrapperRef}>
+            <a href={props.route} className="icon-button" onClick={() => setOpen(!open)} ref={wrapperRef}>
                 {props.icon}
             </a>
-
             {open && props.children}
-
         </li>
     )
 }
@@ -47,7 +52,7 @@ export function DropdownMenu() {
 
     function DropdownItem(props){
         return(
-            <a href="#" className="menu-item">
+            <a href={props.route} className="menu-item">
                 {props.children}
             </a>
         )
@@ -55,8 +60,8 @@ export function DropdownMenu() {
 
     return (
         <div className="dropdown">
-            <DropdownItem>Account Profile</DropdownItem>
-            <DropdownItem>Logout</DropdownItem>
+            <DropdownItem route='/profile'>Account Profile</DropdownItem>
+            <DropdownItem route='#'>Logout</DropdownItem>
         </div>
     );
 }
