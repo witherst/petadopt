@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect} from 'react'
-import './styles/styles.css'
 import {ReactComponent as PawIcon} from './icons/paw.svg'
+import './styles/styles.css'
 
 export function Navbar(props) {
     return (
@@ -8,6 +8,9 @@ export function Navbar(props) {
             <div className="paw-div">
                 <svg viewBox="0 0 278 278"><PawIcon/></svg>
                 <h1>PetLinked</h1>
+            </div>
+            <div className="searchbar-div">
+                <input type="text" id="petsearch" placeholder="Find your perfect pet..."></input>
             </div>
             <nav className="navbar">
                 <ul className="navbar-nav"> 
