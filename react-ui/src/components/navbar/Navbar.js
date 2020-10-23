@@ -10,7 +10,7 @@ export function Navbar(props) {
                 <h1>PetLinked</h1>
             </div>
             <div className="searchbar-div">
-                <input type="text" id="petsearch" placeholder="Find your perfect pet..."></input>
+                <input type="text" id="petsearch" placeholder="Find the right pet for you..."></input>
             </div>
             <nav className="navbar">
                 <ul className="navbar-nav"> 
