@@ -42,27 +42,25 @@ const App = () => {
   
   return (
     <Router>
-      {/* TEMPORARY NAV - REPLACE, TW*/}
-      <Navbar>
-        <NavItem icon={<HomeIcon/>} route='/' />
-        <NavItem icon={<SearchIcon/>} route='/search'/>
-        <NavItem icon={<MessageIcon/>} route='/messages'/>
-        <NavItem icon={<NotificationIcon/>} route='/notifications' />
-        <NavItem icon={<SettingsIcon/>} route='#'>
-          <DropdownMenu/>
-        </NavItem>
-      </Navbar>
-
-      <ul>
-        <Link to='/'><li>home</li></Link>
-        <Link to='/signup'><li>signup</li></Link>
-        <Link to='/signin'><li>signin</li></Link>
-        <Link to='/pet'><li>pet</li></Link> 
-      </ul>
-      {/* END OF TEMP*/}
       
-
       <div className="App">
+        <Navbar>
+          <NavItem icon={<HomeIcon/>} route='/' />
+          <NavItem icon={<SearchIcon/>} route='/search'/>
+          <NavItem icon={<MessageIcon/>} route='/messages'/>
+          <NavItem icon={<NotificationIcon/>} route='/notifications' />
+          <NavItem icon={<SettingsIcon/>} route='#'>
+            <DropdownMenu/>
+          </NavItem>
+        </Navbar>
+
+        <ul>
+          <Link to='/'><li>home</li></Link>
+          <Link to='/signup'><li>signup</li></Link>
+          <Link to='/signin'><li>signin</li></Link>
+          <Link to='/pet'><li>pet</li></Link> 
+        </ul>
+
         <Switch>
           <Route
             exact path="/" 
