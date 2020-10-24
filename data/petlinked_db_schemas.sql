@@ -26,12 +26,13 @@ CREATE TABLE public.pet_profiles
     internal_pet_id SERIAL UNIQUE NOT NULL,
     external_pet_id VARCHAR(32) UNIQUE NOT NULL,
     creator_id INT NOT NULL,
-    type_breed VARCHAR(32) NOT NULL,
+    animal_type VARCHAR(32) NOT NULL,
+    breed VARCHAR(32),
     age_in_months INT,
-    location VARCHAR(255),
+    location VARCHAR(64),
     availablity VARCHAR(32) NOT NULL,
     last_updated_timestamp VARCHAR(64) NOT NULL,
-    profile_pic_id VARCHAR(255),
+    profile_pic_id INT,
     PRIMARY KEY (creator_id),
     CONSTRAINT fk_creator_id FOREIGN KEY (creator_id) REFERENCES public.users (internal_user_id)
 );
@@ -47,6 +48,9 @@ CREATE TABLE public.photos
 );
 
 ALTER TABLE public.users
+ADD CONSTRAINT fk_profile_pic_id FOREIGN KEY (profile_pic_id) REFERENCES public.photos (internal_pic_id);
+
+ALTER TABLE public.pet_profiles
 ADD CONSTRAINT fk_profile_pic_id FOREIGN KEY (profile_pic_id) REFERENCES public.photos (internal_pic_id);
 
 /* one-to-many: one pet profile with none, one, or many pictures*/
