@@ -23,6 +23,68 @@ const client = new Client({
 });
 
 client.connect();
+//
+//const createquery = `
+//    CREATE TABLE IF NOT EXISTS users(
+//        email varchar,
+//        firstname varchar,
+//        lastname varchar,
+//        age int
+//    );
+//`;
+//
+//client.query(createquery, (err, res) => {
+//    if(err){
+//        console.error(err);
+//        return;
+//    }
+//    console.log("Table created;");
+////    client.end();
+//})
+//
+//// ON CONFLICT NO ACTION = don't insert duplicates. ONLY WORKS IF ONE OF THE FIELDS IS MARKED AS UNIQUE WHEN TABLE WAS CREATED (I think).
+//const insertquery = `
+//    INSERT INTO users (email, firstname, lastname, age)
+//    VALUES ('johndoe@gmail.com', 'john', 'doe', 21) 
+//    ON CONFLICT DO NOTHING
+//`;
+//
+//// Example of using promises and async/await.
+//client.query(insertquery)
+//        .then(res => {
+//            console.log('Data inserted!');
+//        })
+//        .catch(err => {
+//            console.error(err);
+//        })
+//        .finally(() => {
+//            client.end();
+//        });
+
+const retrievequery = `
+        SELECT * 
+        FROM users
+    `;
+
+client.query(retrievequery)
+        .then(res => {
+            console.log(res.rows);
+            console.log('Data retrieved!');
+        })
+        .catch(err => {
+            console.error(err);
+        })
+        .finally(() => {
+            // client.end();
+        });
+
+app.get('/api/getcustomers', (req, res) => {
+    res.set('Content-Type', 'application/json');
+
+    const retrievequery = `
+        SELECT * 
+        FROM users
+    `;
 
 /**
  * APIs
