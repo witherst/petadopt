@@ -1,0 +1,25 @@
+/* Header text style */
+h1 {
+    text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+/* Paragraph text style */
+p {
+    text-align: center;
+    color: white;
+  }
+
+/* Body text style */
+body {
+    margin: 0 auto;
+    padding: 0 20px 20px 20px;
+}
+
+/* Divider lines */
+hr.solid {
+    border-top: 1px solid #bbb;
+  }
