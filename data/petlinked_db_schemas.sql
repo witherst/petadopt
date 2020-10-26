@@ -11,39 +11,40 @@ DROP TABLE IF EXISTS
 /* one to one: user has one pic for account*/
 CREATE TABLE public.users
 (
-    internal_user_id SERIAL UNIQUE NOT NULL,
-    email VARCHAR(64) UNIQUE NOT NULL,
-    username VARCHAR(32) UNIQUE NOT NULL,
+    internal_user_id SERIAL NOT NULL,
+    email VARCHAR(64) NOT NULL,
+    username VARCHAR(32) NOT NULL,
     is_admin BOOLEAN NOT NULL,
     is_creator BOOLEAN NOT NULL,
     profile_pic_id INT,
-    PRIMARY KEY (email)
+    UNIQUE(email),
+    UNIQUE(username),
+    PRIMARY KEY (internal_user_id)
 );
 
 /* one to many: user has one or many pet profiles */
 CREATE TABLE public.pet_profiles
 (
-    internal_pet_id SERIAL UNIQUE NOT NULL,
-    external_pet_id VARCHAR(32) UNIQUE NOT NULL,
+    internal_pet_id SERIAL NOT NULL,
+    external_pet_id VARCHAR(32) NOT NULL,
     creator_id INT NOT NULL,
     animal_type VARCHAR(32) NOT NULL,
     breed VARCHAR(32),
     age_in_months INT,
     location VARCHAR(64),
-    availablity VARCHAR(32) NOT NULL,
+    availability VARCHAR(32) NOT NULL,
     last_updated_timestamp VARCHAR(64) NOT NULL,
     profile_pic_id INT,
     profile_status VARCHAR(32) NOT NULL,
-    PRIMARY KEY (creator_id),
+    PRIMARY KEY (internal_pet_id),
+    UNIQUE(creator_id, external_pet_id),
     CONSTRAINT fk_creator_id FOREIGN KEY (creator_id) REFERENCES public.users (internal_user_id)
 );
-
-CREATE UNIQUE INDEX external_pet_id_index on public.pet_profiles (external_pet_id);
 
 /* holds the endpoint location for every photo used in app */
 CREATE TABLE public.photos
 (
-    internal_pic_id SERIAL UNIQUE NOT NULL,
+    internal_pic_id SERIAL NOT NULL,
     endpoint VARCHAR(64),
     PRIMARY KEY (internal_pic_id)
 );
