@@ -1,0 +1,17 @@
+@import "../../../index.css";    /* Root styles */
+
+.posts-container{
+    display: flex;
+    max-width: 45%;
+    flex-direction: column;
+    flex: 2;
+}
+
+.individual-post{
+    background-color: var(--bg);
+    margin: 25px;
+    border-radius: 10px;
+
+    /* Temp min-height. Eventually the height will be the size of the data inside*/
+    min-height: 300px;
+}
