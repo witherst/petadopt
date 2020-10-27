@@ -20,3 +20,7 @@ body {
   background-color: var(--primary-color);
   margin: 0;
 }
+
+.mainContainer{
+  display: flex;
+}

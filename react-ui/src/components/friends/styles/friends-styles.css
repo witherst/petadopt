@@ -1,0 +1,17 @@
+@import "../../../index.css";    /* Root styles */
+
+.friends-container{
+    background-color: var(--bg);
+    margin: 25px;
+    margin-left: 10%;
+    border-radius: 10px;
+    min-width: 100px;
+    max-width: 300px; 
+
+    /* Below are temps until we get data populating */
+    min-height: 350px;
+    max-height: 300px;
+
+    display: flex;
+    flex: 1;
+}

@@ -1,7 +1,10 @@
 import React from 'react';
+import { Friends } from '../friends/Friends';
+import './styles/home-styles.css'
 
 import Dashboard from './Dashboard';
 import Landing from './Landing';
+import { Posts } from '../posts/Posts';
 
 
 const Home = (props) => {
@@ -11,19 +14,20 @@ const Home = (props) => {
 
   return (
     <div className="Home">
-        { user ? (
+      { user ? (
           // if user exists, direct to home page
-        <div>
+          <div className="home-container">
+            <Friends/>
+            <Posts/>
             {/* TEMPORARY LOGOUT BUTTON */}
-            <button onClick={handleLogout}>Logout</button>
-          
-            <Dashboard handleLogout={handleLogout} />
+            {<button onClick={handleLogout} style={{"max-height": "50px"}}>Logout</button>}
+            {<Dashboard handleLogout={handleLogout} />}
           </div>
         ) : (
           // otherwise, direct to landing page
           <Landing />
-          )}
-      </div>
+      )}
+    </div>
   );
 }
 

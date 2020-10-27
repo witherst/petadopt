@@ -1,0 +1,8 @@
+@import "../../../index.css";    /* Root styles */
+
+.Home{
+}
+
+.home-container{
+    display: flex;
+}

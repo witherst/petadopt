@@ -44,7 +44,7 @@ const App = () => {
     <Router>
       
       <div className="App">
-        <Navbar>
+        {user && <Navbar>
           <NavItem icon={<HomeIcon/>} route='/' name='home'/>
           <NavItem icon={<SearchIcon/>} route='/search' name='search'/>
           <NavItem icon={<MessageIcon/>} route='/messages' name='messages'/>
@@ -52,14 +52,14 @@ const App = () => {
           <NavItem icon={<SettingsIcon/>} route='#' name='settings'>
             <DropdownMenu/>
           </NavItem>
-        </Navbar>
+        </Navbar>}
 
-        <ul>
+        {!user && <ul>
           <Link to='/'><li>home</li></Link>
           <Link to='/signup'><li>signup</li></Link>
           <Link to='/signin'><li>signin</li></Link>
           <Link to='/pet'><li>pet</li></Link> 
-        </ul>
+        </ul>}
 
         <Switch>
           <Route

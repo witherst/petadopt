@@ -61,23 +61,6 @@ client.connect();
 //            client.end();
 //        });
 
-const retrievequery = `
-        SELECT * 
-        FROM users
-    `;
-
-client.query(retrievequery)
-        .then(res => {
-            console.log(res.rows);
-            console.log('Data retrieved!');
-        })
-        .catch(err => {
-            console.error(err);
-        })
-        .finally(() => {
-            // client.end();
-        });
-
 app.get('/api/getcustomers', (req, res) => {
     res.set('Content-Type', 'application/json');
 
