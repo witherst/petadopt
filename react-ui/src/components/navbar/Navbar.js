@@ -9,14 +9,15 @@ export function Navbar(props) {
                 <svg viewBox="0 0 278 278"><PawIcon/></svg>
                 <h1>PetLinked</h1>
             </div>
-            <div className="searchbar-div">
+            {/* <div className="searchbar-div">
                 <input type="text" id="petsearch" placeholder="Find the right pet for you..."></input>
-            </div>
-            <nav className="navbar">
+            </div> */}
+            <input type="text" className="searchbar" placeholder="Find the right pet for you..."></input>
+            <div className="navbar">
                 <ul className="navbar-nav"> 
                     {props.children}
                 </ul>
-            </nav>
+            </div>
         </div>
     )
 }
@@ -45,6 +46,7 @@ export function NavItem(props){
             <a href={props.route} className="icon-button" onClick={() => setOpen(!open)} ref={wrapperRef}>
                 {props.icon}
             </a>
+            <p>{props.name}</p>
             {open && props.children}
         </li>
     )

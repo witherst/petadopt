@@ -22,14 +22,15 @@ a {
     color: var(--secondary-color);
     background-color: var(--bg);
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    width: 100%;
 }
 
 .paw-div{
     padding-left: 35px;
     margin: auto;
     display: flex;
-    flex: 1;
 }
 
 .paw-div svg{
@@ -37,32 +38,27 @@ a {
     width: 10.5%;
     min-width: 75px;
     max-width: 75px;
-    display:inline-block;
+    display: inline-block;
 }
 
-.searchbar-div{
-    margin: auto;
-    padding-left: 35px;
-    min-width: 50%;
-    flex: 1;
-}
-
-input[type=text]{
+.searchbar{
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif, 'mon';
     font-size: 1rem;
 
+    flex:1;
     padding: 10px 20px;
-    margin: 8px 0;
+    margin: 20px 0;
     border: none;
     border-radius: 4px;
-    width: 60%;
+    max-width: 30%;
+    justify-self: center;
     outline: none;
 }
 
 .navbar {
-    margin:auto;
+    margin: auto;
     padding: 0 1rem;
 }
 
@@ -78,10 +74,17 @@ input[type=text]{
 }
 
 .nav-item{
-    width: calc(var(--nav-size) * 1.25);
+    width: calc(var(--nav-size) * 1.5);
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+
+.nav-item p{
+    font-size: 12.5px;
+    font-weight: 500;
+    margin: auto;
 }
 
 .icon-button {
@@ -136,4 +139,31 @@ input[type=text]{
     background-color: var(--bg);
     color: var(--secondary-color);
     /* font-weight: 600; */
+}
+
+@media only screen and (max-width: 750px){
+    .navbar-div {
+        flex-direction: column;
+        padding-bottom: 10px;
+    }
+
+    .paw-div{
+        padding-left: 0px;
+        justify-self: center;
+    }
+
+    .searchbar{
+        padding: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        
+        min-width: 450px;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .dropdown{
+        transform: translateX(-45%);
+        top: 220px;
+    }
 }
