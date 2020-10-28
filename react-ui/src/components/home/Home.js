@@ -20,7 +20,7 @@ const Home = (props) => {
             <Friends/>
             <Posts/>
             {/* TEMPORARY LOGOUT BUTTON */}
-            {<button onClick={handleLogout} style={{"max-height": "50px"}}>Logout</button>}
+            {<button onClick={handleLogout} style={{"maxHeight": "50px"}}>Logout</button>}
             {<Dashboard handleLogout={handleLogout} />}
           </div>
         ) : (

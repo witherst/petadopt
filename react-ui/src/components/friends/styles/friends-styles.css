@@ -14,4 +14,11 @@
 
     display: flex;
     flex: 1;
+
+    justify-content: center;
+}
+
+.friends-container h1{
+    font-size: 20px;
+    color: var(--text-color);
 }

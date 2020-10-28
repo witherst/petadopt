@@ -82,6 +82,7 @@ a {
 }
 
 .nav-item p{
+    color: var(--secondaro-color);
     font-size: 12.5px;
     font-weight: 500;
     color: var(--text-color);
@@ -142,7 +143,7 @@ a {
     /* font-weight: 600; */
 }
 
-@media only screen and (max-width: 750px){
+@media only screen and (max-width: 1020px){
     .navbar-div {
         flex-direction: column;
         padding-bottom: 10px;
