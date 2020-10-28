@@ -62,7 +62,7 @@ export function DropdownMenu() {
 
     return (
         <div className="dropdown">
-            <DropdownItem route='/profile'>Account Profile</DropdownItem>
+            <DropdownItem route='/profile'>Account Settings</DropdownItem>
             <DropdownItem route='#'>Logout</DropdownItem>
         </div>
     );
