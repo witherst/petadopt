@@ -6,15 +6,7 @@ import {
 } from 'react-router-dom';
 
 const Landing = () => {
-  //Event handler
-
-  /* TODO */
-
-  function getSearch(value) {
-    console.log(`${value}`);
-    }
-
-  // Using buttons to pass value to "search" page  
+  
   return (
     <div className="Landing">
       <h1>Welcome to our furry community</h1>
@@ -37,6 +29,7 @@ const Landing = () => {
         </Link>
         
           <hr class="solid"></hr>
+
       <h2>Featured furries</h2>
         <div style={{
             display: "flex",
@@ -45,7 +38,9 @@ const Landing = () => {
           }}
         >
           <img src={cat}/></div> 
+          
             <hr class="solid"></hr>
+
       <h2>Join our furry community on PetLinked</h2>
         <Link to='./SignUp'>
           <p>Get Started</p>
