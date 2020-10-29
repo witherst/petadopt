@@ -6,7 +6,8 @@ import Home from './components/home/Home';
 import Auth from './components/auth/Auth';
 import Messages from './components/messages/Messages'
 import Settings from './components/settings/Settings'
-import Search from './components/search/Search'
+import SearchFriend from './components/search/SearchFriend'
+import SearchHome from './components/search/SearchHome'
 import Pet from './components/pet/Pet'
 import Profile from './components/profile/Profile'
 import {DropdownMenu, Navbar, NavItem} from './components/navbar/Navbar'
@@ -83,8 +84,12 @@ const App = () => {
             render={(props) => <Settings {...props}/>}
           />
           <Route
-            path="/search" 
-            render={(props) => <Search {...props}/>}
+            path="/search/SearchFriend" 
+            render={(props) => <SearchFriend {...props}/>}
+          />
+          <Route
+            path="/search/SearchHome" 
+            render={(props) => <SearchHome {...props}/>}
           />
           <Route
             path="/pet" 
