@@ -1,57 +1,57 @@
-import React, { useEffect, useState, Component } from 'react';
-import'./findHome.css';
-import data from "./dataHome.json"; //Temp mock database
-import home from './homeImages/home2.jpg'; //temp image path
+import React, { useEffect, useState } from 'react';
+import'./Gallery.css';
 
+const SearchHome = (props) => {
+  
+  return (
+    <div className="SearchHome">
+      <h1>Search for furever Friend</h1>
 
-//source: modified version of
-//https://www.golangprograms.com/search-and-filter-list-records.html
-class SearchHome extends Component {
- 
-  state = {
-    itemsToDisplay: [],
-    itemsToUse: [],
-    desiredType: [],
-    city: [],
-    preferences: [],
-    dateEntered: []
-  };
-
-  render() {
-    return (
-      <div>
-        {/* Title for page */}
-        <h1>Search for furever Home</h1>
+      <div style={{
+        justifyContent: "center"
+        }}
         
-        {/* Filter drop down menu(s) */}        
-        <div className="fureverfilter">
-          <div>
-          Choose preferences : &nbsp;
-            <select id="fureverfilter" onChange={this.optionSelected}>
-              <option value="anyType">Choose Any</option>
-                {this.state.desiredType.map(desiredType => {
-                  return <option value={desiredType}>{desiredType}</option>;
-                })}
-            </select>
-          </div>
-
-        {/* Sorting drop down menu */}
-          <div>
-            Sort by : &nbsp;
-            <select id="sortfilter" onChange={this.sortBy}>
-              <option value="date">Date Entered: Oldest to New</option>
-              <option value="asc">Desired Age: Low to High</option>
-              <option value="des">Desired Age: High to Low</option>
-            </select>
-          </div>
+        class="row">
+        
+        <div class="column">
+          <img src={require('./homeImages/home1.jpg')}></img>
+          <img src={require('./homeImages/home2.jpg')}></img>
+          <img src={require('./homeImages/home3.jpg')}></img>
+          <img src={require('./homeImages/home4.jpg')}></img>
+          <img src={require('./homeImages/home5.jpg')}></img>
         </div>
 
-        {/* Define the map? */}
-        <div className="furevercontainer">
-          {this.state.itemsToDisplay.map(furever => {
-            let desiredType = furever["Preferences"]
-              .substring(1, furever["Preferences"].length - 2)
-              .split(",");
+        <div class="column">
+          <img src={require('./homeImages/home6.jpg')}></img>
+          <img src={require('./homeImages/home7.jpg')}></img>
+          <img src={require('./homeImages/home8.jpg')}></img>
+          <img src={require('./homeImages/home9.jpg')}></img>
+          <img src={require('./homeImages/home10.jpg')}></img>
+        </div>
+
+        <div class="column">
+          <img src={require('./homeImages/home11.jpg')}></img>
+          <img src={require('./homeImages/home12.jpg')}></img>
+          <img src={require('./homeImages/home13.jpg')}></img>
+          <img src={require('./homeImages/home14.jpg')}></img>
+          <img src={require('./homeImages/home15.jpg')}></img>
+        </div>
+
+        <div class="column">
+          <img src={require('./homeImages/home16.jpg')}></img>
+          <img src={require('./homeImages/home1.jpg')}></img>
+          <img src={require('./homeImages/home2.jpg')}></img>
+          <img src={require('./homeImages/home3.jpg')}></img>
+          <img src={require('./homeImages/home4.jpg')}></img>
+          {/* <img src={require('./homeImages/home17.jpg')}></img>
+          <img src={require('./homeImages/home18.jpg')}></img>
+          <img src={require('./homeImages/home19.jpg')}></img>
+          <img src={require('./homeImages/home20.jpg')}></img> */}
+        </div>
+      </div>
+    </div>
+  );
+}
 
           return (
               // Displays the furever data in boxes
