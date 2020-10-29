@@ -10,16 +10,14 @@ const Landing = () => {
   return (
     <div className="Landing">
       <h1>Welcome to our furry community</h1>
-      
           
-          <Link to={"/search/SearchFriend"}>
-            <p>Browse for a furever furiend</p>
-          </Link>
-          
+        <Link to={"/search/SearchFriend"}>
+          <p>Browse for a furever furiend</p>
+        </Link>
         
-          <Link to={"/search/SearchHome"}>
-            <p>Browse for a furever home</p>
-          </Link>
+        <Link to={"/search/SearchHome"}>
+          <p>Browse for a furever home</p>
+        </Link>
 
           <hr class="solid"></hr>
 
@@ -32,9 +30,9 @@ const Landing = () => {
 
       <h2>Featured furries</h2>
         <div style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center"
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
           }}
         >
           <img src={cat}/></div> 
