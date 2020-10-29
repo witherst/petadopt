@@ -19,19 +19,15 @@ const Landing = () => {
     <div className="Landing">
       <h1>Welcome to our furry community</h1>
       
-          <p>Browse for a furever furiend
-          <Link to={"/search/SearchFriend"}> 
-            <button onClick={() => getSearch('findFriend')}>
-            {">"} </button>
+          
+          <Link to={"/search/SearchFriend"}>
+            <p>Browse for a furever furiend</p>
           </Link>
-          </p>
+          
         
-          <p>Browse for a furever home
-          <Link to={"/search/SearchHome"}> 
-            <button onClick={() => getSearch('findHome')}>
-            {">"} </button>
+          <Link to={"/search/SearchHome"}>
+            <p>Browse for a furever home</p>
           </Link>
-          </p>
 
           <hr class="solid"></hr>
 
