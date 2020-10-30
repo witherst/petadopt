@@ -4,7 +4,9 @@
     display: flex;
     max-width: 45%;
     flex-direction: column;
-    flex: 2;
+
+    min-width: 100%;
+    min-width: 600px;
 }
 
 .individual-post{

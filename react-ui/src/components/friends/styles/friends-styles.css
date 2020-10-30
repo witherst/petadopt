@@ -2,23 +2,35 @@
 
 .friends-container{
     background-color: var(--bg);
-    margin: 25px;
-    margin-left: 10%;
     border-radius: 10px;
-    /* max-width: 300px;  */
-    /* min-width: 300px; */
-    max-width: fit-content;
 
-    /* Below are temps until we get data populating */
+
+    /* Below are temps (maybe) until we get data populating */
+    min-width: 350px;
+    max-width: 400px; 
     min-height: 350px;
-    max-height: 300px;
+    max-height: 400px;
 
     display: flex;
     flex-direction: column;
     flex: 1;
 
-    /* overflow: scroll; */
-    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/* Scrollbar in friends container */
+.friends-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.friends-container::-webkit-scrollbar-thumb{
+    border-radius: 15px;
+    background: var(--secondary-color);
+}
+
+.friends-container::-webkit-scrollbar-thumb:hover{
+    background: var(--secondary-color-hover);
 }
 
 .friends-container h1{
@@ -43,6 +55,16 @@
     flex-direction: column;
 }
 
+.individual-friend-div-container:hover div{
+   background: var(--secondary-color-hover);
+   border-radius: 15px;
+   cursor: pointer;
+}
+
+.individual-friend-div-container:hover h1{
+    color: var(--primary-color);
+}
+
 .individual-friend-div-container-content{
     display: flex;
     justify-content: center;
@@ -58,5 +80,6 @@
 .individual-friend-div-container-content img{
     height: 75px;
     width: auto;
-    border-radius: 15%;
+    border-radius: 15px;
+    opacity: .85;
 }

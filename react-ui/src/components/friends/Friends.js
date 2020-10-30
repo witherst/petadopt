@@ -17,12 +17,16 @@ export function Friends(props) {
 }
 
 function IndividualFriend(props){
+    // TODO
+    const petroute = '/pet'
     return(
         <div className="individual-friend-div-container">
-            <div className="individual-friend-div-container-content">
-                <img src={Cat}></img>
-                <h1>{props.name}</h1>
-            </div>
+            <a href='/pet'>
+                <div className="individual-friend-div-container-content">
+                    <img src={Cat}></img>
+                    <h1>{props.name}</h1>
+                </div>
+            </a>
             <hr className="spacer"/>
         </div>
     )

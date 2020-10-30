@@ -5,6 +5,7 @@ import './styles/home-styles.css'
 import Dashboard from './Dashboard';
 import Landing from './Landing';
 import { Posts } from '../posts/Posts';
+import Nameplate from '../nameplate/Nameplate'
 
 
 const Home = (props) => {
@@ -14,14 +15,18 @@ const Home = (props) => {
 
   const [petlist, setPetlist] = useState([]);
 
+  /* TODO: The following two lines should be information present on the user data when they log in. */
+  const username = "Tim Withers"
+  const usertype = "admin"
+
   const getPetList = () =>{
       // TODO: Need to fill petlist with data from DB based on user or shelter.
       //  petlist will consist of: (Name of pet, link to picture)
       const petlist = [];
       const maxNameLength = 20;
 
-      for (let i = 0; i < 10; i++){
-        let name = "Awesome Cattttttttttttttttttttttt";
+      for (let i = 0; i < 5; i++){
+        let name = "Awesome Cattttttttttttttttttttttttttttttt";
         let newname = cutNameIfTooLong(name, maxNameLength);
         
         petlist.push({id: i, name: newname, imgpath: "img/path.jpg"});
@@ -43,10 +48,12 @@ const Home = (props) => {
     return temp
   }
 
+  // On component render or data change useEffect() is called
   useEffect(() => {
       getPetList();
-    return () => {
-      // cleanup
+    
+      return () => {
+        // cleanup
     }
   }, [user])  // If user changes, get petlist again
 
@@ -55,12 +62,19 @@ const Home = (props) => {
       { user ? (
           // if user exists, direct to home page
           <div className="home-container">
-            {true && <Friends title="Friends you're following" pets={petlist}/>}
-            {/* {true && <Friends title="Manage your profiles" pets={petlist}/>} */}
-            <Posts/>
-            {/* TEMPORARY LOGOUT BUTTON */}
-            {<button onClick={handleLogout} style={{"maxHeight": "50px"}}>Logout</button>}
-            {<Dashboard handleLogout={handleLogout} />}
+            <div className="nameplate-friend-container">
+              {user && <Nameplate name={username} usertype={usertype}/>}
+              {true && <Friends title="Friends you're following" pets={petlist}/>}
+              {/* {true && <Friends title="Manage your profiles" pets={petlist}/>} */}
+             
+              {/* TEMPORARY LOGOUT BUTTON */}
+              {<button onClick={handleLogout} style={{"maxHeight": "50px", "maxWidth": "75px", "marginTop": "550px"}}>Logout</button>}
+              {<Dashboard handleLogout={handleLogout}/>}
+            </div>
+
+            <div className="home-posts-container">
+              <Posts/>
+            </div>
           </div>
         ) : (
           // otherwise, direct to landing page

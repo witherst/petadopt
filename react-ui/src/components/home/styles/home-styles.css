@@ -1,8 +1,21 @@
 @import "../../../index.css";    /* Root styles */
 
-.Home{
-}
-
 .home-container{
     display: flex;
+}
+
+.nameplate-friend-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+}
+
+.home-posts-container{
+    margin-left: 5%;
+}
+
+@media only screen and (max-width: 1020px){
+    .home-container{
+        flex-direction: column;
+    }
 }
