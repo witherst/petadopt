@@ -43,7 +43,7 @@ const App = () => {
   
   return (
     <Router>
-      
+
       <div className="App">
         {user && <Navbar>
           <NavItem icon={<HomeIcon/>} route='/' name='home'/>

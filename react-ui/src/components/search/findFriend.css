@@ -1,0 +1,91 @@
+.petcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.pet {
+  box-shadow: 0 0 5px grey;
+  border-radius: 5px;
+  margin: 10px;
+  width: 450px;
+
+  font-family: touse;
+
+  transition-property: box-shadow;
+  transition-duration: 0.25s;
+}
+
+.pet:hover {
+  box-shadow: 0 0 15px grey;
+}
+
+.sepline {
+  height: 1px;
+  width: 100%;
+  background-color: rgb(230, 230, 230);
+  margin-top: 5px;
+}
+
+.petinfo {
+  padding: 10px;
+  cursor: default;
+}
+
+.breed {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.petname {
+  font-size: 20px;
+}
+
+.pettype {
+  font-size: 15px;
+}
+
+.petfriend {
+  margin: 2px;
+  border: 1px solid grey;
+}
+
+.petfilter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-family: touse;
+  padding: 10px;
+}
+
+.sortfilter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-family: touse;
+  padding: 10px;
+}
+
+.petstats {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  padding: 10px;
+  cursor: default;
+
+  transition-property: background-color, color;
+  transition-duration: 0.25s;
+}
+
+.petstats:hover {
+  background-color: cornflowerblue;
+  color: white;
+}
+
+/* Divider lines */
+/* hr.solid {
+  border-top: 1px solid #bbb;
+} */
