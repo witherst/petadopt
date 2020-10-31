@@ -70,7 +70,7 @@ CREATE TABLE public.petmarks
 (
     user_id INT NOT NULL,
     pet_id INT NOT NULL,
-    PRIMARY KEY (user_id),
+    PRIMARY KEY (user_id, pet_id),
     
     CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES public.users (internal_user_id),
     CONSTRAINT fk_pet_id FOREIGN KEY (pet_id) REFERENCES public.pet_profiles (internal_pet_id)
