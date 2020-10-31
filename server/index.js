@@ -18,11 +18,13 @@ app.use(bodyParser.urlencoded({ extended: true}));
 // routes
 var usersRouter = require('./models/user'),
     petProfilesRouter = require('./models/pet_profiles'),
-    statusesRouter = require('./models/statuses')
+    statusesRouter = require('./models/statuses'),
+    petmarksRouter = require('./models/petmarks')
 
 app.use('/api/user', usersRouter)
 app.use('/api/pet', petProfilesRouter)
 app.use('/api/status', statusesRouter)
+app.use('/api/petmark', petmarksRouter)
 
 // Production environment modules
 if(process.env.NODE_ENV === 'production'){

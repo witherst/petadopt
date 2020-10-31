@@ -3,6 +3,7 @@ import React from 'react';
 import Users from './Users'
 import PetProfiles from './PetProfiles'
 import Statuses from './Statuses'
+import Petmarks from './Petmarks'
 
 function Test() {
 
@@ -10,7 +11,9 @@ function Test() {
         <div>
             <Users /><br/>
             <PetProfiles /><br />
-            <Statuses /><br/>
+            <Statuses /><br />
+            <Petmarks /><br />
+            
         </div>
     )
 }
