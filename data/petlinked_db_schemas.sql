@@ -60,7 +60,7 @@ CREATE TABLE public.pet_pics
 (
     pet_id INT NOT NULL,
     pic_id INT NOT NULL,
-    PRIMARY KEY (pet_id),
+    PRIMARY KEY (pet_id, pic_id),
     CONSTRAINT fk_pet_id FOREIGN KEY (pet_id) REFERENCES public.pet_profiles (internal_pet_id),
     CONSTRAINT fk_pic_id FOREIGN KEY (pic_id) REFERENCES public.photos (internal_pic_id)
 );
@@ -96,7 +96,7 @@ CREATE table public.statuses (
 CREATE TABLE public.pet_statuses (
     pet_id INT NOT NULL,
     status_id INT NOT NULL,
-    PRIMARY KEY (pet_id),
+    PRIMARY KEY (pet_id, status_id),
     CONSTRAINT fk_pet_id FOREIGN KEY (pet_id) REFERENCES public.pet_profiles (internal_pet_id),
     CONSTRAINT fk_status_id FOREIGN KEY (status_id) REFERENCES public.statuses (status_id)
 );
