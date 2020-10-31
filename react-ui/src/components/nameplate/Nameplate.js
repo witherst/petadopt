@@ -10,7 +10,7 @@ function Nameplate(props) {
             </div> 
             <div className="nameplate-text-container">
                 <h1>{props.name}</h1>
-                <h2>{props.usertype}</h2>
+                <h2>{props.subtext}</h2>
             </div>
         </div>
     )

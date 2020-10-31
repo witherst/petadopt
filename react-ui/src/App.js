@@ -19,6 +19,7 @@ import {ReactComponent as MessageIcon} from './components/navbar/icons/messages.
 import {ReactComponent as NotificationIcon} from './components/navbar/icons/notification.svg'
 import {ReactComponent as SettingsIcon} from './components/navbar/icons/settings.svg'
 
+
 const App = () => {
   const [user, setUser] = useState("");
   
@@ -45,6 +46,7 @@ const App = () => {
     <Router>
 
       <div className="App">
+        
         {user && <Navbar>
           <NavItem icon={<HomeIcon/>} route='/' name='home'/>
           <NavItem icon={<SearchIcon/>} route='/search' name='search'/>

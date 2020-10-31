@@ -6,8 +6,7 @@
 
 
     /* Below are temps (maybe) until we get data populating */
-    min-width: 350px;
-    max-width: 400px; 
+    width: 400px;
     min-height: 350px;
     max-height: 400px;
 

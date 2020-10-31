@@ -10,10 +10,92 @@
 }
 
 .individual-post{
+    display: flex;
+    flex-direction: column;
     background-color: var(--bg);
     margin: 25px;
     border-radius: 10px;
 
     /* Temp min-height. Eventually the height will be the size of the data inside*/
-    min-height: 300px;
+    /* min-height: 300px; */
+}
+
+/* Style individual nameplate with this css tag */
+.individual-post-nameplate-div .nameplate-container{
+    zoom: .75;  /* Make nameplate slightly smaller with zoom */
+    margin-top: 35px;
+    margin-left: 45px;
+    margin-bottom: 0px;
+}
+
+.individual-post-nameplate-div .nameplate-container h2{
+    font-weight: 500;
+}
+
+.individual-post-status-container{
+    display: flex;
+    margin-left: 35px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.individual-post-status-container p{
+    font-size: .9rem;
+    color: var(--text-color);
+    text-align: left;
+}
+
+.individual-post-status-container img{
+    height: auto;
+    width: 300px;
+    border-radius: 5px;
+    opacity: .85;
+    margin-right: 35px;  /* Only here to counter the margin-left or else center looks messed up  */
+}
+
+.spacer{
+    width: 90%; 
+    border-color: var(--secondary-color);
+    border-style: solid;
+}
+
+.individual-post-likeshare-container{
+    display: flex;
+    margin-left: 35px;
+    margin-bottom: 7px;
+}
+
+.like-container, .share-container{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.like-container:hover, .share-container:hover{
+    filter: brightness(.75);
+}
+
+.like-container h1, .share-container h1{
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: .7rem;
+    letter-spacing: .05rem;
+    margin-left: 5px;
+}
+
+.like-container svg{
+    fill: #ffb8b8;
+    width: 20px;
+    height: 20px;
+}
+
+.share-container{
+    margin-left: 15px;
+}
+
+.share-container svg{
+    fill: var(--secondary-color);
+    width: 20px;
+    height: 20px;
 }

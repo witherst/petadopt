@@ -63,7 +63,7 @@ const Home = (props) => {
           // if user exists, direct to home page
           <div className="home-container">
             <div className="nameplate-friend-container">
-              {user && <Nameplate name={username} usertype={usertype}/>}
+              {user && <Nameplate name={username} subtext={usertype}/>}
               {true && <Friends title="Friends you're following" pets={petlist}/>}
               {/* {true && <Friends title="Manage your profiles" pets={petlist}/>} */}
              
