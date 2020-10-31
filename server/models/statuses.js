@@ -10,7 +10,6 @@ const client = new Client({
 });
 client.connect();
 
-
 const insert_pet_status = (status) => {
     const insertQuery = `
         INSERT INTO pet_statuses (
@@ -100,7 +99,11 @@ router.route('/:id')
     .get((req, res) => {
         const id = parseInt(req.params.id)
         const getQuery = `
-            SELECT * FROM statuses WHERE status_id=($1)
+            SELECT * FROM pet_statuses 
+            INNER JOIN statuses 
+            ON statuses.status_id = pet_statuses.status_id
+            WHERE pet_id=($1)
+            ORDER BY timestamp;
         `;
 
         client.query(getQuery, [id])
@@ -111,7 +114,6 @@ router.route('/:id')
                 console.error(err);
             })
     })
-
 
 /**
  * add new status to statuses and association in pet_statuses

@@ -17,9 +17,9 @@ function Statuses() {
     }
 
     const getStatusesByPet = () => {
-        let statusId = prompt('Enter status id');
+        let petId = prompt('Enter pet id');
 
-        fetch('/api/status/' + statusId)
+        fetch('/api/status/' + petId)
             .then(res => res.json())
             .then((res) => {
                 console.log(res)
