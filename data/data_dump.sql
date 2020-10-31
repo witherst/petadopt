@@ -52,3 +52,12 @@ VALUES
     (4, 8),
     (4, 9),
     (5, 10);
+
+INSERT INTO petmarks (user_id, pet_id)
+VALUES
+    (1, 5),
+    (1, 6),
+    (2, 1),
+    (3, 1),
+    (4, 1),
+    (5, 1);
