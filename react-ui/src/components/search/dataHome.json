@@ -1,0 +1,211 @@
+[
+  {
+    "Id": 1,
+    "Name": "Bruce",
+    "City": "Duluth, MN",
+    "Desired Type": "Cat",
+    "Preferences": "['Good with children', 'Good with dogs', 'Must be leashed at all times' ]",
+    "Date Entered": "1/1/2020",
+    "Age": 5,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 2,
+    "Name": "Jerry",
+    "City": "San Diego, CA",
+    "Desired Type": "Cat",
+    "Preferences": "['Good with dogs', 'Playful' ]",
+    "Date Entered": "5/20/2020",
+    "Age": 4.5,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 3,
+    "Name": "Ozzy",
+    "City": "New York, NY",
+    "Desired Type": "Other",
+    "Preferences": "['Good with children', 'Good with cats', 'Must be leashed at all times' ]",
+    "Date Entered": "2/1/2020",
+    "Age": 1.5,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Name": "Gina",
+    "City": "Minot, ND",
+    "Desired Type": "Cat",
+    "Preferences": "['Good with children', 'Good with cats', 'People-oriented', 'Playful' ]",
+    "Date Entered": "9/18/2020",
+    "Age": 2,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 4,
+    "Name": "Cherilyn",
+    "City": "Orlando, FL",
+    "Desired Type": "Cat",
+    "Preferences": "['Good with dogs', 'Good with cats', 'Playful' ]",
+    "Date Entered": "7/16/2020",
+    "Age": 4.5,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 5,
+    "Name": "Chris",
+    "City": "Roswell, NM",
+    "Desired Type": "Cat",
+    "Preferences": "['People-oriented', 'Good with cats', 'Playful' ]",
+    "Date Entered": "3/19/2020",
+    "Age": 2,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 6,
+    "Name": "Isabella",
+    "City": "Charlotte, NC",
+    "Desired Type": "Cat",
+    "Preferences": "['Good with children', 'Good with cats', 'Playful' ]",
+    "Date Entered": "3/1/2020",
+    "Age": 3,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 7,
+    "Name": "Tim Heidecker",
+    "City": "Missoula, MT",
+    "Desired Type": "Cat",
+    "Preferences": "['Playful', 'Energetic' ]",
+    "Date Entered": "8/1/2020",
+    "Age": 2,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 8,
+    "Name": "Eric Wareheim",
+    "City": "Crovallis, OR",
+    "Desired Type": "Cat",
+    "Preferences": "['Playful', 'People-oriented' ]",
+    "Date Entered": "7/1/2020",
+    "Age": 8,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 9,
+    "Name": "Lily Munster",
+    "City": "Long Beach, CA",
+    "Desired Type": "Cat",
+    "Preferences": "['Good with dogs','Playful', 'People-oriented' ]",
+    "Date Entered": "10/30/2020",
+    "Age": 7,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 10,
+    "Name": "Jack Handy",
+    "City": "Tallahasee, FL",
+    "Desired Type": "Cat",
+    "Preferences": "[ 'Good with children','Playful' ]",
+    "Date Entered": "11/01/2020",
+    "Age": 4.5,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 11,
+    "Name": "Jessica",
+    "Desired Type": "Cat",
+    "City": "Spokane, WA",
+    "Preferences": "['Good with children', 'Good with dogs', 'Good with cats', 'Playful' ]",
+    "Date Entered": "2/21/2020",
+    "Age": 1,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 12,
+    "Name": "Jamie",
+    "Desired Type": "Cat",
+    "City": "Stafford, VA",
+    "Preferences": "['Good with children', 'Playful' ]",
+    "Date Entered": "5/16/2020",
+    "Age": 2,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 13,
+    "Name": "Oswald",
+    "Desired Type": "Cat",
+    "City": "Aiea, HI",
+    "Preferences": "['Good with children','Good with dogs' ]",
+    "Date Entered": "8/21/2020",
+    "Age": 10,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 14,
+    "Name": "Parker",
+    "Desired Type": "Cat",
+    "City": "Fairbanks, AK",
+    "Preferences": "['Good with children', 'Good with dogs', 'Good with cats', 'Playful' ]",
+    "Date Entered": "8/29/2020",
+    "Age": 6,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 15,
+    "Name": "Justin",
+    "City": "Jackson, MS",
+    "Desired Type": "Other",
+    "Preferences": "['Good with dogs', 'Energetic', 'Playful' ]",
+    "Date Entered": "7/4/2020",
+    "Age": 3,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 16,
+    "Name": "Janice",
+    "Desired Type": "Cat",
+    "City": "Reno, NV",
+    "Preferences": "['Good with dogs', 'Good with cats', 'Playful' ]",
+    "Date Entered": "3/21/2020",
+    "Age": 3,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 17,
+    "Name": "Sara",
+    "City": "Boise, ID",
+    "Desired Type": "Cat",
+    "Preferences": "['Good with children','Good with cats', 'Playful' ]",
+    "Date Entered": "6/21/2020",
+    "Age": 4.5,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 18,
+    "Name": "Johnny",
+    "City": "Vail, CO",
+    "Desired Type": "Dog",
+    "Preferences": "['Playful', 'Good with cats' ]",
+    "Date Entered": "6/1/2020",
+    "Age": 2,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 19,
+    "Name": "Danny",
+    "City": "Orem, UT",
+    "Desired Type": "Cat",
+    "Preferences": "['Energetic', 'People-oriented' ]",
+    "Date Entered": "2/12/2020",
+    "Age": 5,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 20,
+    "Name": "Danzig",
+    "City": "Los Angeles, CA",
+    "Desired Type": "Dog",
+    "Preferences": "['Good with cats', 'Must be leashed at all times' ]",
+    "Date Entered": "1/4/2020",
+    "Age": 4.5,
+    "Image Location": "absolute reference to an online resource"
+  }  
+]

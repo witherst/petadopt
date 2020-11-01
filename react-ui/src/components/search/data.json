@@ -1,0 +1,190 @@
+[
+  {
+    "Id": 1,
+    "Breed": "Bengal",
+    "Type": "Cat",
+    "Disposition": "['Good with children', 'Good with dogs', 'Must be leashed at all times' ]",
+    "Date Entered": "1/1/2020",
+    "Age": 5,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 2,
+    "Breed": "Tabby",
+    "Type": "Cat",
+    "Disposition": "['Good with dogs', 'Playful' ]",
+    "Date Entered": "5/20/2020",
+    "Age": 4.5,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 3,
+    "Breed": "Mix",
+    "Type": "Cat",
+    "Disposition": "['Good with children', 'Good with cats', 'Must be leashed at all times' ]",
+    "Date Entered": "2/1/2020",
+    "Age": 1.5,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Breed": "Manx",
+    "Type": "Cat",
+    "Disposition": "['Good with children', 'Good with cats', 'People-oriented', 'Playful' ]",
+    "Date Entered": "9/18/2020",
+    "Age": 2,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 4,
+    "Breed": "Birman",
+    "Type": "Cat",
+    "Disposition": "['Good with dogs', 'Good with cats', 'Playful' ]",
+    "Date Entered": "7/16/2020",
+    "Age": 4.5,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 5,
+    "Breed": "Mix",
+    "Type": "Cat",
+    "Disposition": "['People-oriented', 'Good with cats', 'Playful' ]",
+    "Date Entered": "3/19/2020",
+    "Age": 4.5,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 6,
+    "Breed": "American Curl",
+    "Type": "Cat",
+    "Disposition": "['Good with children', 'Good with cats', 'Playful' ]",
+    "Date Entered": "3/1/2020",
+    "Age": 3,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 7,
+    "Breed": "Abyssinian",
+    "Type": "Cat",
+    "Disposition": "['Playful', 'Energetic' ]",
+    "Date Entered": "8/1/2020",
+    "Age": 2,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 8,
+    "Breed": "Tabby",
+    "Type": "Cat",
+    "Disposition": "['Playful', 'People-oriented' ]",
+    "Date Entered": "7/1/2020",
+    "Age": 8,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 9,
+    "Breed": "Turkish Angora",
+    "Type": "Cat",
+    "Disposition": "['Good with dogs','Playful', 'People-oriented' ]",
+    "Date Entered": "10/30/2020",
+    "Age": 7,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 10,
+    "Breed": "Scottish Folds",
+    "Type": "Cat",
+    "Disposition": "[ 'Good with children','Playful' ]",
+    "Date Entered": "11/01/2020",
+    "Age": 4.5,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 11,
+    "Breed": "Domestic shorthair",
+    "Type": "Cat",
+    "Disposition": "['Good with children', 'Good with dogs', 'Good with cats', 'Playful' ]",
+    "Date Entered": "2/21/2020",
+    "Age": 1,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 12,
+    "Breed": "Ragdoll",
+    "Type": "Cat",
+    "Disposition": "['Good with children', 'Playful' ]",
+    "Date Entered": "5/16/2020",
+    "Age": 2,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 13,
+    "Breed": "Maine Coon",
+    "Type": "Cat",
+    "Disposition": "['Good with children','Good with dogs' ]",
+    "Date Entered": "8/21/2020",
+    "Age": 10,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 14,
+    "Breed": "Pekingese",
+    "Type": "Cat",
+    "Disposition": "['Good with children', 'Good with dogs', 'Good with cats', 'Playful' ]",
+    "Date Entered": "8/29/2020",
+    "Age": 6,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 15,
+    "Breed": "Turtoise",
+    "Type": "Other",
+    "Disposition": "['Good with dogs', 'Energetic', 'Playful' ]",
+    "Date Entered": "7/4/2020",
+    "Age": 3,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 16,
+    "Breed": "Bengal Mix",
+    "Type": "Cat",
+    "Disposition": "['Good with dogs', 'Good with cats', 'Playful' ]",
+    "Date Entered": "3/21/2020",
+    "Age": 3,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 17,
+    "Breed": "Siamese",
+    "Type": "Cat",
+    "Disposition": "['Good with children','Good with cats', 'Playful' ]",
+    "Date Entered": "6/21/2020",
+    "Age": 4.5,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 18,
+    "Breed": "Sherpa",
+    "Type": "Dog",
+    "Disposition": "['Playful', 'Good with cats' ]",
+    "Date Entered": "6/1/2020",
+    "Age": 2,
+    "Image Location": 426
+  },
+  {
+    "Id": 19,
+    "Breed": "British Shorthair",
+    "Type": "Cat",
+    "Disposition": "['Energetic', 'People-oriented' ]",
+    "Date Entered": "2/12/2020",
+    "Age": 5,
+    "Image Location": "absolute reference to an online resource"
+  },
+  {
+    "Id": 20,
+    "Breed": "Labrador",
+    "Type": "Dog",
+    "Disposition": "['Good with cats', 'Must be leashed at all times' ]",
+    "Date Entered": "1/4/2020",
+    "Age": 4.5,
+    "Image Location": "absolute reference to an online resource"
+  }  
+]
