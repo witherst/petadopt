@@ -1,74 +1,54 @@
-import React, { useEffect, useState, Component } from 'react';
-import'./findFriend.css';
-import data from "./data.json"; //Temp mock database
-import cat from './friendImages/cat4.jpg'; //temp image path
+import React, { useEffect, useState } from 'react';
+import'./Gallery.css';
 
 
-//source: modified version of
-//https://www.golangprograms.com/search-and-filter-list-records.html
-class SearchFriend extends Component {
- 
-  state = {
-    itemsToDisplay: [],
-    itemsToUse: [],
-    type: [],
-    breed: [],
-    disposition: [],
-    dateEntered: []
-  };
+const SearchFriend = (props) => {
+  
+  return (
+    <div className="SearchFriend">
+      <h1>Search for furever Friend</h1>
 
-  render() {
-    return (
-      <div>
-        {/* Title for page */}
-        <h1>Search for furever Friend</h1>
+      <div style={{
+        justifyContent: "center"
+        }}
         
-        {/* Filter drop down menu(s) */}        
-        <div className="petfilter">
-          <div>
-          Choose disposition : &nbsp;
-            <select id="petfilter" onChange={this.optionSelected}>
-              <option value="anyType">Choose Any</option>
-                {this.state.type.map(type => {
-                  return <option value={type}>{type}</option>;
-                })}
-            </select>
-          </div>
-          
-          {/* TODO Filter by Breed */}
-          <div>
-          Choose breed : &nbsp;
-            <select id="petfilter" 
-            onChange={this.optionSelected}>
-              <option value="anyBreed">Choose Any</option>
-                {this.state.breed.map(breed => {
-                  return <option value={breed}>{breed}</option>;
-                })}
-            </select>
-          </div>
-          
-          {/* TODO Type of Animal filter */}
-          <div>         
-            Choose type : &nbsp;
-            <select id="petfilter" onChange={this.optionSelected}>
-              <option value="anyDisposition">Choose Any</option>
-                {this.state.disposition.map(disposition => {
-                  return <option value={disposition}>{disposition}</option>;
-                })}
-            </select>
-          </div>
-
-          {/* TODO Date Created Filter GUI */}
-          <div>
-            Date entered : &nbsp;
-            <select id="petfilter" onChange={this.optionSelected}>
-              <option value="any">Choose Any</option>
-                {this.state.dateEntered.map(dateEntered => {
-                  return <option value={dateEntered}>{dateEntered}</option>;
-                })}
-            </select>
-          </div>
+        class="row">
+        
+        <div class="column">
+          <img src={require('./friendImages/cat1.jpg')}></img>
+          <img src={require('./friendImages/cat2.jpg')}></img>
+          <img src={require('./friendImages/cat3.jpg')}></img>
+          <img src={require('./friendImages/cat4.jpg')}></img>
+          <img src={require('./friendImages/cat5.jpg')}></img>
         </div>
+
+        <div class="column">
+          <img src={require('./friendImages/cat6.jpg')}></img>
+          <img src={require('./friendImages/cat7.jpg')}></img>
+          <img src={require('./friendImages/cat8.jpg')}></img>
+          <img src={require('./friendImages/cat9.jpg')}></img>
+          <img src={require('./friendImages/pup1.jpg')}></img>
+        </div>
+
+        <div class="column">
+          <img src={require('./friendImages/pup2.jpg')}></img>
+          <img src={require('./friendImages/pup3.jpg')}></img>
+          <img src={require('./friendImages/pup4.jpg')}></img>
+          <img src={require('./friendImages/pup5.jpg')}></img>
+          <img src={require('./friendImages/pup6.jpg')}></img>
+        </div>
+
+        <div class="column">
+          <img src={require('./friendImages/pup7.jpg')}></img>
+          <img src={require('./friendImages/pup8.jpg')}></img>
+          <img src={require('./friendImages/pup9.jpg')}></img>
+          <img src={require('./friendImages/other1.jpg')}></img>
+          <img src={require('./friendImages/other2.jpg')}></img>
+        </div>
+      </div>
+    </div>
+  );
+}
 
         {/* Sorting drop down menu */}
         <div className="sortfilter">
