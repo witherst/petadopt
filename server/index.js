@@ -9,30 +9,22 @@ process.env.NODE_ENV != 'production' ? require('dotenv').config() : null;
 // express app
 const app = express();
 
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
-
-/*     POSTGRES DATABASE RIGHT HERE       */
-const { Client } = require('pg');
-const client = new Client({
-    connectionString: process.env.DATABASE_URL,
-    ssl:{
-        rejectUnauthorized: false
-    }
-});
-
-client.connect();
 
 /**
  * APIs
  */
 // routes
 var usersRouter = require('./models/user'),
-    petProfilesRouter = require('./models/pet_profiles')
+    petProfilesRouter = require('./models/pet_profiles'),
+    statusesRouter = require('./models/statuses'),
+    petmarksRouter = require('./models/petmarks')
 
 app.use('/api/user', usersRouter)
 app.use('/api/pet', petProfilesRouter)
+app.use('/api/status', statusesRouter)
+app.use('/api/petmark', petmarksRouter)
 
 // Production environment modules
 if(process.env.NODE_ENV === 'production'){

@@ -18,6 +18,7 @@ router.route('/')
         const getQuery = `
             SELECT * 
             FROM pet_profiles
+            ORDER BY last_updated_timestamp;
         `;
         client.query(getQuery)
             .then(data => {
