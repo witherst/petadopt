@@ -7,10 +7,10 @@
   --text-color: #379683;
   --primary-color:#8ee4af;
   --secondary-color:#379683;
+  --secondary-color-hover: #308372;
 }
 
 body {
-  /* margin: 0; */
   font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif, 'mon';

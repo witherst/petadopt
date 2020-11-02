@@ -6,8 +6,10 @@ export function Navbar(props) {
     return (
         <div className="navbar-div">
             <div className="paw-div">
-                <svg viewBox="0 0 278 278"><PawIcon/></svg>
-                <h1>PetLinked</h1>
+                <a href='/'>
+                    <svg viewBox="0 0 278 278"><PawIcon/></svg>
+                    <h1>PetLinked</h1>
+                </a>
             </div>
             <input type="text" className="searchbar" placeholder="Find the right pet for you..."></input>
             <div className="navbar">
@@ -48,7 +50,6 @@ export function NavItem(props){
         </li>
     )
 }
-
 
 export function DropdownMenu() {
 
