@@ -16,10 +16,10 @@ function Petmarks() {
             });
     }
 
-    const getUserPetmarks = () => {
+    const getUserPetmarkStatuses = () => {
         let userId = prompt('Enter user id');
 
-        fetch('/api/petmark/' + userId)
+        fetch('/api/petmark/statuses/' + userId)
             .then(res => res.json())
             .then((res) => {
                 console.log(res)
@@ -51,7 +51,7 @@ function Petmarks() {
     return (
         <div>
             <h1>PETMARKS</h1>
-            <button onClick={getUserPetmarks}>Select petmarks</button>
+            <button onClick={getUserPetmarkStatuses}>getUserPetmarkStatuses</button>
             <button onClick={addPetmark}>Add Petmark</button>
             <br />
             <h3>data from DB:</h3>
@@ -61,7 +61,7 @@ function Petmarks() {
             }
             <h3>results from query: </h3>
             {queryRes ? queryRes.map( res =>
-                <div>user {res.user_id} - pet {res.pet_id} {res.external_pet_id} </div> ) :
+                <div>{JSON.stringify(res)} </div> ) :
                 'there is no data available'
             }
         </div>
