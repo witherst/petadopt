@@ -4,22 +4,32 @@ import { Link, withRouter } from 'react-router-dom';
 
 const SignUp = (props) => {
     const {
-        handleSignUp,
+        attemptSignUp,
+        username,
+        setUsername,
         email,
         setEmail,
         password,
         setPassword,
+        usernameError,
         emailError,
         passwordError
     } = props;
-
+    
     return (
         <section className="authBody">
             <div className="authHeader">
                 <h3>Make the most of your life with a furiend</h3>
             </div>
             <div className="authContainer">
-                
+                <label>username</label>
+                <input
+                    type="text"
+                    required
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                />
+                <p className="errorMessage">{usernameError}</p>
                 <label>email</label>
                 <input
                     type="text"
@@ -39,7 +49,7 @@ const SignUp = (props) => {
                 <p className="errorMessage">{passwordError}</p>
 
                 <div className="buttonContainer">
-                    <button onClick={handleSignUp}>Join</button>
+                    <button onClick={attemptSignUp}>Join</button>
                     <p>
                         Already on PetLinked?
                         <Link to="/signin">Sign in</Link>
