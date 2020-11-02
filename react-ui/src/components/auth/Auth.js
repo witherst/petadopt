@@ -71,7 +71,9 @@ const Auth = (props) => {
             break;
         }
       });
-    history.push('/')
+      if (user) {
+        history.push('/')
+      }
   };
 
   const handleSignUp = () => {
@@ -91,7 +93,9 @@ const Auth = (props) => {
         }
       });
     createUser();
-    history.push('/')
+    if (user) {
+        history.push('/')
+    }
   };
 
 
