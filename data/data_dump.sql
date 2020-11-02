@@ -20,9 +20,44 @@ INSERT INTO pet_profiles
     profile_status
     )
 VALUES
-    ('coco', 1, 'dog', null, null, 'somewhere', 'adoptable', 'placeholder', null, 'active'),
-    ('butter', 1, 'cat', null, null, 'somewhere', 'adoptable', 'placeholder', null, 'active'),
-    ('nut', 1, 'other', null, null, 'somewhere', 'adoptable', 'placeholder', null, 'active'),
-    ('sqash', 1, 'dog', null, null, 'somewhere', 'adoptable', 'placeholder', null, 'active'),
-    ('peanut', 2, 'cat', null, null, 'somewhere', 'adoptable', 'placeholder', null, 'active'),
-    ('mold', 2, 'dog', null, null, 'somewhere', 'adoptable', 'placeholder', null, 'active');
+    ('coco', 1, 'dog', null, null, 'somewhere', 'adoptable', '2020-06-20T18:30:00.000Z', null, 'active'),
+    ('butter', 1, 'cat', null, null, 'somewhere', 'adoptable', '2020-06-20T18:30:00.000Z', null, 'active'),
+    ('nut', 1, 'other', null, null, 'somewhere', 'adoptable', '2020-06-20T18:30:00.000Z', null, 'active'),
+    ('sqash', 1, 'dog', null, null, 'somewhere', 'adoptable', '2020-06-20T18:30:00.000Z', null, 'active'),
+    ('peanut', 2, 'cat', null, null, 'somewhere', 'adoptable', '2020-06-20T18:30:00.000Z', null, 'active'),
+    ('mold', 2, 'dog', null, null, 'somewhere', 'adoptable', '2020-06-20T18:30:00.000Z', null, 'active');
+
+INSERT INTO statuses ( status, timestamp )
+VALUES
+    ('status here', '2020-06-20T18:30:00.000Z'),
+    ('status there', '2020-06-20T18:30:00.000Z'),
+    ('status where', '2020-06-20T18:30:00.000Z'),
+    ('status every where', '2020-06-20T18:30:00.000Z'),
+    ('status no where', '2020-06-20T18:30:00.000Z'),
+    ('another here', '2020-06-20T18:30:00.000Z'),
+    ('another there', '2020-06-20T18:30:00.000Z'),
+    ('another where', '2020-06-20T18:30:00.000Z'),
+    ('another every where', '2020-06-20T18:30:00.000Z'),
+    ('another no where', '2020-06-20T18:30:00.000Z');
+
+INSERT INTO pet_statuses (pet_id, status_id)
+VALUES
+    (1, 1),
+    (1, 2),
+    (1, 3),
+    (2, 4),
+    (2, 5),
+    (3, 6),
+    (4, 7),
+    (4, 8),
+    (4, 9),
+    (5, 10);
+
+INSERT INTO petmarks (user_id, pet_id)
+VALUES
+    (1, 5),
+    (1, 6),
+    (2, 1),
+    (3, 1),
+    (4, 1),
+    (5, 1);
