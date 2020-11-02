@@ -28,18 +28,22 @@ router.route('/')
             })
     })
 
-router.route('/:email')
+router.route('/verify')
     // get user data for specified email
     .get((req, res) => {
-        const email = req.params.email
-        console.log(email)
+        const email = req.query.email
+        const username = req.query.username
         const getQuery = `
-            SELECT * FROM users WHERE email=($1)
+            SELECT * FROM users WHERE email=($1) OR username=($2)
         `;
 
-        client.query(getQuery, [email])
+        client.query(getQuery, [email, username])
             .then(data => {
-                res.send(data.rows)
+                if (data.rows[0]) {
+                    res.send(true)
+                } else {
+                    res.send(false)
+                }
             })
             .catch(err => {
                 console.error(err);
@@ -53,10 +57,9 @@ router.route('/insert').post((req, res) => {
             email: req.body.email,
             username: req.body.username,
             isAdmin: req.body.isAdmin,
-            isCreator: req.body.isCreator,
+            isCreator: req.body.isShelter,
         };
         user.profilePicId = isNaN(parseInt(req.body.profilePicId)) ? null : parseInt(req.body.profilePicId)
-        console.log(user)
 
         const insertQuery = `
             INSERT INTO users (email, username, is_admin, is_creator, profile_pic_id) 
@@ -66,7 +69,6 @@ router.route('/insert').post((req, res) => {
 
         client.query(insertQuery, [user.email, user.username, user.isAdmin, user.isCreator, user.profilePicId])
             .then(data => {
-                console.log("user added to db: " + data.rows);
                 res.send(data.rows)
             })
             .catch(err => {
