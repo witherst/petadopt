@@ -21,20 +21,41 @@ const Auth = (props) => {
     history.push(path);
   }
 
+  const [username, setUsername] = useState("");
+  const [usernameError, setUsernameError] = useState("")
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [isShelter, setIsShelter] = useState("");
 
   const clearInputs = () => {
+    setUsernameError('')
     setEmail('');
     setPassword('');
   }
 
   const clearErrors = () => {
+    setUsernameError('')
     setEmailError('');
     setPasswordError('');
   }
+
+  const attemptSignUp = () => {
+        if (!username) {
+            setUsernameError('invalid username');
+            return;
+        }
+        fetch(`/api/user/verify/?email=${encodeURIComponent(email)}&username=${encodeURIComponent(username)}`)
+            .then(res => res.json())
+            .then((isExistingUsername) => {
+                if (!username || isExistingUsername) {
+                    setUsernameError('invalid username/email');
+                    return;
+                } 
+                handleSignUp();
+            })
+    }
 
   const handleSignIn = () => {
     clearErrors();
@@ -43,6 +64,7 @@ const Auth = (props) => {
       .signInWithEmailAndPassword(email, password)
       .catch((err) => {
         switch (err.code) {
+          case "auth/email-already-exists":
           case "auth/invalid-email":
           case "auth/user-disabled":
           case "auth/user-not-found":
@@ -100,13 +122,18 @@ const Auth = (props) => {
         { needsAccount ? (
           // user has account, show sign in components
           <SignUp
-            handleSignUp={handleSignUp}
+            attemptSignUp={attemptSignUp}
+            username={username}
+            setUsername={setUsername}
             email={email} 
             setEmail={setEmail}
             password={password}
             setPassword={setPassword}
+            usernameError={usernameError}
             emailError={emailError}
             passwordError={passwordError}
+            isShelter={isShelter}
+            setIsShelter={setIsShelter}
             needsAccount={true}
             />
         ) : (

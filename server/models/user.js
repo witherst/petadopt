@@ -28,18 +28,24 @@ router.route('/')
             })
     })
 
-router.route('/:email')
+router.route('/verify')
     // get user data for specified email
     .get((req, res) => {
-        const email = req.params.email
+        const email = req.query.email
+        const username = req.query.username
         console.log(email)
         const getQuery = `
-            SELECT * FROM users WHERE email=($1)
+            SELECT * FROM users WHERE email=($1) OR username=($2)
         `;
 
-        client.query(getQuery, [email])
+        client.query(getQuery, [email, username])
             .then(data => {
-                res.send(data.rows)
+                console.log(data.rows[0])
+                if (data.rows[0]) {
+                    res.send(true)
+                } else {
+                    res.send(false)
+                }
             })
             .catch(err => {
                 console.error(err);
