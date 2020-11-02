@@ -27,6 +27,7 @@ const SignUp = (props) => {
                 <label>username</label>
                 <input
                     type="text"
+                    autoFocus
                     required
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
@@ -35,7 +36,6 @@ const SignUp = (props) => {
                 <label>email</label>
                 <input
                     type="text"
-                    autoFocus
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}

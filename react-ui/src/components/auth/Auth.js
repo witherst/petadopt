@@ -6,6 +6,7 @@ import '../../App.css';
 
 import SignIn from './SignIn';
 import SignUp from './SignUp'; 
+import Home from '../home/Home';
 
 const Auth = (props) => {
   const {
@@ -14,12 +15,7 @@ const Auth = (props) => {
     needsAccount
   } = props;
 
-  const history = useHistory();
-
-  const routeChange = () => {
-    let path = `new path`;
-    history.push(path);
-  }
+  let history = useHistory();
 
   const [username, setUsername] = useState("");
   const [usernameError, setUsernameError] = useState("")
@@ -75,6 +71,7 @@ const Auth = (props) => {
             break;
         }
       });
+    history.push('/')
   };
 
   const handleSignUp = () => {
@@ -93,7 +90,35 @@ const Auth = (props) => {
             break;
         }
       });
+    createUser();
+    history.push('/')
   };
+
+
+/** db create/add user */
+  const createUser = () => {
+    var isAdmin = false;
+    var profilePicId = null;
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                email,
+                username,
+                isAdmin,
+                isShelter,
+                profilePicId
+            }),
+        }
+
+        console.log(requestOptions)
+
+        fetch('/api/user/insert', requestOptions)
+            .then(res => res.json())
+            .then(res => {
+              console.log(res[0])
+            });
+    }
 
   const handleLogout = () => {
     fire.auth().signOut();
@@ -119,36 +144,41 @@ const Auth = (props) => {
         <div className="auth">
         <h1>PetLinked</h1>
         </div>
-        { needsAccount ? (
-          // user has account, show sign in components
-          <SignUp
-            attemptSignUp={attemptSignUp}
-            username={username}
-            setUsername={setUsername}
-            email={email} 
-            setEmail={setEmail}
-            password={password}
-            setPassword={setPassword}
-            usernameError={usernameError}
-            emailError={emailError}
-            passwordError={passwordError}
-            isShelter={isShelter}
-            setIsShelter={setIsShelter}
-            needsAccount={true}
+        {
+          user ?
+            <Home {...props} user={user} setUser={setUser} handleLogout={handleLogout} /> :
+        
+          ( needsAccount ? (
+            // user has account, show sign in components
+            <SignUp
+              attemptSignUp={attemptSignUp}
+              username={username}
+              setUsername={setUsername}
+              email={email} 
+              setEmail={setEmail}
+              password={password}
+              setPassword={setPassword}
+              usernameError={usernameError}
+              emailError={emailError}
+              passwordError={passwordError}
+              isShelter={isShelter}
+              setIsShelter={setIsShelter}
+              needsAccount={true}
+              />
+          ) : (
+            // otherwise, show sign up components
+            <SignIn
+              handleSignIn={handleSignIn}
+              email={email} 
+              setEmail={setEmail}
+              password={password}
+              setPassword={setPassword}
+              emailError={emailError}
+              passwordError={passwordError}
+              needsAccount={false}
             />
-        ) : (
-          // otherwise, show sign up components
-          <SignIn
-            handleSignIn={handleSignIn}
-            email={email} 
-            setEmail={setEmail}
-            password={password}
-            setPassword={setPassword}
-            emailError={emailError}
-            passwordError={passwordError}
-            needsAccount={false}
-          />
-        )}
+          ))
+        }
       </section>
     );
 };

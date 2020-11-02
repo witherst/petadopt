@@ -33,14 +33,12 @@ router.route('/verify')
     .get((req, res) => {
         const email = req.query.email
         const username = req.query.username
-        console.log(email)
         const getQuery = `
             SELECT * FROM users WHERE email=($1) OR username=($2)
         `;
 
         client.query(getQuery, [email, username])
             .then(data => {
-                console.log(data.rows[0])
                 if (data.rows[0]) {
                     res.send(true)
                 } else {
@@ -59,10 +57,9 @@ router.route('/insert').post((req, res) => {
             email: req.body.email,
             username: req.body.username,
             isAdmin: req.body.isAdmin,
-            isCreator: req.body.isCreator,
+            isCreator: req.body.isShelter,
         };
         user.profilePicId = isNaN(parseInt(req.body.profilePicId)) ? null : parseInt(req.body.profilePicId)
-        console.log(user)
 
         const insertQuery = `
             INSERT INTO users (email, username, is_admin, is_creator, profile_pic_id) 
@@ -72,7 +69,6 @@ router.route('/insert').post((req, res) => {
 
         client.query(insertQuery, [user.email, user.username, user.isAdmin, user.isCreator, user.profilePicId])
             .then(data => {
-                console.log("user added to db: " + data.rows);
                 res.send(data.rows)
             })
             .catch(err => {
