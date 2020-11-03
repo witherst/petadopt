@@ -10,16 +10,14 @@ const Landing = () => {
   return (
     <div className="Landing">
       <h1>Welcome to our furry community</h1>
-      
+
           
         <Link to={"/search/SearchFriend"}>
           <p>Browse for a furever furiend</p>
-          
         </Link>
         
         <Link to={"/search/SearchHome"}>
-          <p>Browse for a furever home</p>
-          
+          <p>Browse for a furever home</p>       
         </Link>
 
           <hr class="solid"></hr>
@@ -27,8 +25,7 @@ const Landing = () => {
       <h2>Find a furever home for a furry</h2>
       
         <Link to= './Profile'>
-          <p>Create a profile for adoptable furries</p>
-          
+          <p>Create a profile for adoptable furries</p>         
         </Link>
         
           <hr class="solid"></hr>
