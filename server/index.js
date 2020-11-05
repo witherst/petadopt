@@ -20,11 +20,13 @@ var usersRouter = require('./models/user'),
     petProfilesRouter = require('./models/pet_profiles'),
     statusesRouter = require('./models/statuses'),
     petmarksRouter = require('./models/petmarks')
+    dispositionsRouter = require('./models/dispositions')
 
 app.use('/api/user', usersRouter)
 app.use('/api/pet', petProfilesRouter)
 app.use('/api/status', statusesRouter)
 app.use('/api/petmark', petmarksRouter)
+app.use('/api/disposition', dispositionsRouter)
 
 // Production environment modules
 if(process.env.NODE_ENV === 'production'){

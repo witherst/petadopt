@@ -28,6 +28,24 @@ router.route('/')
             })
     })
 
+router.route('/:email')
+    // get all users & user data from users table
+    .get((req, res) => {
+        const email = req.params.email;
+        res.set('Content-Type', 'application/json');
+
+        const getQuery = `
+            SELECT * FROM users WHERE email=($1)
+        `;
+        client.query(getQuery, [email])
+            .then(data => {
+                res.send(data.rows[0])
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    })
+
 router.route('/verify')
     // get user data for specified email
     .get((req, res) => {
