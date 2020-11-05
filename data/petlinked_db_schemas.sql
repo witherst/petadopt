@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS
     photos, 
     pet_pics, 
     petmarks, 
+    dispositions,
     pet_dispositions, 
     statuses,
     pet_statuses;
@@ -31,6 +32,11 @@ CREATE TABLE public.pet_profiles
     animal_type VARCHAR(32) NOT NULL,
     breed VARCHAR(32),
     age_in_months INT,
+    color VARCHAR(32),
+    size VARCHAR(32),
+    weight INT,
+    sex VARCHAR(8),
+    story VARCHAR(4096),
     location VARCHAR(64),
     availability VARCHAR(32) NOT NULL,
     last_updated_timestamp VARCHAR(64) NOT NULL,
@@ -76,12 +82,21 @@ CREATE TABLE public.petmarks
     CONSTRAINT fk_pet_id FOREIGN KEY (pet_id) REFERENCES public.pet_profiles (internal_pet_id)
 );
 
+/* holds dispositions */
+CREATE TABLE public.dispositions (
+    id SERIAL NOT NULL,
+    disposition VARCHAR(64) NOT NULL,
+    count INT,
+    PRIMARY KEY (id)
+);
+
 /* one-to-many: one pet profile can have many dispositions */
 CREATE TABLE public.pet_dispositions (
     pet_id INT NOT NULL,
-    disposition VARCHAR(255) NOT NULL,
-    PRIMARY KEY (pet_id),
-    CONSTRAINT fk_pet_id FOREIGN KEY (pet_id) REFERENCES public.pet_profiles (internal_pet_id)
+    disposition INT NOT NULL,
+    PRIMARY KEY (pet_id, disposition),
+    CONSTRAINT fk_pet_id FOREIGN KEY (pet_id) REFERENCES public.pet_profiles (internal_pet_id),
+    CONSTRAINT fk_disposition FOREIGN KEY (disposition) REFERENCES public.dispositions (id)
 );
 
 /* holds status info */
