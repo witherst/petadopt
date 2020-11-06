@@ -9,6 +9,7 @@ import Settings from './components/settings/Settings'
 import SearchFriend from './components/search/SearchFriend'
 import SearchHome from './components/search/SearchHome'
 import Profile from './components/profile/Profile'
+import CreateNewProfile from './components/profile_edit/CreateNewProfile'
 import {DropdownMenu, Navbar, NavItem} from './components/navbar/Navbar'
 
 // Icons
@@ -106,6 +107,10 @@ const App = () => {
           <Route
             exact path="/pet/:petId" 
             render={(props) => <Profile {...props} user={dbUser}/>}
+          />
+          <Route
+            exact path="/pet/create-new/:targetUserId" 
+            render={(props) => <CreateNewProfile {...props} user={dbUser}/>}
           />
         </Switch>
       </div>
