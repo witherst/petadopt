@@ -105,12 +105,12 @@ const App = () => {
             render={(props) => <SearchHome {...props}/>}
           />
           <Route
-            exact path="/pet/:petId" 
-            render={(props) => <Profile {...props} user={dbUser}/>}
+            exact path="/profile/create-new" 
+            render={(props) => <CreateNewProfile {...props} user={dbUser}/>}
           />
           <Route
-            exact path="/pet/create-new/:targetUserId" 
-            render={(props) => <CreateNewProfile {...props} user={dbUser}/>}
+            exact path="/pet/:petId" 
+            render={(props) => <Profile {...props} user={dbUser}/>}
           />
         </Switch>
       </div>
