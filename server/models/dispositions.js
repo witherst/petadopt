@@ -10,6 +10,21 @@ const client = new Client({
 });
 client.connect();
 
+router.route('/')
+    .get((req, res) => {
+        const getQuery = `
+            SELECT * FROM dispositions;
+        `;
+
+        client.query(getQuery)
+            .then(data => {
+                res.send(data.rows)
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    })
+
 router.route('/:id')
     // get specific pet profile's dispositions
     .get((req, res) => {
