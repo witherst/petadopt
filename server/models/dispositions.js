@@ -1,6 +1,7 @@
 var express = require('express'),
     router = express.Router()
 
+const { format } = require('morgan');
 const { Client } = require('pg');
 const client = new Client({
     connectionString: process.env.DATABASE_URL,
@@ -9,6 +10,21 @@ const client = new Client({
     }
 });
 client.connect();
+
+router.route('/')
+    .get((req, res) => {
+        const getQuery = `
+            SELECT * FROM dispositions;
+        `;
+
+        client.query(getQuery)
+            .then(data => {
+                res.send(data.rows)
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    })
 
 router.route('/:id')
     // get specific pet profile's dispositions
@@ -24,6 +40,26 @@ router.route('/:id')
         `;
 
         client.query(getQuery, [pet_id])
+            .then(data => {
+                res.send(data.rows)
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    })
+
+router.route('/insert/list')
+    // add new profile dispositions
+    .post((req, res) => {
+        const list = req.body.pet_selection
+
+        const getQuery = `
+            INSERT INTO pet_dispositions (pet_id, disposition) 
+            VALUES ${list.join()}
+            RETURNING *
+        `;
+
+        client.query(getQuery)
             .then(data => {
                 res.send(data.rows)
             })

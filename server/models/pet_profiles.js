@@ -64,21 +64,54 @@ router.route('/:id')
             })
     })
 
+// query for existing matching petname for user
+// router.route('/verify')
+router.route('/verify/:user_id/:pet_name')
+    .get((req, res) => {
+        const context = {
+            userId: req.params.user_id,
+            petName: req.params.pet_name,
+        }
+
+        const getQuery = `
+            SELECT * FROM pet_profiles WHERE creator_id=($1) AND external_pet_id=($2);
+        `;
+
+        client.query(getQuery, [context.userId, context.petName])
+            .then(data => {
+                if (data.rows[0]) {
+                    res.send(true)
+                } else {
+                    res.send(false)
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            })
+
+    })
+
 // insert pet profile in table and return the data
 router.route('/insert').post((req, res) => {
     var pet = {
         creatorId: parseInt(req.body.creatorId),
-        externalPetId: req.body.externalPetId,
+        externalPetId: req.body.petName,
         animalType: req.body.animalType,
+        location: req.body.location,
+        breed: req.body.breed,
+        color: req.body.color,
+        size: req.body.size,
+        sex: req.body.sex,
+        story: req.body.story,
         availability: req.body.availability,
-        timestamp: req.body.timestamp,
-        profileStatus: req.body.profileStatus
+        timestamp: new Date().toISOString(),
+        profileStatus: 'Active'
     }
-    pet.location = isNaN(req.body.location) ? null : req.body.location
-    pet.breed = isNaN(req.body.breed) ? null : req.body.breed
-    pet.profilePicId = isNaN(parseInt(req.body.profilePicId)) ? null : parseInt(req.body.profilePicId)
-    pet.age= isNaN(parseInt(req.body.age)) ? null : parseInt(req.body.age)
+    pet.age = isNaN(req.body.age) ? null : parseInt(req.body.age)
+    pet.weight = isNaN(req.body.weight) ? null : parseInt(req.body.weight)
+    pet.profilePicId = isNaN((req.body.profilePicId)) ? null : parseInt(req.body.profilePicId)
 
+    console.log(pet)
     const insertQuery = `
         INSERT INTO pet_profiles (
                 external_pet_id, 
@@ -90,10 +123,15 @@ router.route('/insert').post((req, res) => {
                 availability, 
                 last_updated_timestamp, 
                 profile_pic_id,
-                profile_status
+                profile_status,
+                color,
+                size,
+                sex,
+                weight,
+                story
             ) 
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
-        RETURNING *
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)
+        RETURNING *;
     `;
 
     client.query(insertQuery,
@@ -107,11 +145,16 @@ router.route('/insert').post((req, res) => {
             pet.availability,
             pet.timestamp,
             pet.profilePicId,
-            pet.profileStatus
+            pet.profileStatus,
+            pet.color,
+            pet.size,
+            pet.sex,
+            pet.weight,
+            pet.story
         ]
     )
         .then(data => {
-            res.send(data.rows)
+            res.send(data.rows[0])
         })
         .catch(err => {
             console.error(err);

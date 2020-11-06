@@ -39,46 +39,6 @@ function PetProfiles() {
             });
     }
 
-    const createPetProfile = () => {
-        let externalPetId = prompt('Enter pet name');
-        let creatorId = prompt("Enter internal user id");
-        let animalType = prompt("enter animal type, i.e. cat dog other");
-        let breed = prompt("enter breed");
-        let age = prompt("enter approx age in months");
-        let location = prompt("enter location");
-        let availability = prompt("enter availability (adoptable, not adoptable, pending");
-        let timestamp = prompt("enter timestamp");
-        let profilePicId = prompt("enter profile pic id");
-        let profileStatus = prompt("Status: enter active / archived");
-        
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                externalPetId,
-                creatorId,
-                animalType,
-                breed,
-                age,
-                location,
-                availability,
-                timestamp,
-                profilePicId,
-                profileStatus
-            }),
-        }
-
-        console.log(requestOptions)
-
-        fetch('/api/pet/insert', requestOptions)
-            .then(res => res.json())
-            .then(res => {
-                console.log(res)
-                setQueryRes(res)
-                getPets();
-            });
-    }
-
     return (
         <div>
             <h1>PET_PROFILES</h1>
