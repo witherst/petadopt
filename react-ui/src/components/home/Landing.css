@@ -1,3 +1,8 @@
+.paraLink {
+  text-align: center;
+  color: white;
+}
+
 /* Header text style */
 h1 {
     text-align: center;
@@ -6,12 +11,6 @@ h1 {
 h2 {
   text-align: center;
 }
-
-/* Paragraph text style */
-p {
-    text-align: center;
-    color: white;
-  }
 
 /* Body text style */
 body {
