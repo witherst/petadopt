@@ -29,7 +29,7 @@ router.route('/')
             })
     })
 
-router.route('/:id')
+router.route('/user/:id')
     // get all pet profiles for a specified user
     .get((req, res) => {
         const creator_id = parseInt(req.params.id)
@@ -46,20 +46,17 @@ router.route('/:id')
             })
     })
 
-router.route('/get')
-    // get specific pet profile associated w/ user
-    .post((req, res) => {
-        const context = {
-            creatorId: req.body.creatorId,
-            externalPetId: req.body.externalPetId
-        }
+router.route('/:id')
+    // get specific pet profile
+    .get((req, res) => {
+        const internal_pet_id = parseInt(req.params.id)
+        
         const getQuery = `
-            SELECT * FROM pet_profiles WHERE creator_id=($1) AND external_pet_id=($2)
+            SELECT * FROM pet_profiles WHERE internal_pet_id=($1)
         `;
 
-        client.query(getQuery, [context.creatorId, context.externalPetId])
+        client.query(getQuery, [internal_pet_id])
             .then(data => {
-                console.log(data.rows)
                 res.send(data.rows)
             })
             .catch(err => {

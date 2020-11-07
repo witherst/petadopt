@@ -17,18 +17,6 @@ function Users() {
             });
     }
 
-    const getUserByEmail = () => {
-        let email = prompt('Enter user email');
-
-        fetch('/api/user/' + email)
-            .then(res => res.json())
-            .then((res) => {
-                console.log(res)
-                setUser(res)
-                getUsers();
-            });
-    }
-
     const createUser = () => {
         let username = prompt('Enter username');
         let email = prompt('Enter email');

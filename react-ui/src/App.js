@@ -8,7 +8,6 @@ import Messages from './components/messages/Messages'
 import Settings from './components/settings/Settings'
 import SearchFriend from './components/search/SearchFriend'
 import SearchHome from './components/search/SearchHome'
-import Pet from './components/pet/Pet'
 import Profile from './components/profile/Profile'
 import {DropdownMenu, Navbar, NavItem} from './components/navbar/Navbar'
 
@@ -22,7 +21,8 @@ import {ReactComponent as SettingsIcon} from './components/navbar/icons/settings
 
 const App = () => {
   const [user, setUser] = useState("");
-  
+  const [dbUser, setDbUser] = useState("");
+
   const handleLogout = () => {
     fire.auth().signOut();
   };
@@ -40,8 +40,19 @@ const App = () => {
 
   useEffect(() => {
     authListener();
-  }, []);
+    if (user.email) {
+      getUserId();
+    }
+  }, [user]);
   
+  const getUserId = () => {
+    fetch('/api/user/' + user.email)
+      .then(res => res.json())
+      .then((res) => {
+          setDbUser(res)
+      });
+  }
+
   return (
     <Router>
 
@@ -61,7 +72,6 @@ const App = () => {
           <Link to='/'><li>home</li></Link>
           <Link to='/signup'><li>signup</li></Link>
           <Link to='/signin'><li>signin</li></Link>
-          <Link to='/pet'><li>pet</li></Link> 
         </ul>}
 
         <Switch>
@@ -94,12 +104,8 @@ const App = () => {
             render={(props) => <SearchHome {...props}/>}
           />
           <Route
-            path="/pet" 
-            render={(props) => <Pet {...props}/>}
-          />
-          <Route
-            path="/profile" 
-            render={(props) => <Profile {...props}/>}
+            exact path="/pet/:petId" 
+            render={(props) => <Profile {...props} user={dbUser}/>}
           />
         </Switch>
       </div>

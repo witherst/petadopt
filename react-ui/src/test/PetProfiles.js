@@ -20,7 +20,7 @@ function PetProfiles() {
     const getProfilesById = () => {
         let id = prompt('Enter user id');
 
-        fetch('/api/pet/' + id)
+        fetch('/api/pet/user/' + id)
             .then(res => res.json())
             .then((res) => {
                 console.log(res)
@@ -28,20 +28,10 @@ function PetProfiles() {
             });
     }
 
-    const getPetByCreatorIdAndPetName = () => {
-        let creatorId = prompt('Enter user id');
-        let externalPetId = prompt('Enter pet name');
+    const getPetInfo = () => {
+        let internalPetId = prompt('Enter pet name');
 
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                creatorId,
-                externalPetId
-            })
-        }
-
-        fetch('/api/pet/get', requestOptions)
+        fetch('/api/pet/', + internalPetId)
             .then(res => res.json())
             .then((res) => {
                 console.log(res)
@@ -94,7 +84,7 @@ function PetProfiles() {
             <h1>PET_PROFILES</h1>
             <button onClick={getProfilesById}>Select by user id</button>
             <button onClick={createPetProfile}>Add pet</button>
-            <button onClick={getPetByCreatorIdAndPetName}>Get pet</button>
+            <button onClick={getPetInfo}>Get pet</button>
             <br />
             <h3>data from DB:</h3>
             {pets ? 
