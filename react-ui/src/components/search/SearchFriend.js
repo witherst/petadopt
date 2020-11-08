@@ -26,9 +26,9 @@ class SearchFriend extends Component {
         {/* Filter drop down menu(s) */}        
         <div className="petfilter">
           <div>
-          Choose disposition : &nbsp;
+          Choose disposition: &nbsp;
             <select id="petfilter" onChange={this.optionSelected}>
-              <option value="anyType">Choose Any</option>
+              <option value="anyType">Choose disposition</option>
                 {this.state.type.map(type => {
                   return <option value={type}>{type}</option>;
                 })}
@@ -37,18 +37,17 @@ class SearchFriend extends Component {
           
           {/* TODO Filter by Breed */}
           <div>
-          Choose breed : &nbsp;
-            <select id="petfilter" 
-            onChange={this.optionSelected}>
-              <option value="anyBreed">Choose Any</option>
+          Choose breed: &nbsp;
+            <select id="petfilter" onChange={this.optionSelected}>
+              <option breedValue="anyBreed">Choose Breed</option>
                 {this.state.breed.map(breed => {
-                  return <option value={breed}>{breed}</option>;
+                  return <option breedValue={breed}>{breed}</option>;
                 })}
             </select>
           </div>
           
           {/* TODO Type of Animal filter */}
-          <div>         
+          {/* <div>         
             Choose type : &nbsp;
             <select id="petfilter" onChange={this.optionSelected}>
               <option value="anyDisposition">Choose Any</option>
@@ -56,10 +55,10 @@ class SearchFriend extends Component {
                   return <option value={disposition}>{disposition}</option>;
                 })}
             </select>
-          </div>
+          </div> */}
 
           {/* TODO Date Created Filter GUI */}
-          <div>
+          {/* <div>
             Date entered : &nbsp;
             <select id="petfilter" onChange={this.optionSelected}>
               <option value="any">Choose Any</option>
@@ -67,7 +66,7 @@ class SearchFriend extends Component {
                   return <option value={dateEntered}>{dateEntered}</option>;
                 })}
             </select>
-          </div>
+          </div> */}
         </div>
 
         {/* Sorting drop down menu */}
@@ -219,7 +218,7 @@ class SearchFriend extends Component {
 
   reRenderList() {
     /*-- reRenderList based on Disposition --*/
-    var type = [];
+    var disposition = [];
     var itemsToDisplay = [];
 
     // Loop through items
@@ -233,13 +232,13 @@ class SearchFriend extends Component {
           c = c.includes("'") ? c.substring(1, c.length) : c;
 
           // if matches selection
-          if (type.indexOf(c) < 0) {
-            type.push(c);
+          if (disposition.indexOf(c) < 0) {
+            disposition.push(c);
           }
         });
     }
 
-    this.setState({ type });
+    this.setState({ disposition });
 
     this.setState({ itemsToDisplay }, () => {
       this.setState({ itemsToUse: [...this.state.itemsToDisplay] });
