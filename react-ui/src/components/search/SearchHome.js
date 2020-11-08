@@ -1,11 +1,11 @@
 import React, { useEffect, useState, Component } from 'react';
-import'./findHome.css';
+import'./Search.css';
 import data from "./dataHome.json"; //Temp mock database
-import home from './homeImages/home2.jpg'; //temp image path
+import homeImage from './homeImages/home2.jpg'; //temp image path
 
 
 //source: modified version of
-//https://www.golangprograms.com/search-and-filter-list-records.html
+//www.golangprograms.com/search-and-filter-list-records.html
 class SearchHome extends Component {
  
   state = {
@@ -22,95 +22,67 @@ class SearchHome extends Component {
       <div>
         {/* Title for page */}
         <h1>Search for furever Home</h1>
-        
-        {/* Filter drop down menu(s) */}        
-        <div className="fureverfilter">
-          <div>
-          Choose preferences : &nbsp;
-            <select id="fureverfilter" onChange={this.optionSelected}>
-              <option value="anyType">Choose Any</option>
-                {this.state.desiredType.map(desiredType => {
-                  return <option value={desiredType}>{desiredType}</option>;
-                })}
-            </select>
-          </div>
+      
+        {/* Pretty line to separate search/filter from profiles */}
+        <hr class="solid"></hr>
 
-        {/* Sorting drop down menu */}
-          <div>
-            Sort by : &nbsp;
-            <select id="sortfilter" onChange={this.sortBy}>
-              <option value="date">Date Entered: Oldest to New</option>
-              <option value="asc">Desired Age: Low to High</option>
-              <option value="des">Desired Age: High to Low</option>
-            </select>
-          </div>
-        </div>
-
-        {/* Define the map? */}
-        <div className="furevercontainer">
-          {this.state.itemsToDisplay.map(furever => {
-            let desiredType = furever["Preferences"]
-              .substring(1, furever["Preferences"].length - 2)
+        {/* Define the map */}
+        <div className="container">
+          {this.state.itemsToDisplay.map(home => {
+            let desiredType = home["Preferences"]
+              .substring(1, home["Preferences"].length - 2)
               .split(",");
 
           return (
-              // Displays the furever data in boxes
-              <div className="furever">
-                <div className="fureverinfo">
-                  <i  className="fas fa-map-marker"
-                      style={{ color: "orangered", fontSize: "12px" }}>
-                  </i>
-                  &nbsp;
-                    <span className="city">{furever["City"]}</span>
-                      <br/>
-                    <span className="furevername">{furever["Name"]}</span>
-                    <br/>
-                    <span> Is looking for a pet that is: </span>
-                    <div className="fureverhomes">
-                      {desiredType.map(friend => {
-                        let friendToShow = friend.substring( 
-                          1, friend.length - 1
-                        );
-                          friendToShow = friendToShow.includes("'")
-                          ? friendToShow.substring(1, friendToShow.length)
-                          : friendToShow;
+            // Displays the home data in boxes
+            <div className="profile">
+              <div className="profileInfo">
+                &nbsp;
+                <span className="city">{home["City"]}</span>
+                <span className="name">{home["Name"]}</span>
+                <span className="centerText"> 
+                  Prefers a pet that is: 
+                </span>
+                
+                <div className="disposition">
+                  {desiredType.map(friend => {
+                    let friendToShow = friend.substring( 
+                      1, friend.length - 1
+                    );
+                      friendToShow = friendToShow.includes("'")
+                      ? friendToShow.substring(
+                        1, friendToShow.length
+                      ) : friendToShow;
 
-                      return (
-                        <div pill className="fureverprefs" variant="light">
-                          {friendToShow}
-                        </div>
+                    return (
+                      <div pill className="dispoBorder" 
+                                variant="light">
+                                {friendToShow}
+                      </div>
                       );
                     },
-                  )}
+                  )}  
                 </div>
               </div>
                   
-              {/* Separation Line between preferences and image, date, & age */}
+              {/* Separation Line before image */}
               <div className="sepline"></div>
 
               {/* Image, date, and Age display */}
-              <div className="fureverstats">
+              <div className="stats">
                 <div>
-                  <i style={{ fontSize: "15px" }}
-                    className="far fa-comment-alt"></i>
-                    <span>Date Entered: {furever["Date Entered"]}</span>              
+                  <span className="city">
+                    Date Entered: {home["Date Entered"]}
+                  </span>              
                   <br></br>
 
                   {/* Temp image placeholder */}
-                  <img src={home}/> 
-                  {/* Will use when external database is accessed */}
-                  {/* {furever["Image Location"]} */}
-
-                </div>
-                  <div>
-                    <i  style={{ fontSize: "15px" }} 
-                        className="far fa-star">
-                    </i>
-                    &nbsp;
-                    <span>Desired Age: {furever["Age"]}</span>
-                  </div>
+                  <img src={homeImage}/> 
+                  {/* Will use when database is accessed */}
+                  {/* {home["Image Location"]} */}
                 </div>
               </div>
+            </div>
             );
           })}
         </div>
@@ -124,7 +96,9 @@ class SearchHome extends Component {
       event.target.value === " " ||
       event.target.value === ""
     )
-      this.setState({ itemsToDisplay: [...this.state.itemsToUse] });
+      this.setState({ 
+        itemsToDisplay: [...this.state.itemsToUse] 
+      });
     else {
       let itemsToDisplay = [];
       itemsToDisplay = this.state.itemsToUse.filter(
@@ -135,7 +109,9 @@ class SearchHome extends Component {
           item["Preferences"]
             .toLowerCase()
             .includes(event.target.value.toLowerCase()) ||
-          item["City"].toLowerCase().includes(event.target.value.toLowerCase())
+          item["City"].toLowerCase().includes(
+            event.target.value.toLowerCase()
+          )
       );
       this.setState({ itemsToDisplay });
     }
@@ -143,17 +119,21 @@ class SearchHome extends Component {
 
   // Handles choice from preferences filter
   optionSelected = () => {
-    var e = document.getElementById("fureverfilter");
+    var e = document.getElementById("filter");
     var selected = e.options[e.selectedIndex].text;
 
     if (selected === "Choose Any")
-      this.setState({ itemsToDisplay: [...this.state.itemsToUse] });
+      this.setState({ 
+        itemsToDisplay: [...this.state.itemsToUse] 
+      });
     else {
       let itemsToDisplay = [];
       itemsToDisplay = this.state.itemsToUse.filter(item =>
-        item["Preferences"].toLowerCase().includes(selected.toLowerCase())
+        item["Preferences"].toLowerCase().includes(
+          selected.toLowerCase()
+        )
       );
-      this.setState({ itemsToDisplay });
+    this.setState({ itemsToDisplay });
     }
   }; /*-- End preferences search filter handler --*/
 
@@ -183,7 +163,7 @@ class SearchHome extends Component {
   }
 
   reRenderList() {
-    /*-- reRenderList based on preferences --*/
+    //reRenderList based on preferences
     var desiredType = [];
     var itemsToDisplay = [];
 
@@ -201,14 +181,17 @@ class SearchHome extends Component {
           if (desiredType.indexOf(c) < 0) {
             desiredType.push(c);
           }
-        });
+        },
+      );
     }
 
     this.setState({ desiredType });
 
     this.setState({ itemsToDisplay }, () => {
-      this.setState({ itemsToUse: [...this.state.itemsToDisplay] });
-    });
+      this.setState({ 
+        itemsToUse: [...this.state.itemsToDisplay] 
+      });
+    }); //End reRenderList by Preference
   }/*-- reRenderList --*/
 } 
 
