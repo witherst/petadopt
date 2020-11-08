@@ -21,7 +21,7 @@ class SearchHome extends Component {
     return (
       <div>
         {/* Title for page */}
-        <h1>Search for furever Home</h1>
+        <h1>Search for Furever Home</h1>
       
         {/* Pretty line to separate search/filter from profiles */}
         <hr class="solid"></hr>

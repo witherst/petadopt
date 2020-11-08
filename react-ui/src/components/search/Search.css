@@ -100,7 +100,9 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  font-family: touse;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif, 'mon';
   padding: 10px;
 }
 
@@ -110,7 +112,9 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  font-family: touse;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif, 'mon';
   padding: 10px;
 }
 
