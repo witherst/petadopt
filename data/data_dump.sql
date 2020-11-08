@@ -108,7 +108,9 @@ VALUES
     ('Friendly'),
     ('Shots up to date'),
     ('Needs experienced adopter'),
-    ('Has special needs');
+    ('Has special needs'),
+    ('Must remain indoors'),
+    ('Must be leashed');
 
 INSERT INTO pet_dispositions (pet_id, disposition)
 VALUES
