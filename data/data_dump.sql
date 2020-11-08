@@ -4,7 +4,8 @@ VALUES
     ('jenny@email.com', 'jh', 'true', 'true', null),
     ('tim@email.com', 'tw', 'true', 'true', null),
     ('yvonne@email.com', 'ym', 'true', 'true', null),
-    ('something@email.com', 'ya i guess', 'false', 'true', null);
+    ('something@email.com', 'ya i guess', 'false', 'true', null),
+    ('test@test.com', 'test', 'true', 'true', null);
 
 INSERT INTO pet_profiles (
         external_pet_id,
