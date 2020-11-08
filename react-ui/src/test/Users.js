@@ -50,7 +50,6 @@ function Users() {
     return (
         <div>
             <h1>USERS</h1>
-            <button onClick={getUserByEmail}>Find user by email</button>
             <button onClick={createUser}>Add user</button>
             <br />
             <h3>data from DB:</h3>

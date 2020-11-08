@@ -48,18 +48,20 @@ router.route('/:id')
             })
     })
 
-router.route('/insert/list')
-    // add new profile dispositions
-    .post((req, res) => {
-        const list = req.body.pet_selection
 
+// get all pets based on disposition
+router.route('/pets/:id')
+    .get((req, res) => {
+        const id = parseInt(req.params.id)
         const getQuery = `
-            INSERT INTO pet_dispositions (pet_id, disposition) 
-            VALUES ${list.join()}
-            RETURNING *
-        `;
+            SELECT * FROM pet_dispositions 
+            INNER JOIN pet_profiles
+            ON pet_dispositions.pet_id = pet_profiles.internal_pet_id
 
-        client.query(getQuery)
+            WHERE disposition=($1)
+            ORDER BY last_updated_timestamp;
+        `;
+        client.query(getQuery, [id])
             .then(data => {
                 res.send(data.rows)
             })
