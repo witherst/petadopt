@@ -1,6 +1,12 @@
 .paraLink {
   text-align: center;
-  color: white;
+  color: rgb(27, 129, 69);
+  font-size: 18px;
+}
+
+.paraLink:hover {
+  color: cornflowerblue;
+  font-weight: bold;
 }
 
 /* Header 1 text style */
