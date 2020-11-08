@@ -35,6 +35,7 @@ router.route('/user/:id')
         const creator_id = parseInt(req.params.id)
         const getQuery = `
             SELECT * FROM pet_profiles WHERE creator_id=($1)
+            ORDER BY last_updated_timestamp;
         `;
 
         client.query(getQuery, [creator_id])
@@ -56,6 +57,78 @@ router.route('/:id')
         `;
 
         client.query(getQuery, [internal_pet_id])
+            .then(data => {
+                res.send(data.rows)
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    })
+
+// select animals based on color
+router.route('/color/:color')
+    .get((req, res) => {
+        const color = req.params.color
+        const getQuery = `
+            SELECT * FROM pet_profiles WHERE color=($1)
+            ORDER BY last_updated_timestamp;
+        `
+
+        client.query(getQuery, [color])
+            .then(data => {
+                res.send(data.rows)
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    })
+
+// select animals based on breed
+router.route('/breed/:breed')
+    .get((req, res) => {
+        const breed = req.params.breed
+        const getQuery = `
+            SELECT * FROM pet_profiles WHERE breed=($1)
+            ORDER BY last_updated_timestamp;
+        `
+
+        client.query(getQuery, [breed])
+            .then(data => {
+                res.send(data.rows)
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    })
+
+// select animals based on animal type
+router.route('/type/:type')
+    .get((req, res) => {
+        const type = req.params.type
+        const getQuery = `
+            SELECT * FROM pet_profiles WHERE animal_type=($1)
+            ORDER BY last_updated_timestamp;
+        `
+
+        client.query(getQuery, [type])
+            .then(data => {
+                res.send(data.rows)
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    })
+
+// select animals based last updated time
+router.route('/date/:date')
+    .get((req, res) => {
+        const date = req.params.date
+        const getQuery = `
+            SELECT * FROM pet_profiles WHERE last_updated_timestamp LIKE ($1)
+            ORDER BY last_updated_timestamp;
+        `
+        console.log('date ' + date)
+        client.query(getQuery, [date + '%'])
             .then(data => {
                 res.send(data.rows)
             })

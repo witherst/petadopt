@@ -32,4 +32,26 @@ router.route('/:id')
             })
     })
 
+
+// get all pets based on disposition
+router.route('/pets/:id')
+    .get((req, res) => {
+        const id = parseInt(req.params.id)
+        const getQuery = `
+            SELECT * FROM pet_dispositions 
+            INNER JOIN pet_profiles
+            ON pet_dispositions.pet_id = pet_profiles.internal_pet_id
+
+            WHERE disposition=($1)
+            ORDER BY last_updated_timestamp;
+        `;
+        client.query(getQuery, [id])
+            .then(data => {
+                res.send(data.rows)
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    })
+
 module.exports = router;
