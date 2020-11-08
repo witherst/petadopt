@@ -5,15 +5,16 @@ import {
     Link, BrowserRouter as Router, Switch, Route 
   } from 'react-router-dom';
 
-const Landing = () => {
-  
+
+  const Landing = () => {
+      
   return (
     <div className="Landing">
       
       {/* Primary Header section */}
       <h1>Welcome to our furry community</h1>
       
-      {/* Klunky, but seems to work centering text */}
+      {/* Klunky, but 'div style' seems to work centering text */}
       <div style={{
           display: "flex",
           justifyContent: "center",
@@ -62,6 +63,7 @@ const Landing = () => {
           
             <hr class="solid"></hr>
 
+      {/* Secondary Header to give user option to join site */}
       <h2>Join our furry community on PetLinked</h2>
       
       <div style={{
