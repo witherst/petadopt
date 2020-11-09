@@ -36,7 +36,9 @@ const Facts = (props) => {
                 options.breed = Constants.breeds[animalType];
                 options.color = Constants.colors[animalType];
             default:
-                setOptions(options)
+                setOptions(prevState => {
+                    return {...prevState, options}
+                })
                 break;
         }
     }
