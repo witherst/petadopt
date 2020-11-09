@@ -1,11 +1,11 @@
 import React, { useEffect, useState, Component } from 'react';
-import'./findFriend.css';
+import'./Search.css';
 import data from "./data.json"; //Temp mock database
 import cat from './friendImages/cat4.jpg'; //temp image path
 
 
 //source: modified version of
-//https://www.golangprograms.com/search-and-filter-list-records.html
+//www.golangprograms.com/search-and-filter-list-records.html
 class SearchFriend extends Component {
  
   state = {
@@ -24,128 +24,167 @@ class SearchFriend extends Component {
         <h1>Search for furever Friend</h1>
         
         {/* Filter drop down menu(s) */}        
-        <div className="petfilter">
+        <div className="filter">
+
+          {/* Filter by disposition */}
           <div>
-          Choose disposition : &nbsp;
-            <select id="petfilter" onChange={this.optionSelected}>
-              <option value="anyType">Choose Any</option>
-                {this.state.type.map(type => {
-                  return <option value={type}>{type}</option>;
-                })}
-            </select>
+            Choose disposition: &nbsp;
+              <select id="filter" onChange={this.optionSelected}>
+                <option dispoValue="any">
+                  Choose any
+                </option>
+
+                {this.state.disposition.map(
+                  disposition => {
+                    return <option dispoValue={disposition}>
+                      {disposition}
+                    </option>;
+                  },
+                )}
+              </select>
           </div>
           
-          {/* TODO Filter by Breed */}
+          {/* Filter by Breed */}
           <div>
-          Choose breed : &nbsp;
-            <select id="petfilter" 
-            onChange={this.optionSelected}>
-              <option value="anyBreed">Choose Any</option>
-                {this.state.breed.map(breed => {
-                  return <option value={breed}>{breed}</option>;
-                })}
-            </select>
-          </div>
-          
-          {/* TODO Type of Animal filter */}
-          <div>         
-            Choose type : &nbsp;
-            <select id="petfilter" onChange={this.optionSelected}>
-              <option value="anyDisposition">Choose Any</option>
-                {this.state.disposition.map(disposition => {
-                  return <option value={disposition}>{disposition}</option>;
-                })}
-            </select>
-          </div>
+            Choose breed: &nbsp;
+              <select id="filter" onChange={this.optionSelected}>
+                <option breedValue="any">
+                  Choose any
+                </option>
+                
+                {this.state.breed.map(
+                  breed => {
+                    return <option breedValue={breed}>
+                      {breed}
+                    </option>;
+                  },
+                )}
+              </select>
+            </div>
 
-          {/* TODO Date Created Filter GUI */}
+          {/* Filter by Type */}
           <div>
-            Date entered : &nbsp;
-            <select id="petfilter" onChange={this.optionSelected}>
-              <option value="any">Choose Any</option>
-                {this.state.dateEntered.map(dateEntered => {
-                  return <option value={dateEntered}>{dateEntered}</option>;
-                })}
-            </select>
-          </div>
-        </div>
+            Choose type: &nbsp;
+              <select id="filter" onChange={this.optionSelected}>
+                <option typeValue="any">
+                  Choose any
+                </option>
+                
+                {this.state.type.map(
+                  type => {
+                    return <option typeValue={type}>
+                      {type}
+                    </option>;
+                  },
+                )}
+              </select>
+            </div>
 
-        {/* Sorting drop down menu */}
-        <div className="sortfilter">
-          <div>
-            Sort by : &nbsp;
-            <select id="sortfilter" onChange={this.sortBy}>
-              <option value="date">Date Entered: Oldest to New</option>
-              <option value="asc">Age: Low to High</option>
-              <option value="des">Age: High to Low</option>
-            </select>
-          </div>
-        </div>
+            {/* Filter by Date */}
+            <div>
+              Choose date: &nbsp;
+                <select id="filter" onChange={this.optionSelected}>
+                  <option dateValue="any">
+                    Choose any
+                  </option>
+                  
+                  {this.state.dateEntered.map(
+                    dateEntered => {
+                      return <option dateValue={dateEntered}>
+                        {dateEntered}
+                      </option>;
+                    },
+                  )}
+                </select>
+              </div>
 
-        {/* Define the map? */}
-        <div className="petcontainer">
+              </div> {/* End className="filter" */}
+
+              {/* Sorting drop down menu */}
+              <div className="sortfilter">
+                <div>
+                  Sort by : &nbsp;
+                  <select id="sortfilter" onChange={this.sortBy}>
+                    <option value="date">
+                      Date Entered: Oldest to New
+                    </option>
+                    <option value="asc">
+                      Age: Low to High
+                    </option>
+                    <option value="des">
+                      Age: High to Low
+                    </option>
+                  </select>
+                </div>
+              </div>
+        
+        {/* Pretty line to separate search/filter from profiles */}
+        <hr class="solid"></hr>
+        
+        {/* Define the map */}
+        <div className="container">
+          {/* Map for disposition */}
           {this.state.itemsToDisplay.map(pet => {
-            let type = pet["Disposition"]
+            let dispoType = pet["Disposition"]
               .substring(1, pet["Disposition"].length - 2)
               .split(",");
 
-          return (
-              // Displays the pet data in boxes
-              <div className="pet">
-                <div className="petinfo">
-                  <i  className="fas fa-map-marker"
-                      style={{ color: "orangered", fontSize: "12px" }}>
-                  </i>
-                  &nbsp;
+            // Map for breed
+            let breedType = pet["Breed"]
+              .substring(1, pet["Breed"].length - 2)
+              .split(",");
+
+              return (
+                // Displays the pet data in boxes
+                <div className="profile">
+                  <div className="profileInfo">
+                    &nbsp;
                     <span className="breed">{pet["Breed"]}</span>
-                      <br/>
-                    <span className="petname">{pet["Name"]}</span>
+                    <span className="name">{pet["Name"]}</span>
         
-                    <div className="pettype">
-                      {type.map(friend => {
+                    <div className="disposition">
+                      {dispoType.map(friend => {
                         let friendToShow = friend.substring( 
                           1, friend.length - 1
                         );
                           friendToShow = friendToShow.includes("'")
-                          ? friendToShow.substring(1, friendToShow.length)
-                          : friendToShow;
+                          ? friendToShow.substring(
+                            1, friendToShow.length
+                          ) : friendToShow;
+    
 
-                      return (
-                        <div pill className="petfriend" variant="light">
-                          {friendToShow}
-                        </div>
-                      );
-                    },
-                  )}
-                </div>
-              </div>
+                          return (
+                            <div pill className="dispoBorder" 
+                                      variant="light">
+                                      {friendToShow}
+                            </div>
+                            );
+                          },
+                        )}
+                      </div>
+                    </div>
                   
-              {/* Separation Line between disposition and image, date, & age */}
+              {/* Separation Line before image */}
               <div className="sepline"></div>
 
               {/* Image, date, and Age display */}
-              <div className="petstats">
+              <div className="stats">
                 <div>
-                  <i style={{ fontSize: "15px" }}
-                    className="far fa-comment-alt"></i>
-                    <span>Date: {pet["Date Entered"]}</span>              
+                  <span className="city">
+                    Date Entered: {pet["Date Entered"]}
+                  </span>              
                   <br></br>
 
                   {/* Temp image placeholder */}
                   <img src={cat}/> 
-                  {/* Will use when external database is up */}
+                  {/* Will use when database is up */}
                   {/* {pet["Image Location"]} */}
-
                 </div>
-                  <div>
-                    <i  style={{ fontSize: "15px" }} 
-                        className="far fa-star">
-                    </i>
-                    &nbsp;
-                    <span>Age: {pet["Age"]}</span>
-                  </div>
-                </div>
+                  <div> &nbsp; 
+                    <span className="city">
+                      Age: {pet["Age"]} </span></div>
               </div>
+            </div>
             );
           })}
         </div>
@@ -159,7 +198,9 @@ class SearchFriend extends Component {
       event.target.value === " " ||
       event.target.value === ""
     )
-      this.setState({ itemsToDisplay: [...this.state.itemsToUse] });
+      this.setState({ 
+        itemsToDisplay: [...this.state.itemsToUse] 
+      });
     else {
       let itemsToDisplay = [];
       itemsToDisplay = this.state.itemsToUse.filter(
@@ -170,27 +211,33 @@ class SearchFriend extends Component {
           item["Disposition"]
             .toLowerCase()
             .includes(event.target.value.toLowerCase()) ||
-          item["Breed"].toLowerCase().includes(event.target.value.toLowerCase())
+          item["Breed"].toLowerCase().includes(
+            event.target.value.toLowerCase()
+          )
       );
       this.setState({ itemsToDisplay });
     }
   };
 
-  // Handles choice from Disposition filter
+  //Handles choice from Disposition filter
   optionSelected = () => {
-    var e = document.getElementById("petfilter");
+    var e = document.getElementById("filter");
     var selected = e.options[e.selectedIndex].text;
 
-    if (selected === "Choose Any")
-      this.setState({ itemsToDisplay: [...this.state.itemsToUse] });
+    if (selected === "Choose any")
+      this.setState({ 
+        itemsToDisplay: [...this.state.itemsToUse] 
+      });
     else {
       let itemsToDisplay = [];
       itemsToDisplay = this.state.itemsToUse.filter(item =>
-        item["Disposition"].toLowerCase().includes(selected.toLowerCase())
+        item["Disposition"].toLowerCase().includes(
+          selected.toLowerCase()
+        )
       );
-      this.setState({ itemsToDisplay });
+    this.setState({ itemsToDisplay });
     }
-  }; /*-- End Disposition search filter handler --*/
+  }; //End search filter handler
 
   sortBy = () => {
     var e = document.getElementById("sortfilter");
@@ -218,33 +265,88 @@ class SearchFriend extends Component {
   }
 
   reRenderList() {
-    /*-- reRenderList based on Disposition --*/
+    var disposition = [];
+    var breed = [];
     var type = [];
+    var dateEntered = [];
     var itemsToDisplay = [];
 
-    // Loop through items
+    //Loop through items in DISPOSITION to display in drop-down menu
     for (var i = 0; i < data.length; i++) {
       itemsToDisplay.push(data[i]);
-      data[i]["Disposition"]
-        .substring(1, data[i]["Disposition"].length - 2)
-        .split(",")
-        .forEach(friend => {
-          let c = friend.substring(1, friend.length - 1);
-          c = c.includes("'") ? c.substring(1, c.length) : c;
+      
+          data[i]["Disposition"]
+            .substring(1, data[i]["Disposition"].length - 2)
+            .split(",")
+            .forEach(friend => {
+              let c = friend.substring(1, friend.length - 1);
+              c = c.includes("'") ? c.substring(1, c.length) : c;
 
-          // if matches selection
-          if (type.indexOf(c) < 0) {
-            type.push(c);
-          }
-        });
+            if (disposition.indexOf(c) < 0) {
+              disposition.push(c);
+            }
+
+          data[i]["Breed"]
+            .substring(0, data[i]["Breed"].length)
+            .split(",")
+            .forEach(petBreed => {
+              let cc = petBreed.substring(0, petBreed.length);
+              cc = cc.includes("'") ? cc.substring(0, cc.length) : cc;
+
+            if (breed.indexOf(cc) < 0) {
+              breed.push(cc);
+            }
+  
+          data[i]["Type"]
+            .substring(0, data[i]["Type"].length)
+            .split(",")
+            .forEach(petType => {
+              let ccc = petType.substring(0, petType.length);
+              ccc = ccc.includes("'") ? ccc.substring(0, ccc.length) : ccc;
+
+            if (type.indexOf(ccc) < 0) {
+              type.push(ccc);
+            }  
+
+            // data[i]["date"]
+            // .substring(0, data[i]["date"].length)
+            // .split(",")
+            // .forEach(petType => {
+            //   let cd = petType.substring(0, petType.length);
+            //   cd = cd.includes("'") ? cd.substring(0, cd.length) : cd;
+
+            // if (dateEntered.indexOf(cd) < 0) {
+            //   dateEntered.push(cd);
+            // }  
+            // })    
+          })       
+        })
+      });
     }
 
-    this.setState({ type });
+    // Required in order to see drop down menu
+    this.setState({ disposition });
 
+    //Required for profiles to populate the page
     this.setState({ itemsToDisplay }, () => {
-      this.setState({ itemsToUse: [...this.state.itemsToDisplay] });
+      this.setState({ 
+        itemsToUse: [...this.state.itemsToDisplay] 
+      });
     });
-  }/*-- reRenderList --*/
+
+    // this.setState({ breed });
+
+    this.setState({ breed }, () => {
+      this.setState({ 
+        itemsToUse: [...this.state.itemsToDisplay] 
+      });
+    });
+
+    this.setState({ type });
+    this.setState({ dateEntered });
+
+
+  } //reRenderList
 } 
 
 export default SearchFriend;

@@ -1,0 +1,144 @@
+/* Formats the placement of the pet profiles */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+/* Puts a box around each profile */
+.profile {
+  box-shadow: 0 0 5px grey;
+  border-radius: 5px;
+  margin: 10px;
+  width: 300px;
+
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif, 'mon';
+
+  transition-property: box-shadow;
+  transition-duration: 0.25s;
+}
+
+/* Line that separates picture from profile information */
+.sepline {
+  height: 1px;
+  width: 100%;
+  background-color: whitesmoke;
+  margin-top: 5px;
+}
+
+/* Padding around profile information, inside of container */
+.profileInfo {
+  padding: 10px;
+  cursor: default;
+}
+
+/* Formats the text for breed (first item in pet profiles) */
+.breed {
+  font-weight: bold;
+  font-size: 18px;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif, 'mon';
+  /* font-variant: small-caps; */
+}
+
+/* Formats the text for city (first item in home profiles) */
+.city {
+  /* font-weight: bold; */
+  font-size: 13px;
+  font-variant: small-caps;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif, 'mon';
+}
+
+/* Formats the name (if there is one) */
+.name {
+  font-weight: bold;
+  font-size: 20px;
+  font-style: italic;
+
+  display: flex;
+  justify-content: center;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif, 'mon';
+}
+
+/* Formats the name (if there is one) */
+.centerText {
+  font-size: 15px;
+  font-style: normal;
+  /* font-variant: small-caps; */
+
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5px;
+}
+
+/* Formats the disposition font */
+.disposition {
+  font-size: 12px;
+  font-style: italic;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif, 'mon';
+}
+
+/* Formats the border around each disposition trait */
+.dispoBorder {
+  margin: 2px;
+  padding: 1px;
+  border: 1px dotted grey;
+}
+
+/* Formats how the filter/search GUIs will appear */
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif, 'mon';
+  padding: 10px;
+}
+
+/* Formats how the sort GUI will appear */
+.sortfilter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif, 'mon';
+  padding: 10px;
+}
+
+/* Formats Date/Pic/Age area with padding*/
+.stats {
+  /* display: flex;
+  align-items: center;
+  justify-content: space-evenly; */
+
+  padding: 10px;
+  cursor: default;
+
+  transition-property: background-color, color;
+  transition-duration: 0.25s;
+}
+
+/* When you hover over profile, background turns blue */
+/* Useless, but pretty */
+.stats:hover {
+  background-color: cornflowerblue;
+  color: white;
+}
+
+/* Formats divider line that separates profiles from filters */
+hr.solid {
+  border-top: 1px solid #bbb;
+}

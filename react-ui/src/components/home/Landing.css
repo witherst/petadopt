@@ -1,17 +1,23 @@
-/* Header text style */
+.paraLink {
+  text-align: center;
+  color: rgb(27, 129, 69);
+  font-size: 18px;
+}
+
+.paraLink:hover {
+  color: cornflowerblue;
+  font-weight: bold;
+}
+
+/* Header 1 text style */
 h1 {
     text-align: center;
 }
 
+/* Header 2 text style */
 h2 {
   text-align: center;
 }
-
-/* Paragraph text style */
-p {
-    text-align: center;
-    color: white;
-  }
 
 /* Body text style */
 body {
