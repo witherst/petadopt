@@ -9,7 +9,6 @@ export function Friends(props) {
             <hr className="spacer"/>
 
             {props.pets.map((pet, index) => (
-                
                 <IndividualFriend key={pet.id} name={pet.name} imgpath={pet.imgpath}/>
             ))}
         </div>

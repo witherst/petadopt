@@ -64,8 +64,8 @@ const Home = (props) => {
           <div className="home-container">
             <div className="nameplate-friend-container">
               {user && <Nameplate name={username} subtext={usertype}/>}
-              {true && <Friends title="Friends you're following" pets={petlist}/>}
-              {/* {true && <Friends title="Manage your profiles" pets={petlist}/>} */}
+              {/* {true && <Friends title="Friends you're following" pets={petlist}/>} */}
+              {true && <Friends title="Manage your profiles" pets={petlist}/>}
              
               {/* TEMPORARY LOGOUT BUTTON */}
               {<button onClick={handleLogout} style={{"maxHeight": "50px", "maxWidth": "75px", "marginTop": "550px"}}>Logout</button>}
@@ -73,7 +73,7 @@ const Home = (props) => {
             </div>
 
             <div className="home-posts-container">
-              <Posts/>
+              <Posts user={user}/>
             </div>
           </div>
         ) : (

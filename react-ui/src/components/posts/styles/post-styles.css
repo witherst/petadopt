@@ -9,7 +9,7 @@
     min-width: 600px;
 }
 
-.individual-post{
+.post-input-container{
     display: flex;
     flex-direction: column;
     background-color: var(--bg);
@@ -17,7 +17,47 @@
     border-radius: 10px;
 
     /* Temp min-height. Eventually the height will be the size of the data inside*/
-    /* min-height: 300px; */
+    min-height: 300px;
+}
+
+.post-as-container h1{
+    color: var(--text-color);
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+
+.post-button-container{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+.post-button-container{
+    margin-right: 30px;
+}
+
+.post-button-container h1{
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: .7rem;
+    letter-spacing: .05rem;
+    margin-right: 5px;
+}
+
+.post-button-container svg{
+    fill: var(--secondary-color);
+    width: 20px;
+    height: 20px;
+}
+
+.individual-post{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg);
+    margin: 25px;
+    border-radius: 10px;
 }
 
 /* Style individual nameplate with this css tag */
@@ -72,7 +112,7 @@
     cursor: pointer;
 }
 
-.like-container:hover, .share-container:hover{
+.like-container:hover, .share-container:hover, .post-button-container:hover{
     filter: brightness(.75);
 }
 

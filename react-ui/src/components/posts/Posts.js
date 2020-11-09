@@ -38,17 +38,36 @@ export function Posts(props) {
 
     return (
         <div className="posts-container">
+            {true && <PostInput/>}  {/* TODO: Replace 'true' with props.user.is_creator */}
             <div>
                 { posts.map((person, index) => (
-                    <Post key={index} data={person} img={images[index]}/>
+                    <IndividualPost key={index} data={person} img={images[index]}/>
                 ))}
             </div>
         </div>
     )
 }
 
-function Post(props){
-    console.log(props.img);
+function PostInput(props){
+    return(
+        <div className="post-input-container">
+            <div className="post-as-container">
+                <h1>Post as</h1>
+
+            </div>
+            <hr className="spacer"/>
+            <form action="#">       {/* TODO: Fill in form action with the actual posting of a post (connect to server, add to DB, whatever) */}
+                <input type="text" id="posttext"></input>
+            </form>
+            <div className="post-button-container">
+               <h1>Post</h1>
+               <svg viewBox="0 0 278 278"><ShareIcon/></svg>
+           </div>
+        </div>
+    )
+}
+
+function IndividualPost(props){
     return (
         <div className="individual-post">
             <div className="individual-post-nameplate-div">
