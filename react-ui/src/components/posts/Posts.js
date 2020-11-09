@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useRef, useEffect} from 'react';
 import './styles/post-styles.css'
 import Nameplate from '../nameplate/Nameplate'
 import {ReactComponent as LikeIcon} from './icons/like.svg'
 import {ReactComponent as ShareIcon} from './icons/share.svg'
+import {ReactComponent as PostIcon} from './icons/post.svg'
 import Kitten01 from "./images/kitten01.jpg"  // Temp images until we get from DB
 import Kitten02 from "./images/kitten02.jpg"  // Temp images until we get from DB
 import Pup01 from "./images/pup01.jpg"  // Temp images until we get from DB
@@ -12,6 +13,17 @@ import Pointy from "./images/pointy.jpg"  // Temp images until we get from DB
 export function Posts(props) {
     const posts = []
     const images = []
+    const [petPostNames, setPetPostNames] = useState();
+
+    const getPetPostNames = () => {
+        const petnames = ["banana", "chocolate", "strawberry", "jenny"];
+        setPetPostNames(petnames);
+    };
+
+    useEffect(() => {
+        getPetPostNames();
+
+    }, [JSON.stringify(petPostNames)]);
 
     // TODO: Temp filling posts with nonsense text and placeholder image 
     //  This info should be user name for nameplate, and all post related garbage that comes from the database.
@@ -38,7 +50,7 @@ export function Posts(props) {
 
     return (
         <div className="posts-container">
-            {true && <PostInput/>}  {/* TODO: Replace 'true' with props.user.is_creator */}
+            {true && <PostInput petPostNames={petPostNames}/>}  {/* TODO: Replace 'true' with props.user.is_creator */}
             <div>
                 { posts.map((person, index) => (
                     <IndividualPost key={index} data={person} img={images[index]}/>
@@ -53,15 +65,21 @@ function PostInput(props){
         <div className="post-input-container">
             <div className="post-as-container">
                 <h1>Post as</h1>
-
+                <form className="post-as-pet-name" action="#">
+                    <select name="profilename" id="profilename">
+                        {props.petPostNames && props.petPostNames.map((petname, index) =>(
+                            <option key={index} value={petname}>{petname}</option>
+                        ))};
+                    </select>
+                </form>
             </div>
             <hr className="spacer"/>
             <form action="#">       {/* TODO: Fill in form action with the actual posting of a post (connect to server, add to DB, whatever) */}
-                <input type="text" id="posttext"></input>
+                <textarea name="post-text" rows="5" cols="30" className="post-text" placeholder="Create status post here..."></textarea>
             </form>
             <div className="post-button-container">
                <h1>Post</h1>
-               <svg viewBox="0 0 278 278"><ShareIcon/></svg>
+               <svg viewBox="0 0 500 500"><PostIcon/></svg>
            </div>
         </div>
     )

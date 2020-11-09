@@ -65,6 +65,8 @@ const Home = (props) => {
             <div className="nameplate-friend-container">
               {user && <Nameplate name={username} subtext={usertype}/>}
               {/* {true && <Friends title="Friends you're following" pets={petlist}/>} */}
+
+              {/* TODO: Only display Manage your profiles and create profile link if the user is a creator */}
               {true && <Friends title="Manage your profiles" pets={petlist}/>}
              
               {/* TEMPORARY LOGOUT BUTTON */}
