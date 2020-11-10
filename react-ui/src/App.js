@@ -9,6 +9,7 @@ import Settings from './components/settings/Settings'
 import SearchFriend from './components/search/SearchFriend'
 import SearchHome from './components/search/SearchHome'
 import Profile from './components/profile/Profile'
+import CreateNewProfile from './components/profile_edit/CreateNewProfile'
 import {DropdownMenu, Navbar, NavItem} from './components/navbar/Navbar'
 
 // Icons
@@ -102,6 +103,10 @@ const App = () => {
           <Route
             path="/search/SearchHome" 
             render={(props) => <SearchHome {...props}/>}
+          />
+          <Route
+            exact path="/profile/create-new" 
+            render={(props) => <CreateNewProfile {...props} user={dbUser}/>}
           />
           <Route
             exact path="/pet/:petId" 
