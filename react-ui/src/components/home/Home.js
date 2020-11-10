@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Friends } from '../friends/Friends';
+import { Friends, CreateProfile } from '../friends/Friends';
 import './styles/home-styles.css'
 
 import Dashboard from './Dashboard';
@@ -68,6 +68,7 @@ const Home = (props) => {
 
               {/* TODO: Only display Manage your profiles and create profile link if the user is a creator */}
               {true && <Friends title="Manage your profiles" pets={petlist}/>}
+              {true && <CreateProfile/>}
              
               {/* TEMPORARY LOGOUT BUTTON */}
               {<button onClick={handleLogout} style={{"maxHeight": "50px", "maxWidth": "75px", "marginTop": "550px"}}>Logout</button>}

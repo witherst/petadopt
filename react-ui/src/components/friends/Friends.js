@@ -16,7 +16,7 @@ export function Friends(props) {
 }
 
 function IndividualFriend(props){
-    // TODO
+    // TODO: Need to add pet name and user image
     const petroute = '/pet'
     return(
         <div className="individual-friend-div-container">
@@ -27,6 +27,18 @@ function IndividualFriend(props){
                 </div>
             </a>
             <hr className="spacer"/>
+        </div>
+    )
+}
+
+export function CreateProfile(props){
+    return(
+        <div className="create-profile-container">
+            <a href='/profile/create-new'>
+                <div className="create-profile-div">
+                    <h2>Create Profile</h2>
+                </div>
+            </a>
         </div>
     )
 }
