@@ -131,8 +131,7 @@ const CreateNewProfile = (props) => {
             }),
         }
         console.log(requestOptions.body)
-        const promise = await fetch('/api/disposition/insert/list', requestOptions);
-        return promise.json()
+        await fetch('/api/disposition/insert/list', requestOptions);
     }
 
     const renderProfile = (petId) => {
