@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 
 const SignUp = (props) => {
     const {
-        attemptSignUp,
+        handleSignUp,
         username,
         setUsername,
         email,
@@ -57,7 +57,7 @@ const SignUp = (props) => {
                 />
                 <label>i have furiends who need furever homes</label><br />
                 <div className="buttonContainer">
-                    <button onClick={attemptSignUp}>Join</button>
+                    <button onClick={handleSignUp}>Join</button>
                     <p>
                         Already on PetLinked?
                         <Link to="/signin">Sign in</Link>
