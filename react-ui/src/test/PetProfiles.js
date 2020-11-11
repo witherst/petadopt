@@ -31,10 +31,20 @@ function PetProfiles() {
     const getPetInfo = () => {
         let internalPetId = prompt('Enter pet name');
 
-        fetch('/api/pet/', + internalPetId)
+        fetch('/api/pet/' + parseInt(internalPetId))
             .then(res => res.json())
             .then((res) => {
                 console.log(res)
+                setQueryRes(res)
+            });
+    }
+
+    const getPetsByDate = () => {
+        let date = prompt('Enter date (YYYY-MM-DD)');
+
+        fetch('/api/pet/date/' + date)
+            .then(res => res.json())
+            .then((res) => {
                 setQueryRes(res)
             });
     }
@@ -45,6 +55,7 @@ function PetProfiles() {
             <button onClick={getProfilesById}>Select by user id</button>
             <button onClick={createPetProfile}>Add pet</button>
             <button onClick={getPetInfo}>Get pet</button>
+            <button onClick={getPetsByDate}>by date</button>
             <br />
             <h3>data from DB:</h3>
             {pets ? 
