@@ -5,7 +5,9 @@ VALUES
     ('tim@email.com', 'tw', 'true', 'true', null),
     ('yvonne@email.com', 'ym', 'true', 'true', null),
     ('something@email.com', 'ya i guess', 'false', 'true', null),
-    ('test@test.com', 'test', 'true', 'true', null);
+    ('test@test.com', 'test', 'true', 'true', null)
+    ('notcreator@test.com', 'not a creator', 'false', 'false', null),
+    ('creator@test.com', 'creator account', 'false', 'true', null);
 
 INSERT INTO pet_profiles (
         external_pet_id,
