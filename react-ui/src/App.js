@@ -19,22 +19,21 @@ import {ReactComponent as MessageIcon} from './components/navbar/icons/messages.
 import {ReactComponent as NotificationIcon} from './components/navbar/icons/notification.svg'
 import {ReactComponent as SettingsIcon} from './components/navbar/icons/settings.svg'
 
-
 const App = () => {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(false);
   const [dbUser, setDbUser] = useState(false);
 
   const handleLogout = () => {
     fire.auth().signOut();
-  };
+    setDbUser(false);
+  }; 
 
   const authListener = () => {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
-        // clearInputs();
         setUser(user);
       } else {
-        setUser("");
+        setUser(false);
       }
     })
   };
@@ -47,7 +46,10 @@ const App = () => {
   }, [user]);
   
   const getUserId = () => {
-    fetch('/api/user/' + user.email)
+    if (!user) {
+      return;
+    }
+    fetch('/api/user/in/' + user.email)
       .then(res => res.json())
       .then((res) => {
           setDbUser(res)

@@ -28,7 +28,7 @@ router.route('/')
             })
     })
 
-router.route('/:email')
+router.route('/in/:email')
     // get all users & user data from users table
     .get((req, res) => {
         const email = req.params.email;
@@ -46,11 +46,11 @@ router.route('/:email')
             })
     })
 
-router.route('/verify')
+router.route('/verify/:email/:username')
     // get user data for specified email
     .get((req, res) => {
-        const email = req.query.email
-        const username = req.query.username
+        const email = req.params.email
+        const username = req.params.username
         const getQuery = `
             SELECT * FROM users WHERE email=($1) OR username=($2)
         `;
@@ -74,7 +74,7 @@ router.route('/insert').post((req, res) => {
         var user = {
             email: req.body.email,
             username: req.body.username,
-            isAdmin: req.body.isAdmin,
+            isAdmin: false,
             isCreator: req.body.isShelter,
         };
         user.profilePicId = isNaN(parseInt(req.body.profilePicId)) ? null : parseInt(req.body.profilePicId)

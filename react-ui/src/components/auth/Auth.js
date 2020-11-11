@@ -5,8 +5,7 @@ import fire from '../../fire';
 import '../../App.css';
 
 import SignIn from './SignIn';
-import SignUp from './SignUp'; 
-import Home from '../home/Home';
+import SignUp from './SignUp';
 
 const Auth = (props) => {
   const {
@@ -17,41 +16,25 @@ const Auth = (props) => {
 
   let history = useHistory();
 
-  const [username, setUsername] = useState("");
-  const [usernameError, setUsernameError] = useState("")
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [isShelter, setIsShelter] = useState("");
+  const [username, setUsername] = useState('');
+  const [usernameError, setUsernameError] = useState(false)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [isShelter, setIsShelter] = useState(false);
 
   const clearInputs = () => {
-    setUsernameError('')
+    setUsername('')
     setEmail('');
     setPassword('');
   }
 
   const clearErrors = () => {
-    setUsernameError('')
-    setEmailError('');
-    setPasswordError('');
+    setUsernameError(false)
+    setEmailError(false);
+    setPasswordError(false);
   }
-
-  const attemptSignUp = () => {
-        if (!username) {
-            setUsernameError('invalid username');
-            return;
-        }
-        fetch(`/api/user/verify/?email=${encodeURIComponent(email)}&username=${encodeURIComponent(username)}`)
-            .then(res => res.json())
-            .then((isExistingUsername) => {
-                if (!username || isExistingUsername) {
-                    setUsernameError('invalid username/email');
-                    return;
-                } 
-                handleSignUp();
-            })
-    }
 
   const handleSignIn = () => {
     clearErrors();
@@ -71,37 +54,48 @@ const Auth = (props) => {
             break;
         }
       });
-      if (user) {
-        history.push('/')
-      }
+    history.push('/')
   };
 
-  const handleSignUp = () => {
+  const handleSignUp = async function() {
     clearErrors();
+
+    if (!username) {
+      setUsernameError('invalid username');
+      return;
+    }
+    const promise = await fetch(`/api/user/verify/${encodeURIComponent(email)}/${encodeURIComponent(username)}`)
+    const isExistingRecord = await promise.json();
+
+    if (!username || isExistingRecord) {
+      setUsernameError('invalid username/email');
+      return;
+    }
+
     fire
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .catch((err) => {
+      .then(() => {
+        createUser()
+        history.push('/')
+      },
+      (err) => {
         switch (err.code) {
           case "auth/email-already-in-use":
           case "auth/invalid-email":
-            setEmailError(err.message);
+            setEmailError(() => err.message);
             break;
           case "auth/weak-password":
-            setPasswordError(err.message);
+            setPasswordError(() => err.message);
             break;
+          default:
+            break;  
         }
       });
-    createUser();
-    if (user) {
-        history.push('/')
-    }
   };
 
-
 /** db create/add user */
-  const createUser = () => {
-    var isAdmin = false;
+  const createUser = async function() {
     var profilePicId = null;
         const requestOptions = {
             method: 'POST',
@@ -109,38 +103,32 @@ const Auth = (props) => {
             body: JSON.stringify({
                 email,
                 username,
-                isAdmin,
                 isShelter,
                 profilePicId
             }),
         }
 
-        console.log(requestOptions)
-
-        fetch('/api/user/insert', requestOptions)
-            .then(res => res.json())
-            .then(res => {
-              console.log(res[0])
-            });
+        await fetch('/api/user/insert', requestOptions)
     }
-
-  const handleLogout = () => {
-    fire.auth().signOut();
-  };
 
   const authListener = () => {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
-        clearInputs();
+        // clearInputs();
         setUser(user);
       } else {
-        setUser("");
+        setUser(false);
       }
     })
   };
 
   useEffect(() => {
+    if (user) {
+      history.push('/');
+    }
     authListener();
+    clearErrors();
+    clearInputs();
   }, []);
   
     return (
@@ -148,13 +136,10 @@ const Auth = (props) => {
         <div className="auth">
         </div>
         {
-          user ?
-            <Home {...props} user={user} setUser={setUser} handleLogout={handleLogout} /> :
-        
-          ( needsAccount ? (
+           needsAccount ? (
             // user has account, show sign in components
             <SignUp
-              attemptSignUp={attemptSignUp}
+              handleSignUp={handleSignUp}
               username={username}
               setUsername={setUsername}
               email={email} 
@@ -171,6 +156,8 @@ const Auth = (props) => {
           ) : (
             // otherwise, show sign up components
             <SignIn
+              user={user}
+              history={history}
               handleSignIn={handleSignIn}
               email={email} 
               setEmail={setEmail}
@@ -180,7 +167,7 @@ const Auth = (props) => {
               passwordError={passwordError}
               needsAccount={false}
             />
-          ))
+          )
         }
       </section>
     );
