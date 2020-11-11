@@ -1,5 +1,7 @@
 import React from 'react';
 
+import IndividualPost from '../posts/IndividualPost'
+
 const Feed = (props) => {
     const {
         petStatuses
@@ -10,21 +12,11 @@ const Feed = (props) => {
             <h1>Feed</h1>
             <div className='body-container'>
                 {petStatuses ? petStatuses.map((post) => 
-                    <Post key={post.status_id} status={post.status} timestamp={post.timestamp} />
+                    <IndividualPost key={post.status_id} post={post} />
                 ) :
                     ''
                 }
             </div>
-        </div>
-    )
-}
-
-const Post = (props) => {
-    return (
-        <div className='post-container' key={props.status_id}>
-            <img />
-            <p><b>{props.status}</b></p>
-            <p>{props.timestamp}</p>
         </div>
     )
 }
