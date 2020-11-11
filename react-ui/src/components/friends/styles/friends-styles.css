@@ -82,3 +82,26 @@
     border-radius: 15px;
     opacity: .85;
 }
+
+.create-profile-container{
+    display: flex;
+    justify-content: center;
+}
+
+.create-profile-div{
+    margin-top: 10px;
+    border-radius: 5px;
+    color: var(--secondary-color);
+    width: fit-content;
+    cursor: pointer;
+}
+
+.create-profile-div:hover{
+    filter:brightness(.75);
+}
+
+.create-profile-div h2{
+    margin: 5px;
+    font-weight: 500;
+    font-size: 1rem;
+}

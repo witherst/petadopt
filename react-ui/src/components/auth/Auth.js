@@ -146,7 +146,6 @@ const Auth = (props) => {
     return (
       <section className="auth">
         <div className="auth">
-        <h1>PetLinked</h1>
         </div>
         {
           user ?

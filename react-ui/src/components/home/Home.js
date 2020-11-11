@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Friends } from '../friends/Friends';
+import { Friends, CreateProfile } from '../friends/Friends';
 import './styles/home-styles.css'
 
 import Dashboard from './Dashboard';
@@ -64,8 +64,11 @@ const Home = (props) => {
           <div className="home-container">
             <div className="nameplate-friend-container">
               {user && <Nameplate name={username} subtext={usertype}/>}
-              {true && <Friends title="Friends you're following" pets={petlist}/>}
-              {/* {true && <Friends title="Manage your profiles" pets={petlist}/>} */}
+              {/* {true && <Friends title="Friends you're following" pets={petlist}/>} */}
+
+              {/* TODO: Only display Manage your profiles and create profile link if the user is a creator */}
+              {true && <Friends title="Manage your profiles" pets={petlist}/>}
+              {true && <CreateProfile/>}
              
               {/* TEMPORARY LOGOUT BUTTON */}
               {<button onClick={handleLogout} style={{"maxHeight": "50px", "maxWidth": "75px", "marginTop": "550px"}}>Logout</button>}
@@ -73,7 +76,7 @@ const Home = (props) => {
             </div>
 
             <div className="home-posts-container">
-              <Posts/>
+              <Posts user={user}/>
             </div>
           </div>
         ) : (
