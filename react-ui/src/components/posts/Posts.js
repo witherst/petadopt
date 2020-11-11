@@ -11,17 +11,46 @@ import Kitten01 from "./images/kitten01.jpg"  // Temp images until we get from D
 export function Posts(props) {
     const {
         user,
-        posts,
+        userId,
         pets
     } = props;
 
+    const [posts, setPosts] = useState(false);
+
     useEffect(() => {
-        
-    }, [user, pets]);
+        getPosts();
+    }, [user, pets, posts]);
+
+    const getPosts = () => {
+        if (!user) {
+          return;
+        }
+    
+        if (user.is_admin) {
+            fetch('/api/status')
+                .then(res => res.json())
+                .then((res) => {
+                    setPosts(() => res)
+                });
+        } else if (user.is_creator) {
+            fetch('/api/status/creator/' + userId)
+                .then(res => res.json())
+                .then((res) => {
+                    setPosts(() => res)
+                });
+        } else {
+            fetch('/api/petmark/statuses/' + userId)
+                .then(res => res.json())
+                .then((res) => {
+                console.log(userId)
+                    setPosts(() => res)
+                });
+        }
+    }
 
     return (
         <div className="posts-container">
-            {(user.is_creator || user.is_admin) && <PostInput pets={pets}/>}
+            {(user.is_creator || user.is_admin) && <PostInput pets={pets} setPosts={setPosts}/>}
             <div>
                 { posts ? posts.map(post => 
                     <IndividualPost key={post.status_id} post={post} />
@@ -33,7 +62,8 @@ export function Posts(props) {
 
 function PostInput(props){
     const {
-        pets
+        pets,
+        setPosts
     } = props;
 
     const [selectedPet, setSelectedPet] = useState(false);
@@ -63,6 +93,7 @@ function PostInput(props){
             .then(res => res.json())
             .then(() => {
                 clearInputs();
+                setPosts(false);
             })
     }
 

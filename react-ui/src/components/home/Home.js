@@ -24,7 +24,6 @@ const Home = (props) => {
   const [usertype, setUsertype] = useState(false);
   const [panelTitle, setPanelTitle] = useState(false);
   const [petlist, setPetlist] = useState(false);
-  const [posts, setPosts] = useState(false);
 
   const setDbData = () => {
     if (!user) {
@@ -55,11 +54,6 @@ const Home = (props) => {
         .then((res) => {
             setPetlist(() => res)
         });
-    fetch('/api/status')
-        .then(res => res.json())
-        .then((res) => {
-            setPosts(() => res)
-        });
   }
 
   const fetchCreatorPets = () => {
@@ -68,11 +62,6 @@ const Home = (props) => {
         .then((res) => {
             setPetlist(res)
         });
-    fetch('/api/status/creator/' + userId)
-        .then(res => res.json())
-        .then((res) => {
-            setPosts(() => res)
-        });
   }
 
   const fetchBookmarkedPets = () => {
@@ -80,12 +69,6 @@ const Home = (props) => {
         .then(res => res.json())
         .then((res) => {
             setPetlist(res)
-        });
-    fetch('/api/petmark/statuses/' + userId)
-        .then(res => res.json())
-        .then((res) => {
-          console.log(userId)
-            setPosts(() => res)
         });
   }
 
@@ -115,7 +98,7 @@ const Home = (props) => {
             </div>
 
             <div className="home-posts-container">
-              <Posts user={user} posts={posts} pets={petlist}/>
+              <Posts user={user} userId={userId} pets={petlist}/>
             </div>
           </div>
         ) : (

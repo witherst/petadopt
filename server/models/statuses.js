@@ -52,29 +52,6 @@ const update_pet_profile_timestamp = (updateParams) => {
         })
 }
 
-const send_insert_result = (res, params) => {
-    const getQuery = `
-        SELECT *
-            FROM pet_statuses 
-            INNER JOIN statuses 
-            ON statuses.status_id = pet_statuses.status_id
-            WHERE pet_id=($1) AND pet_statuses.status_id=($2)
-        `
-    client.query(getQuery,
-        [
-            params.petId,
-            params.statusId
-        ]
-    )
-        .then(data => {
-            console.log(data.rows)
-            res.send(data.rows);
-        })
-        .catch(err => {
-            console.error(err);
-        })
-}
-
 router.route('/')
     // get all statuses
     .get((req, res) => {
@@ -156,8 +133,7 @@ router.route('/:id')
  * add new status to statuses and association in pet_statuses
  * update pet_profile timestamp
  */
-router.route('/insert')
-    .post((req, res) => {
+router.route('/insert').post((req, res) => {
     // insert new status
         var status = {
             petId: req.body.petId,
@@ -172,6 +148,7 @@ router.route('/insert')
             VALUES ($1, $2)
             RETURNING *;
         `
+
         client.query(insertQuery,
                 [
                     status.status,
@@ -184,7 +161,7 @@ router.route('/insert')
                 update_pet_profile_timestamp(status)
 
                 insert_pet_status(status)
-                send_insert_result(res, status)
+                res.send(newStatus);
             })
             .catch(err => {
                 console.error(err);
