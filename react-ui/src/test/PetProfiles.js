@@ -45,17 +45,6 @@ function PetProfiles() {
         fetch('/api/pet/date/' + date)
             .then(res => res.json())
             .then((res) => {
-                console.log(res)
-                setQueryRes(res)
-            });
-    }
-
-    const getPetsByDate = () => {
-        let date = prompt('Enter date (YYYY-MM-DD)');
-
-        fetch('/api/pet/date/' + date)
-            .then(res => res.json())
-            .then((res) => {
                 setQueryRes(res)
             });
     }
