@@ -14,7 +14,7 @@ export function Friends(props) {
             <hr className="spacer"/>
 
             {pets ? pets.map((pet, index) => (
-                <IndividualFriend key={pet.internal_pet_id} pet={pet}/>
+                <IndividualFriend key={pet.internal_pet_id} pet={pet} name={pet.name} imgpath={pet.imgpath} linkto={'/pet'}/>
             )) : ''}
         </div>
     )
@@ -36,7 +36,7 @@ function IndividualFriend(props){
 
     return(
         <div className="individual-friend-div-container">
-            <a href={petroute}>
+            <a href={props.linkto}>
                 <div className="individual-friend-div-container-content">
                     <img src={Cat}></img> 
                     <h1>{pet.external_pet_id.slice(0, MAX_NAME_LENGTH)}</h1>

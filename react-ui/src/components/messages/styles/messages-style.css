@@ -1,0 +1,84 @@
+@import "../../../index.css";    /* Root styles */
+
+.messages-page-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    height: 90%;
+}
+
+.petnames-display{
+    background-color: var(--bg);
+    border-radius: 10px;
+
+    /* Below are temps (maybe) until we get data populating */
+    min-width: 300px;
+    max-width: fit-content;
+    min-height: 350px;
+    max-height: 400px;
+
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-right: 15px;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/* Scrollbar in friends container */
+.petnames-display::-webkit-scrollbar {
+    width: 10px;
+}
+
+.petnames-display::-webkit-scrollbar-thumb{
+    border-radius: 15px;
+    background: var(--secondary-color);
+}
+
+.petnames-display::-webkit-scrollbar-thumb:hover{
+    background: var(--secondary-color-hover);
+}
+
+.petnames-display h1{
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size: 1.25rem;
+    color: var(--text-color);
+    font-weight: 400;
+    letter-spacing: .1rem;
+}
+
+.spacer{
+    width: 90%; 
+    border-color: var(--secondary-color);
+    border-style: solid;
+}
+
+/* Styling the individual friends in the Messages container here */
+.petnames-display .individual-friend-div-container h1{
+    font-size: 1rem;
+}
+
+.messages-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    background-color: var(--bg);
+    max-width: 750px;
+    width: 50%;
+    max-height: 1000px;
+    height: 90%;
+}
+
+.messages-container-display-div{
+    background-color: var(--secondary-color);
+    width: 80%;
+    min-height: 80%;
+    max-width: 90%;
+}
+
+.messages-container-send-input-div{
+
+}
