@@ -7,17 +7,30 @@ import Landing from './Landing';
 import { Posts } from '../posts/Posts';
 import Nameplate from '../nameplate/Nameplate'
 
-
 const Home = (props) => {
   const {
-    user, setUser, handleLogout
+    user, handleLogout
   } = props;
 
   const [petlist, setPetlist] = useState([]);
 
   /* TODO: The following two lines should be information present on the user data when they log in. */
-  const username = "Tim Withers"
-  const usertype = "admin"
+  const [username, setUsername] = useState(false);
+  const [usertype, setUsertype] = useState(false);
+
+  const setUserSettings = () => {
+    // set usertype
+    if (user.is_admin) {
+      setUsertype(() => "admin");
+    } else if (user.is_creator) {
+      setUsertype(() => "shelter");
+    } else {
+      setUsertype(() => "looking for friend")
+    }
+
+    console.log(user.username)
+    setUsername(() => user.username);
+  }
 
   const getPetList = () =>{
       // TODO: Need to fill petlist with data from DB based on user or shelter.
@@ -50,6 +63,7 @@ const Home = (props) => {
 
   // On component render or data change useEffect() is called
   useEffect(() => {
+      setUserSettings();
       getPetList();
     
       return () => {
