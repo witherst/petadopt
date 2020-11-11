@@ -22,7 +22,7 @@ import {ReactComponent as SettingsIcon} from './components/navbar/icons/settings
 
 const App = () => {
   const [user, setUser] = useState("");
-  const [dbUser, setDbUser] = useState("");
+  const [dbUser, setDbUser] = useState(false);
 
   const handleLogout = () => {
     fire.auth().signOut();
@@ -78,7 +78,7 @@ const App = () => {
         <Switch>
           <Route
             exact path="/" 
-            render={(props) => <Home {...props} user={user} setUser={setUser} handleLogout={handleLogout}/>}
+            render={(props) => <Home {...props} user={dbUser} handleLogout={handleLogout}/>}
           />
           <Route
             path="/signup"
