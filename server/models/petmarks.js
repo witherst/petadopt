@@ -109,15 +109,23 @@ router.route('/statuses/:id')
     .get((req, res) => {
         const id = parseInt(req.params.id)
         const getQuery = `
-            SELECT petmarks.pet_id, statuses.status_id, timestamp, status FROM petmarks
- 			INNER JOIN pet_statuses ON petmarks.pet_id = pet_statuses.pet_id
-			INNER JOIN statuses ON pet_statuses.status_id = statuses.status_id
-            WHERE petmarks.user_id = ($1)
-			ORDER BY timestamp;
+            SELECT 
+                pet_profiles.internal_pet_id, 
+                pet_profiles.external_pet_id, 
+                statuses.status_id,
+                statuses.status,
+                statuses.timestamp
+            FROM petmarks
+                INNER JOIN pet_statuses ON petmarks.pet_id = pet_statuses.pet_id
+                INNER JOIN statuses ON pet_statuses.status_id = statuses.status_id
+                INNER JOIN pet_profiles ON pet_statuses.pet_id = pet_profiles.internal_pet_id
+                WHERE petmarks.user_id=($1)
+                ORDER BY statuses.timestamp DESC;
         `;
 
         client.query(getQuery, [id])
             .then(data => {
+                console.log(data.rows)
                 res.send(data.rows)
             })
             .catch(err => {
