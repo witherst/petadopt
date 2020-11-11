@@ -70,4 +70,24 @@ router.route('/pets/:id')
             })
     })
 
+router.route('/insert/list')
+    // add new profile dispositions
+    .post((req, res) => {
+        const list = req.body.pet_selection
+
+        const getQuery = `
+            INSERT INTO pet_dispositions (pet_id, disposition) 
+            VALUES ${list.join()}
+            RETURNING *
+        `;
+
+        client.query(getQuery)
+            .then(data => {
+                res.send(data.rows)
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    })
+
 module.exports = router;
