@@ -137,6 +137,25 @@ router.route('/date/:date')
             })
     })
 
+router.route('/petmark/:userId')
+    .get((req, res) => {
+        const userId = req.params.userId;
+        const getQuery = `
+            SELECT * FROM petmarks
+            INNER JOIN pet_profiles
+            ON pet_profiles.internal_pet_id = petmarks.pet_id
+            WHERE user_id=($1)
+            ORDER BY external_pet_id;
+        `
+        client.query(getQuery, [userId])
+            .then(data => {
+                res.send(data.rows)
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    })
+
 // insert pet profile in table and return the data
 router.route('/insert').post((req, res) => {
     var pet = {

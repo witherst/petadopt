@@ -1,16 +1,15 @@
 import React from 'react'
 import './styles/nameplate-styles.css'
-import Baby from './images/baby.jpg'
 
 function Nameplate(props) {
     const {
-        name, subtext
+        name, subtext, picLoc
     } = props;
 
     return (
         <div className="nameplate-container">
             <div className="img-container">
-                <img src={Baby}></img>
+                <img src={picLoc}></img>
             </div> 
             <div className="nameplate-text-container">
                 <h1>{name}</h1>

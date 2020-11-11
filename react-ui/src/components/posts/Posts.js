@@ -1,83 +1,105 @@
-import React, { useState, useRef, useEffect} from 'react';
+import React, { useState, useEffect} from 'react';
+import moment from 'moment';
+
 import './styles/post-styles.css'
 import Nameplate from '../nameplate/Nameplate'
 import {ReactComponent as LikeIcon} from './icons/like.svg'
 import {ReactComponent as ShareIcon} from './icons/share.svg'
 import {ReactComponent as PostIcon} from './icons/post.svg'
 import Kitten01 from "./images/kitten01.jpg"  // Temp images until we get from DB
-import Kitten02 from "./images/kitten02.jpg"  // Temp images until we get from DB
-import Pup01 from "./images/pup01.jpg"  // Temp images until we get from DB
-import Pup02 from "./images/pup02.jpg"  // Temp images until we get from DB
-import Pointy from "./images/pointy.jpg"  // Temp images until we get from DB
 
 export function Posts(props) {
-    const posts = []
-    const images = []
-    const [petPostNames, setPetPostNames] = useState();
-
-    const getPetPostNames = () => {
-        const petnames = ["banana", "chocolate", "strawberry", "jenny"];
-        setPetPostNames(petnames);
-    };
+    const {
+        user,
+        posts,
+        pets
+    } = props;
 
     useEffect(() => {
-        getPetPostNames();
-
-    }, [JSON.stringify(petPostNames)]);
-
-    // TODO: Temp filling posts with nonsense text and placeholder image 
-    //  This info should be user name for nameplate, and all post related garbage that comes from the database.
-    posts.push("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut iaculis sagittis luctus.")
-    posts.push("Leo sit amet congue. Oncus arcu. Nam neque mauris, scelerisque a turpis sed, luctus faucibus sapien. Cras id vulputate lorem.");
-    posts.push("Consectetur adipiscing elit. Ut iaculis sagittis luctus.  quam ac, viverra augue. In sollicitudin velit sed lobortis dignissim. Sed egestas diam sed orci tristique, nec molestie neque aliquet. Quisque turpis ante, auctor ac velit vel, cursus rhoncus arcu. Nam neque mauris, scelerisque a turpis sed, luctus faucibus sapien. Cras id vulputate lorem.");
-    posts.push("Elit. Ut iaculis sagittis luctus. Aliquam tempus, augue nec iaculis rhoncus, magna diam vulputate lorem, vitae tincidunt odio neque at augue. Nulla faucibus eu leo sit amet congue. Vestibulum quis tristique, nec molestie neque aliquet. Quisque turpis ante, auctor ac velit vel, cursus rhoncus arcu. Nam neque mauris, scelerisque a turpis sed, luctus faucibus sapien. Cras id vulputate lorem.");
-    posts.push("Ipsum dolor sit amet, Ut iaculis sagittis luctus. , auctor ac velit vel, cursus rhoncus arcu. Nam neque mauris, scelerisque a turpis sed, luctus faucibus sapien. Cras id vulputate lorem.");
-    posts.push("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut iaculis sagittis luctus. Aliquam tempus, augue nec iaculis rhoncus, magna diam vulputate lorem, vitae tincidunt odio neque at augue. Nulla faucibus eu leo sit amet congue. Vestibulum quis tempor mi, id sagittis tellus. Nulla elementum tortor ac efficitur commodo. Proin eget ex fringilla, tristique quam ac, viverra augue. In sollicitudin velit sed lobortis dignissim. Sed egestas diam sed orci tristique, nec molestie neque aliquet. Quisque turpis ante, auctor ac velit vel, cursus rhoncus arcu. Nam neque mauris, scelerisque a turpis sed, luctus faucibus sapien. Cras id vulputate lorem.");
-    posts.push("Luctus. Aliquam tempus, augue nec iaculis rhonlus. Nulla elementum tortor ac efficitur commodo. Proin eget ex fringilla, tristique quam ac, viverra augue. In sollicitudin velit sed lobortis dignissim. Sed egestas diam sed orci tristique, nec molis, scelerisque a turpis sed, luctus faucibus sapien. Cras id vulputate lorem.");
-    posts.push("Adipiscing elit. Ut iaculis sagittis luctus. Aliquam tempus, augue nec iaculis rhoncus, magna diam vulputate lorem, vitae tincidunt odio neque at augue. Nulla faucibus eu leo sit amet congue. Vestibulum quis tempor mi, id sagittis tellus. Nulla elementum tortor ac efficitur commodo. Proin eget ex fringilla, tristique quam ac, viverra augue. In sollicitudin velit sed lobortis dignissim. Sed egestas diam sed orci tristique, nec molestie neque aliquet. Quisque turpis ante, auctor ac velit vel, cursus rhoncus arcu. Nam neque mauris, scelerisque a turpis sed, luctus faucibus sapien. Cras id vulputate lorem.");
-    posts.push("Ut iaculis sagittis luctus. Aliquam tempus, augue nec iaculis rhoncus, magna diam vulputate lorem, vitae tincidunt odio neque at augue.");
-    posts.push("Proin eget ex fringilla, tristique quam ac, viverra augue. In sollicitudin velit sed lobortis dignissim. Sed egestas diam sed orci tristique, nec molestie neque aliquet. Quisque turpis ante, auctor ac velit vel, cursus rhoncus arcu. Nam neque mauris, scelerisque a turpis sed, luctus faucibus sapien. Cras id vulputate lorem.");
-
-    for(let i = 0; i < 10; i++){
-        images.push('');
-    }
-
-    images[0] = Kitten02;
-    images[2] = Pup01;
-    images[3] = Kitten01;
-    images[6] = Pup02;
-    images[9] = Pointy;
+        
+    }, [user, pets]);
 
     return (
         <div className="posts-container">
-            {true && <PostInput petPostNames={petPostNames}/>}  {/* TODO: Replace 'true' with props.user.is_creator */}
+            {(user.is_creator || user.is_admin) && <PostInput pets={pets}/>}
             <div>
-                { posts.map((person, index) => (
-                    <IndividualPost key={index} data={person} img={images[index]}/>
-                ))}
+                { posts ? posts.map(post => 
+                    <IndividualPost key={post.status_id} post={post} />
+                ) : '' }
             </div>
         </div>
     )
 }
 
 function PostInput(props){
+    const {
+        pets
+    } = props;
+
+    const [selectedPet, setSelectedPet] = useState(false);
+    const [status, setStatus] = useState('')
+
+    const clearInputs = () => {
+        setSelectedPet(() => false);
+        setStatus(() => '');
+    }
+
+    const postStatus = () => {
+        const petId = selectedPet;
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                petId,
+                status
+            }),
+        }
+
+        if (!(selectedPet && status)) {
+            return;
+        }
+
+        fetch('/api/status/insert', requestOptions)
+            .then(res => res.json())
+            .then(() => {
+                clearInputs();
+            })
+    }
+
     return(
         <div className="post-input-container">
             <div className="post-as-container">
                 <h1>Post as</h1>
                 <form className="post-as-pet-name" action="#">
-                    <select name="profilename" id="profilename">
-                        {props.petPostNames && props.petPostNames.map((petname, index) =>(
-                            <option key={index} value={petname}>{petname}</option>
+                    <select name="profilename" id="profilename" 
+                        value={selectedPet}
+                        onChange={(e) => setSelectedPet(e.target.value)}>
+                        <option key={0} 
+                            value={false} 
+                            onChange={(e) => setSelectedPet(e.target.value)}
+                            />
+                        {pets && pets.map(pet =>(
+                            <option 
+                                key={pet.internal_pet_id} 
+                                value={pet.internal_pet_id}
+                                onChange={(e) => setSelectedPet(e.target.value)}
+                                >{pet.external_pet_id}</option>
                         ))};
                     </select>
                 </form>
             </div>
             <hr className="spacer"/>
             <form action="#">       {/* TODO: Fill in form action with the actual posting of a post (connect to server, add to DB, whatever) */}
-                <textarea name="post-text" rows="5" cols="30" className="post-text" placeholder="Create status post here..."></textarea>
+                <textarea name="post-text" 
+                    rows="5" 
+                    cols="30" 
+                    className="post-text" 
+                    placeholder="Create status post here..."
+                    value={status}
+                    onChange={(e) => setStatus(e.target.value)}
+                    />
             </form>
-            <div className="post-button-container">
+            <div className="post-button-container" onClick={postStatus}>
                <h1>Post</h1>
                <svg viewBox="0 0 500 500"><PostIcon/></svg>
            </div>
@@ -86,14 +108,24 @@ function PostInput(props){
 }
 
 function IndividualPost(props){
+    const {
+        post
+    } = props;
+
+    const route = '/pet/' + post.internal_pet_id;
     return (
         <div className="individual-post">
+            <a href={route}>
             <div className="individual-post-nameplate-div">
-                <Nameplate name="Tim Withers" subtext={"3 weeks ago"}/>
+                <Nameplate 
+                    name={post.external_pet_id} 
+                    subtext={moment(post.timestamp).fromNow()}
+                    picLoc={Kitten01}
+                    />
             </div>
+            </a>
             <div className="individual-post-status-container">
-                <p>{props.data}</p>
-                <img src={props.img}/>
+                <p>{post.status}</p>
             </div>
             <hr className="spacer"/>
             <div className="individual-post-likeshare-container">

@@ -3,27 +3,43 @@ import './styles/friends-styles.css';
 import Cat from "./images/cat.jpg"
 
 export function Friends(props) {
+    const {
+        title,
+        pets
+    } = props;
+
     return (
         <div className="friends-container">
-            <h1>{props.title}</h1>
+            <h1>{title}</h1>
             <hr className="spacer"/>
 
-            {props.pets.map((pet, index) => (
-                <IndividualFriend key={pet.id} name={pet.name} imgpath={pet.imgpath}/>
-            ))}
+            {pets ? pets.map((pet, index) => (
+                <IndividualFriend key={pet.internal_pet_id} pet={pet}/>
+            )) : ''}
         </div>
     )
 }
 
 function IndividualFriend(props){
-    // TODO: Need to add pet name and user image
-    const petroute = '/pet'
+    const {
+        pet
+    } = props;
+
+    // TODO: replace w/ pet image
+    /* note: use pet.profile_pic_id yields an id for photos table. 
+     * query photos table for internal_pic_id=pet.profile_pic_id for location of image
+     * if pet.profile_pic_id == null, use default image
+    */
+    const petroute = '/pet/' + pet.internal_pet_id;
+    const MAX_NAME_LENGTH = 20;
+
+
     return(
         <div className="individual-friend-div-container">
-            <a href='/pet'>
+            <a href={petroute}>
                 <div className="individual-friend-div-container-content">
-                    <img src={Cat}></img>
-                    <h1>{props.name}</h1>
+                    <img src={Cat}></img> 
+                    <h1>{pet.external_pet_id.slice(0, MAX_NAME_LENGTH)}</h1>
                 </div>
             </a>
             <hr className="spacer"/>

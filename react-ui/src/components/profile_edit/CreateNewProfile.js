@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Route } from 'react-router-dom';
 
 import * as Constants from '../../constants/animal_options'
 
@@ -40,6 +40,14 @@ const CreateNewProfile = (props) => {
 
     useEffect(() => {
         initializeStates()
+        if (!user) {
+            return;
+        }
+        
+        if (!user.is_creator && !user.is_admin) {
+            console.log(user);
+            history.push('/')
+        };
     }, [user]);
 
     const initializeStates = () => {

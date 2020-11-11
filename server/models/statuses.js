@@ -81,11 +81,48 @@ router.route('/')
         res.set('Content-Type', 'application/json');
 
         const getQuery = `
-            SELECT * FROM pet_statuses 
-            INNER JOIN statuses 
-            ON statuses.status_id = pet_statuses.status_id;
+            SELECT 
+                pet_profiles.internal_pet_id, 
+                pet_profiles.external_pet_id, 
+                pet_statuses.pet_id, 
+                statuses.status_id,
+                statuses.status,
+                statuses.timestamp
+            FROM pet_statuses
+                    INNER JOIN statuses 
+                    ON statuses.status_id = pet_statuses.status_id
+                    INNER JOIN pet_profiles
+                    ON pet_statuses.pet_id = pet_profiles.internal_pet_id
+            ORDER BY statuses.timestamp DESC;
         `;
         client.query(getQuery)
+            .then(data => {
+                res.send(data.rows)
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    })
+
+router.route('/creator/:id')
+    // get statuses of all pets belonging to creator
+    .get((req, res) => {
+        const id = parseInt(req.params.id)
+        const getQuery = `
+            SELECT 
+                pet_profiles.internal_pet_id, 
+                pet_profiles.external_pet_id, 
+                statuses.status_id,
+                statuses.status,
+                statuses.timestamp
+            FROM pet_profiles
+                INNER JOIN pet_statuses ON pet_statuses.pet_id = pet_profiles.internal_pet_id
+                INNER JOIN statuses ON pet_statuses.status_id = statuses.status_id
+                WHERE pet_profiles.creator_id = ($1)
+                ORDER BY timestamp DESC;
+        `;
+
+        client.query(getQuery, [id])
             .then(data => {
                 res.send(data.rows)
             })
@@ -103,7 +140,7 @@ router.route('/:id')
             INNER JOIN statuses 
             ON statuses.status_id = pet_statuses.status_id
             WHERE pet_id=($1)
-            ORDER BY timestamp;
+            ORDER BY timestamp DESC;
         `;
 
         client.query(getQuery, [id])
