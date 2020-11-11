@@ -44,7 +44,7 @@ CREATE TABLE public.pet_profiles
     profile_status VARCHAR(32) NOT NULL,
     PRIMARY KEY (internal_pet_id),
     UNIQUE(creator_id, external_pet_id),
-    CONSTRAINT fk_creator_id FOREIGN KEY (creator_id) REFERENCES public.users (internal_user_id)
+    CONSTRAINT fk_creator_id FOREIGN KEY (creator_id) REFERENCES public.users (internal_user_id) ON DELETE CASCADE
 );
 
 /* holds the endpoint location for every photo used in app */
@@ -56,10 +56,10 @@ CREATE TABLE public.photos
 );
 
 ALTER TABLE public.users
-ADD CONSTRAINT fk_profile_pic_id FOREIGN KEY (profile_pic_id) REFERENCES public.photos (internal_pic_id);
+ADD CONSTRAINT fk_profile_pic_id FOREIGN KEY (profile_pic_id) REFERENCES public.photos (internal_pic_id) ON DELETE CASCADE;
 
 ALTER TABLE public.pet_profiles
-ADD CONSTRAINT fk_profile_pic_id FOREIGN KEY (profile_pic_id) REFERENCES public.photos (internal_pic_id);
+ADD CONSTRAINT fk_profile_pic_id FOREIGN KEY (profile_pic_id) REFERENCES public.photos (internal_pic_id) ON DELETE CASCADE;
 
 /* one-to-many: one pet profile with none, one, or many pictures*/
 CREATE TABLE public.pet_pics 
@@ -67,8 +67,8 @@ CREATE TABLE public.pet_pics
     pet_id INT NOT NULL,
     pic_id INT NOT NULL,
     PRIMARY KEY (pet_id, pic_id),
-    CONSTRAINT fk_pet_id FOREIGN KEY (pet_id) REFERENCES public.pet_profiles (internal_pet_id),
-    CONSTRAINT fk_pic_id FOREIGN KEY (pic_id) REFERENCES public.photos (internal_pic_id)
+    CONSTRAINT fk_pet_id FOREIGN KEY (pet_id) REFERENCES public.pet_profiles (internal_pet_id) ON DELETE CASCADE,
+    CONSTRAINT fk_pic_id FOREIGN KEY (pic_id) REFERENCES public.photos (internal_pic_id) ON DELETE CASCADE
 );
 
 /* one to many: one user follows none, one, or many pet profiles followed */
@@ -78,8 +78,8 @@ CREATE TABLE public.petmarks
     pet_id INT NOT NULL,
     PRIMARY KEY (user_id, pet_id),
     
-    CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES public.users (internal_user_id),
-    CONSTRAINT fk_pet_id FOREIGN KEY (pet_id) REFERENCES public.pet_profiles (internal_pet_id)
+    CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES public.users (internal_user_id) ON DELETE CASCADE,
+    CONSTRAINT fk_pet_id FOREIGN KEY (pet_id) REFERENCES public.pet_profiles (internal_pet_id) ON DELETE CASCADE
 );
 
 /* holds dispositions */
@@ -95,8 +95,8 @@ CREATE TABLE public.pet_dispositions (
     pet_id INT NOT NULL,
     disposition INT NOT NULL,
     PRIMARY KEY (pet_id, disposition),
-    CONSTRAINT fk_pet_id FOREIGN KEY (pet_id) REFERENCES public.pet_profiles (internal_pet_id),
-    CONSTRAINT fk_disposition FOREIGN KEY (disposition) REFERENCES public.dispositions (id)
+    CONSTRAINT fk_pet_id FOREIGN KEY (pet_id) REFERENCES public.pet_profiles (internal_pet_id) ON DELETE CASCADE,
+    CONSTRAINT fk_disposition FOREIGN KEY (disposition) REFERENCES public.dispositions (id) ON DELETE CASCADE
 );
 
 /* holds status info */
@@ -112,6 +112,6 @@ CREATE TABLE public.pet_statuses (
     pet_id INT NOT NULL,
     status_id INT NOT NULL,
     PRIMARY KEY (pet_id, status_id),
-    CONSTRAINT fk_pet_id FOREIGN KEY (pet_id) REFERENCES public.pet_profiles (internal_pet_id),
-    CONSTRAINT fk_status_id FOREIGN KEY (status_id) REFERENCES public.statuses (status_id)
+    CONSTRAINT fk_pet_id FOREIGN KEY (pet_id) REFERENCES public.pet_profiles (internal_pet_id) ON DELETE CASCADE,
+    CONSTRAINT fk_status_id FOREIGN KEY (status_id) REFERENCES public.statuses (status_id) ON DELETE CASCADE
 );
