@@ -92,7 +92,7 @@ const App = () => {
           />
           <Route
             path="/messages" 
-            render={(props) => <Messages {...props}/>}
+            render={(props) => <Messages {...props} user={user} dbuser={dbUser}/>}
           />
           <Route
             path="/settings" 

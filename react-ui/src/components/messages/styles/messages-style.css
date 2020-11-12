@@ -68,17 +68,73 @@
     background-color: var(--bg);
     max-width: 750px;
     width: 50%;
-    max-height: 1000px;
+    max-height: 900px;
     height: 90%;
+    min-height: fit-content;
+}
+
+.messages-container-title-div h1{
+    font-size: 2rem;
+    color: var(--text-color);
+    font-weight: 500;
 }
 
 .messages-container-display-div{
-    background-color: var(--secondary-color);
+    display: flex;
+    background-color: var(--primary-color);
+    border: 1px solid #8cc9bd;
+    border-radius: 5px;
     width: 80%;
-    min-height: 80%;
+    height: 800px;
+    min-height: 50px;
+    max-height: 95%;
     max-width: 90%;
 }
 
-.messages-container-send-input-div{
+.chat-input-form{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 80%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
 
+.chat-input{
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif, 'mon';
+    font-size: .75rem;
+    flex:1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    outline: none;
+    height:40px;
+    max-height: 20px;
+    max-width: 100%;
+}
+
+.chat-input-submit-button{
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif, 'mon';
+    height: 40px; 
+    width: 100px;
+    border: none;
+    border-radius: 4px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    outline: none;
+    cursor: pointer;
+}
+
+.chat-input-submit-button:hover{
+    filter: brightness(.85);
+}
+
+.chat-input-submit-button:active{
+    filter: brightness(.75);
 }

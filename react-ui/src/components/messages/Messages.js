@@ -6,6 +6,7 @@ import './styles/messages-style.css'
 function Messages(props) {
     const [petlist, setPetlist] = useState([]);
     const [selectedPet, setSelectedPet] = useState("No pet selected");
+    const [chatInputText, setChatInputText] = useState('');
 
     const getPetList = () =>{
         // TODO: Need to fill petlist with data from DB based on user or shelter.
@@ -41,11 +42,23 @@ function Messages(props) {
         setSelectedPet(name);
     }
 
-  // On component render or data change useEffect() is called
-  useEffect(() => {
-      getPetList();
+    // Send message
+    const sendMessage = async(e) => {
+        e.preventDefault();
+        console.log('submitted')
+    }
 
-      return () => {
+    // Set chat value
+    const setChatValue = (msg) => {
+        console.log(msg)
+        setChatInputText(msg);
+    }
+
+  // On component render or data change useEffect() is called
+    useEffect(() => {
+        getPetList();
+
+        return () => {
         // cleanup
     }
   }, [props.user])  // If user changes, get petlist again
@@ -55,12 +68,9 @@ function Messages(props) {
             <div className="petnames-display">
                 <h1>Messages</h1>
                 <hr className="spacer"/>
-{/* <IndividualFriend key={pet.internal_pet_id} pet={pet} linkto={'/pet/' + pet.internal_pet_id}/> */}
-{/* <IndividualFriend key={pet.id} name={pet.name} imgpath={pet.imgpath} linkto={'#'}/> */}
-
 
                 {petlist && petlist.map((pet, index) => (
-                    <div key={index} onClick={() => handlePetNameClick(pet.name)}>
+                    <div key={index} onClick={() => handlePetNameClick(pet.external_pet_id)}>
                         <IndividualFriend key={pet.id} pet={pet} linkto={'#'}/>
                     </div>
                 ))}
@@ -72,9 +82,10 @@ function Messages(props) {
                 <div className="messages-container-display-div">
                 
                 </div>
-                <div className="messages-container-send-input-div">
-
-                </div>
+                <form className="chat-input-form" onSubmit={sendMessage}>
+                    <input className="chat-input" type="text" placeholder="Send message..." onChange={(e) => setChatValue(e.target.value)}/>
+                    <button className="chat-input-submit-button" type="submit">Submit</button>
+                </form>
             </div>
         </div>
     )
