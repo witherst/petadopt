@@ -17,7 +17,7 @@ function Messages(props) {
           let name = "Awesome Cattttttttttttttttttttttttttttttt";
           let newname = cutNameIfTooLong(name, maxNameLength);
         
-          petlist.push({id: i, name: newname, imgpath: "img/path.jpg"});
+          petlist.push({id: i, external_pet_id: newname, imgpath: "img/path.jpg"});
         }
 
         setPetlist(petlist);
@@ -55,10 +55,13 @@ function Messages(props) {
             <div className="petnames-display">
                 <h1>Messages</h1>
                 <hr className="spacer"/>
+{/* <IndividualFriend key={pet.internal_pet_id} pet={pet} linkto={'/pet/' + pet.internal_pet_id}/> */}
+{/* <IndividualFriend key={pet.id} name={pet.name} imgpath={pet.imgpath} linkto={'#'}/> */}
+
 
                 {petlist && petlist.map((pet, index) => (
                     <div key={index} onClick={() => handlePetNameClick(pet.name)}>
-                        <IndividualFriend key={pet.id} name={pet.name} imgpath={pet.imgpath} linkto={'#'}/>
+                        <IndividualFriend key={pet.id} pet={pet} linkto={'#'}/>
                     </div>
                 ))}
             </div>

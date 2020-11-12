@@ -8,29 +8,29 @@ export function Friends(props) {
         pets
     } = props;
 
+    // TODO: replace w/ pet image
+    /* note: use pet.profile_pic_id yields an id for photos table. 
+     * query photos table for internal_pic_id=pet.profile_pic_id for location of image
+     * if pet.profile_pic_id == null, use default image
+    */
+
     return (
         <div className="friends-container">
             <h1>{title}</h1>
             <hr className="spacer"/>
 
             {pets ? pets.map((pet, index) => (
-                <IndividualFriend key={pet.internal_pet_id} pet={pet} name={pet.name} imgpath={pet.imgpath} linkto={'/pet'}/>
+                <IndividualFriend key={pet.internal_pet_id} pet={pet} linkto={'/pet/' + pet.internal_pet_id}/>
             )) : ''}
         </div>
     )
 }
 
-function IndividualFriend(props){
+export function IndividualFriend(props){
     const {
         pet
     } = props;
 
-    // TODO: replace w/ pet image
-    /* note: use pet.profile_pic_id yields an id for photos table. 
-     * query photos table for internal_pic_id=pet.profile_pic_id for location of image
-     * if pet.profile_pic_id == null, use default image
-    */
-    const petroute = '/pet/' + pet.internal_pet_id;
     const MAX_NAME_LENGTH = 20;
 
 
