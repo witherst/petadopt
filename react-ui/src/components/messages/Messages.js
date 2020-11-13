@@ -4,12 +4,17 @@ import { IndividualFriend, Friends } from '../friends/Friends.js'
 import './styles/messages-style.css'
 
 function Messages(props) {
+    const {
+        user,
+        dbuser
+    } = props;
     const [petlist, setPetlist] = useState([]);
     const [selectedPet, setSelectedPet] = useState("No pet selected");
     const [chatInputText, setChatInputText] = useState('');
+    const [disableInput, setDisableInput] = useState(true);
 
-    const getPetList = () =>{
-        // TODO: Need to fill petlist with data from DB based on user or shelter.
+    const getMessagePanelList = () =>{
+        // TODO: Need to fill messagePanelList with data from DB based on user or shelter.
         //  petlist will consist of: (Name of pet, link to picture)
         const petlist = [];
         const maxNameLength = 20;
@@ -40,6 +45,7 @@ function Messages(props) {
     /* TODO: This is where we would fetch the messages from the DB or wherever */
     const handlePetNameClick = (name) => {
         setSelectedPet(name);
+        setDisableInput(false);
     }
 
     // Send message
@@ -48,7 +54,7 @@ function Messages(props) {
         console.log('submitted')
     }
 
-    // Set chat value
+    // Set chat value state
     const setChatValue = (msg) => {
         console.log(msg)
         setChatInputText(msg);
@@ -56,16 +62,69 @@ function Messages(props) {
 
   // On component render or data change useEffect() is called
     useEffect(() => {
-        getPetList();
+        getMessagePanelList();
 
         return () => {
         // cleanup
     }
-  }, [props.user])  // If user changes, get petlist again
+  }, [user, dbuser])  // If user changes, get petlist again
 
     return (
         <div className="messages-page-container">
-            <div className="petnames-display">
+
+            {/* Friends list */}
+            <MessageFriendsPanel dbuser={dbuser} petlist={petlist} handlePetNameClick={handlePetNameClick}/>
+
+            {/* Message container */}
+            <div className="messages-container">
+                    {dbuser.is_creator ? (
+                        <div className="messages-container-title-div">
+                            <h2>messaging as</h2>
+                            <h1 style={{marginTop:"-15px", marginBottom:"-15px"}}>{selectedPet}</h1>
+                            <h2>to {dbuser.username}</h2>
+                        </div>
+                    ): (
+                        <div className="messages-container-title-div">
+                            <h1>{selectedPet}</h1>
+                        </div>
+                    )}
+                    
+
+                {/* Display of chat messages in container */}
+                <div className="messages-container-display-div">
+                
+                </div>
+
+                {/* Chat input for user */}
+                {disableInput ? (
+                    <form className="chat-input-form" onSubmit={sendMessage}>
+                        <input className="chat-input" disabled type="text" placeholder="Select pet to send message" onChange={(e) => setChatValue(e.target.value)}/>
+                        <button className="chat-input-submit-button" disabled type="submit">Send</button>
+                    </form>
+                ): (
+                    <form className="chat-input-form" onSubmit={sendMessage}>
+                        <input className="chat-input" type="text" placeholder="Message..." onChange={(e) => setChatValue(e.target.value)}/>
+                        <button className="chat-input-submit-button" type="submit">Send</button>
+                    </form>
+                )}
+                
+            </div>
+        </div>
+    )
+}
+export default Messages
+
+function MessageFriendsPanel(props){
+    const {
+        petlist,
+        handlePetNameClick,
+        dbuser
+    } = props; 
+
+    {console.log(dbuser)}
+
+    return(
+        <div className="petnames-display">
                 <h1>Messages</h1>
                 <hr className="spacer"/>
 
@@ -75,20 +134,11 @@ function Messages(props) {
                     </div>
                 ))}
             </div>
-            <div className="messages-container">
-                <div className="messages-container-title-div">
-                    <h1>{selectedPet}</h1>
-                </div>
-                <div className="messages-container-display-div">
-                
-                </div>
-                <form className="chat-input-form" onSubmit={sendMessage}>
-                    <input className="chat-input" type="text" placeholder="Send message..." onChange={(e) => setChatValue(e.target.value)}/>
-                    <button className="chat-input-submit-button" type="submit">Submit</button>
-                </form>
-            </div>
-        </div>
     )
 }
 
-export default Messages
+function MessagesDisplay(props) {
+    return(
+        <div></div>
+    )
+}

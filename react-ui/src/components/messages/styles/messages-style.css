@@ -73,10 +73,21 @@
     min-height: fit-content;
 }
 
+.messages-container-title-div{
+    display: flex;
+    flex-direction: column;
+}
+
 .messages-container-title-div h1{
     font-size: 2rem;
     color: var(--text-color);
     font-weight: 500;
+}
+
+.messages-container-title-div h2{
+    font-size: 1rem;
+    color: var(--text-color);
+    font-weight: 400;
 }
 
 .messages-container-display-div{
