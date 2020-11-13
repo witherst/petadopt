@@ -1,20 +1,18 @@
-import React, { useEffect, useState, Component } from 'react';
-import'./Search.css';
+import React, { useEffect, useState, Component } from "react";
+import "./Search.css";
 import data from "./dataHome.json"; //Temp mock database
-import homeImage from './homeImages/home2.jpg'; //temp image path
-
+import homeImage from "./homeImages/home2.jpg"; //temp image path
 
 //source: modified version of
 //www.golangprograms.com/search-and-filter-list-records.html
 class SearchHome extends Component {
- 
   state = {
     itemsToDisplay: [],
     itemsToUse: [],
     desiredType: [],
     city: [],
     preferences: [],
-    dateEntered: []
+    dateEntered: [],
   };
 
   render() {
@@ -22,67 +20,59 @@ class SearchHome extends Component {
       <div>
         {/* Title for page */}
         <h1>Search for Furever Home</h1>
-      
+
         {/* Pretty line to separate search/filter from profiles */}
         <hr class="solid"></hr>
 
         {/* Define the map */}
         <div className="container">
-          {this.state.itemsToDisplay.map(home => {
+          {this.state.itemsToDisplay.map((home) => {
             let desiredType = home["Preferences"]
               .substring(1, home["Preferences"].length - 2)
               .split(",");
 
-          return (
-            // Displays the home data in boxes
-            <div className="profile">
-              <div className="profileInfo">
-                &nbsp;
-                <span className="city">{home["City"]}</span>
-                <span className="name">{home["Name"]}</span>
-                <span className="centerText"> 
-                  Prefers a pet that is: 
-                </span>
-                
-                <div className="disposition">
-                  {desiredType.map(friend => {
-                    let friendToShow = friend.substring( 
-                      1, friend.length - 1
-                    );
+            return (
+              // Displays the home data in boxes
+              <div className="profile">
+                <div className="profileInfo">
+                  &nbsp;
+                  <span className="city">{home["City"]}</span>
+                  <span className="name">{home["Name"]}</span>
+                  <span className="centerText">Prefers a pet that is:</span>
+                  <div className="disposition">
+                    {desiredType.map((friend) => {
+                      let friendToShow = friend.substring(1, friend.length - 1);
                       friendToShow = friendToShow.includes("'")
-                      ? friendToShow.substring(
-                        1, friendToShow.length
-                      ) : friendToShow;
+                        ? friendToShow.substring(1, friendToShow.length)
+                        : friendToShow;
 
-                    return (
-                      <div pill className="dispoBorder" 
-                                variant="light">
-                                {friendToShow}
-                      </div>
+                      return (
+                        <div pill className="dispoBorder" variant="light">
+                          {friendToShow}
+                        </div>
                       );
-                    },
-                  )}  
+                    })}
+                  </div>
+                </div>
+
+                {/* Separation Line before image */}
+                <div className="sepline"></div>
+
+                {/* Image, date, and Age display */}
+                <div className="stats">
+                  <div>
+                    <span className="city">
+                      Date Entered: {home["Date Entered"]}
+                    </span>
+                    <br></br>
+
+                    {/* Temp image placeholder */}
+                    <img src={homeImage} />
+                    {/* Will use when database is accessed */}
+                    {/* {home["Image Location"]} */}
+                  </div>
                 </div>
               </div>
-                  
-              {/* Separation Line before image */}
-              <div className="sepline"></div>
-
-              {/* Image, date, and Age display */}
-              <div className="stats">
-                <div>
-                  <span className="city">
-                    Date Entered: {home["Date Entered"]}
-                  </span>              
-                  <br></br>
-
-                  {/* Temp image placeholder */}
-                  <img src={homeImage}/> 
-                  {/* Will use when database is accessed */}
-                  {/* {home["Image Location"]} */}
-                </div>
-              </div>
-            </div>
             );
           })}
         </div>
@@ -90,28 +80,26 @@ class SearchHome extends Component {
     );
   } /*-- End Homes Container --*/
 
-  filterOnSearch = event => {
+  filterOnSearch = (event) => {
     if (
       !event.target.value ||
       event.target.value === " " ||
       event.target.value === ""
     )
-      this.setState({ 
-        itemsToDisplay: [...this.state.itemsToUse] 
+      this.setState({
+        itemsToDisplay: [...this.state.itemsToUse],
       });
     else {
       let itemsToDisplay = [];
       itemsToDisplay = this.state.itemsToUse.filter(
-        item =>
+        (item) =>
           item["Name"]
             .toLowerCase()
             .includes(event.target.value.toLowerCase()) ||
           item["Preferences"]
             .toLowerCase()
             .includes(event.target.value.toLowerCase()) ||
-          item["City"].toLowerCase().includes(
-            event.target.value.toLowerCase()
-          )
+          item["City"].toLowerCase().includes(event.target.value.toLowerCase())
       );
       this.setState({ itemsToDisplay });
     }
@@ -123,17 +111,15 @@ class SearchHome extends Component {
     var selected = e.options[e.selectedIndex].text;
 
     if (selected === "Choose Any")
-      this.setState({ 
-        itemsToDisplay: [...this.state.itemsToUse] 
+      this.setState({
+        itemsToDisplay: [...this.state.itemsToUse],
       });
     else {
       let itemsToDisplay = [];
-      itemsToDisplay = this.state.itemsToUse.filter(item =>
-        item["Preferences"].toLowerCase().includes(
-          selected.toLowerCase()
-        )
+      itemsToDisplay = this.state.itemsToUse.filter((item) =>
+        item["Preferences"].toLowerCase().includes(selected.toLowerCase())
       );
-    this.setState({ itemsToDisplay });
+      this.setState({ itemsToDisplay });
     }
   }; /*-- End preferences search filter handler --*/
 
@@ -145,15 +131,15 @@ class SearchHome extends Component {
       this.setState({ itemsToDisplay: [...this.state.itemsToUse] });
     else if (selected === "asc") {
       let itemsToDisplay = [...this.state.itemsToDisplay];
-        itemsToDisplay.sort(function(a, b) {
-          return a["Age"] - b["Age"];
-        });
+      itemsToDisplay.sort(function (a, b) {
+        return a["Age"] - b["Age"];
+      });
       this.setState({ itemsToDisplay });
     } else {
       let itemsToDisplay = [...this.state.itemsToDisplay];
-        itemsToDisplay.sort(function(a, b) {
-          return b["Age"] - a["Age"];
-        });
+      itemsToDisplay.sort(function (a, b) {
+        return b["Age"] - a["Age"];
+      });
       this.setState({ itemsToDisplay });
     }
   };
@@ -173,7 +159,7 @@ class SearchHome extends Component {
       data[i]["Preferences"]
         .substring(1, data[i]["Preferences"].length - 2)
         .split(",")
-        .forEach(friend => {
+        .forEach((friend) => {
           let c = friend.substring(1, friend.length - 1);
           c = c.includes("'") ? c.substring(1, c.length) : c;
 
@@ -181,18 +167,17 @@ class SearchHome extends Component {
           if (desiredType.indexOf(c) < 0) {
             desiredType.push(c);
           }
-        },
-      );
+        });
     }
 
     this.setState({ desiredType });
 
     this.setState({ itemsToDisplay }, () => {
-      this.setState({ 
-        itemsToUse: [...this.state.itemsToDisplay] 
+      this.setState({
+        itemsToUse: [...this.state.itemsToDisplay],
       });
     }); //End reRenderList by Preference
-  }/*-- reRenderList --*/
-} 
+  } /*-- reRenderList --*/
+}
 
 export default SearchHome;

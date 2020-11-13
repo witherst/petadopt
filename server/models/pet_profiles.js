@@ -10,6 +10,63 @@ const client = new Client({
 });
 client.connect();
 
+const getFilterQuery = (req) => {
+  const context = {
+    disposition: req.query.disposition,
+    type: req.query.type,
+    breed: req.query.breed,
+    color: req.query.color,
+  };
+
+  var getQuery = `SELECT * FROM pet_profiles`;
+
+  var andConcat = false;
+
+  if (context.disposition) {
+    getQuery += `
+    INNER JOIN pet_dispositions
+    ON pet_dispositions.pet_id=pet_profiles.internal_pet_id
+    INNER JOIN dispositions
+    ON dispositions.id=pet_dispositions.disposition
+    WHERE dispositions.disposition=('${context.disposition}')
+    `;
+    andConcat = true;
+  } else {
+    getQuery += ` WHERE `;
+  }
+
+  if (context.type) {
+    if (andConcat) {
+      getQuery += ` AND `;
+    } else {
+      getQuery += ` WHERE `;
+    }
+    getQuery += `animal_type=('${context.type}')`;
+    andConcat = true;
+  }
+  if (context.breed) {
+    if (andConcat) {
+      getQuery += ` AND `;
+    } else {
+      getQuery += ` WHERE `;
+    }
+    getQuery += `breed=('${context.breed}')`;
+    andConcat = true;
+  }
+  if (context.color) {
+    if (andConcat) {
+      getQuery += ` AND `;
+    } else {
+      getQuery += ` WHERE `;
+    }
+    andConcat = true;
+    getQuery += `color=('${context.color}')`;
+  }
+
+  getQuery += ` ORDER BY pet_profiles.last_updated_timestamp DESC;`;
+  return getQuery;
+};
+
 router
   .route("/")
   // get all pet profiles & data from pet_profiles table
@@ -19,7 +76,7 @@ router
     const getQuery = `
             SELECT * 
             FROM pet_profiles
-            ORDER BY last_updated_timestamp;
+            ORDER BY last_updated_timestamp DESC;
         `;
     client
       .query(getQuery)
@@ -30,6 +87,13 @@ router
         console.error(err);
       });
   });
+
+router.route("/filter").get((req, res) => {
+  var getQuery = getFilterQuery(req);
+  client.query(getQuery).then((data) => {
+    res.send(data.rows);
+  });
+});
 
 router
   .route("/user/:id")
@@ -89,78 +153,6 @@ router.route("/verify/:user_id/:pet_name").get((req, res) => {
       } else {
         res.send(false);
       }
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-});
-
-// select animals based on color
-router.route("/color/:color").get((req, res) => {
-  const color = req.params.color;
-  const getQuery = `
-            SELECT * FROM pet_profiles WHERE color=($1)
-            ORDER BY last_updated_timestamp;
-        `;
-
-  client
-    .query(getQuery, [color])
-    .then((data) => {
-      res.send(data.rows);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-});
-
-// select animals based on breed
-router.route("/breed/:breed").get((req, res) => {
-  const breed = req.params.breed;
-  const getQuery = `
-            SELECT * FROM pet_profiles WHERE breed=($1)
-            ORDER BY last_updated_timestamp;
-        `;
-
-  client
-    .query(getQuery, [breed])
-    .then((data) => {
-      res.send(data.rows);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-});
-
-// select animals based on animal type
-router.route("/type/:type").get((req, res) => {
-  const type = req.params.type;
-  const getQuery = `
-            SELECT * FROM pet_profiles WHERE animal_type=($1)
-            ORDER BY last_updated_timestamp;
-        `;
-
-  client
-    .query(getQuery, [type])
-    .then((data) => {
-      res.send(data.rows);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-});
-
-// select animals based last updated time
-router.route("/date/:date").get((req, res) => {
-  const date = req.params.date;
-  const getQuery = `
-            SELECT * FROM pet_profiles WHERE last_updated_timestamp LIKE ($1)
-            ORDER BY last_updated_timestamp;
-        `;
-  console.log("date " + date);
-  client
-    .query(getQuery, [date + "%"])
-    .then((data) => {
-      res.send(data.rows);
     })
     .catch((err) => {
       console.error(err);
