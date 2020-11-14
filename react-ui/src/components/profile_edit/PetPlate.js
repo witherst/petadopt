@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import * as Constants from "../options/constants/animal_options";
 
-import default_pet_profile_pic from "../../images/default-photo.png";
+import default_pet_profile_pic from "../../images/default-photo-pet.png";
 
 import "../../App.css";
 
