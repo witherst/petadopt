@@ -60,6 +60,29 @@
     font-size: 1rem;
 }
 
+.user-list-div{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+/* Stylind the dropdown menu that contains the user here */
+.user-list-div-select {
+    width: 70%;
+    padding: 5px;
+    border-style: none;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    color: var(--bg);
+    font-family: inherit;
+    font-size: .85rem;
+    font-weight: 500;
+}
+
+.user-list-div select:focus {
+    outline: none;
+}
+
 .messages-container{
     display: flex;
     flex-direction: column;
@@ -70,7 +93,7 @@
     width: 50%;
     max-height: 900px;
     height: 90%;
-    min-height: fit-content;
+    min-height: 250px;
 }
 
 .messages-container-title-div{
@@ -88,18 +111,6 @@
     font-size: 1rem;
     color: var(--text-color);
     font-weight: 400;
-}
-
-.messages-container-display-div{
-    display: flex;
-    background-color: var(--primary-color);
-    border: 1px solid #8cc9bd;
-    border-radius: 5px;
-    width: 80%;
-    height: 800px;
-    min-height: 50px;
-    max-height: 95%;
-    max-width: 90%;
 }
 
 .chat-input-form{
@@ -148,4 +159,42 @@
 
 .chat-input-submit-button:active{
     filter: brightness(.75);
+}
+
+/* Message container that shows chat messages */
+.messages-container-display-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: var(--primary-color);
+    border: 1px solid #8cc9bd;
+    border-radius: 5px;
+    width: 80%;
+    height: 800px;
+    min-height: 50px;
+    max-height: 95%;
+    max-width: 90%;
+    overflow: hidden;
+}
+
+/* The chat-message-container is the individual container that contains the date object, the chat message, and whatever else */
+.chat-message-container{
+    width: 100%;
+}
+
+.chat-date{
+    margin-left:10px;
+    color: var(--secondary-color);
+    font-weight: 500;
+    font-size: .75rem;
+}
+
+.chat-message{
+    margin-top: 5px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+    font-weight: 500;
+    font-size: .95rem;
+    filter:brightness(.5);
 }

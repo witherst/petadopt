@@ -104,7 +104,7 @@ function PostInput(props){
                         <option key={0} 
                             value={false} 
                             onChange={(e) => setSelectedPet(e.target.value)}
-                            />
+                            > Select pet to post</option>
                         {pets && pets.map(pet =>(
                             <option 
                                 key={pet.internal_pet_id} 
