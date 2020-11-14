@@ -39,6 +39,7 @@ CREATE TABLE public.pet_profiles
     story VARCHAR(4096),
     location VARCHAR(64),
     availability VARCHAR(32) NOT NULL,
+    creation_timestamp VARCHAR(64) NOT NULL,
     last_updated_timestamp VARCHAR(64) NOT NULL,
     profile_pic_id INT,
     profile_status VARCHAR(32) NOT NULL,

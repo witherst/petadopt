@@ -1,10 +1,10 @@
 INSERT INTO users (email, username, is_admin, is_creator, profile_pic_id)
 VALUES
-    ('email@email.com', 'email', 'true', 'true', null),
+    ('test@test.com', 'test', 'true', 'true', null),
     ('jenny@email.com', 'jh', 'true', 'true', null),
     ('tim@email.com', 'tw', 'true', 'true', null),
     ('yvonne@email.com', 'ym', 'true', 'true', null),
-    ('test@test.com', 'test', 'true', 'true', null),
+    ('email@email.com', 'email', 'true', 'true', null),
     ('notcreator@test.com', 'not a creator', 'false', 'false', null),
     ('creator@test.com', 'creator account', 'false', 'true', null);
 
@@ -17,6 +17,7 @@ INSERT INTO pet_profiles (
         location,
         availability,
         last_updated_timestamp,
+        creation_timestamp,
         profile_pic_id,
         profile_status,
         color,
@@ -32,6 +33,7 @@ INSERT INTO pet_profiles (
         36, 
         'Topeka, KS', 
         'adoptable', 
+        '2020-06-20T18:30:00.000Z', 
         '2020-06-20T18:30:00.000Z', 
         null, 
         'active',
@@ -52,16 +54,17 @@ INSERT INTO pet_profiles
     location,
     availability,
     last_updated_timestamp,
+    creation_timestamp,
     profile_pic_id,
     profile_status
     )
 VALUES
-    ('coco', 1, 'dog', null, null, 'somewhere', 'adoptable', '2020-06-20T18:30:00.000Z', null, 'active'),
-    ('butter', 1, 'cat', null, null, 'somewhere', 'adoptable', '2020-06-20T18:30:00.000Z', null, 'active'),
-    ('nut', 1, 'other', null, null, 'somewhere', 'adoptable', '2020-06-20T18:30:00.000Z', null, 'active'),
-    ('sqash', 1, 'dog', null, null, 'somewhere', 'adoptable', '2020-06-20T18:30:00.000Z', null, 'active'),
-    ('peanut', 2, 'cat', null, null, 'somewhere', 'adoptable', '2020-06-20T18:30:00.000Z', null, 'active'),
-    ('mold', 2, 'dog', null, null, 'somewhere', 'adoptable', '2020-06-20T18:30:00.000Z', null, 'active');
+    ('coco', 1, 'dog', null, null, 'somewhere', 'adoptable', '2020-06-20T18:30:00.000Z', '2020-06-20T18:30:00.000Z', null, 'active'),
+    ('butter', 1, 'cat', null, null, 'somewhere', 'adoptable', '2020-06-20T18:30:00.000Z', '2020-06-20T18:30:00.000Z', null, 'active'),
+    ('nut', 1, 'other', null, null, 'somewhere', 'adoptable', '2020-06-20T18:30:00.000Z', '2020-06-20T18:30:00.000Z', null, 'active'),
+    ('sqash', 1, 'dog', null, null, 'somewhere', 'adoptable', '2020-06-20T18:30:00.000Z', '2020-06-20T18:30:00.000Z', null, 'active'),
+    ('peanut', 2, 'cat', null, null, 'somewhere', 'adoptable', '2020-06-20T18:30:00.000Z', '2020-06-20T18:30:00.000Z', null, 'active'),
+    ('mold', 2, 'dog', null, null, 'somewhere', 'adoptable', '2020-06-20T18:30:00.000Z', '2020-06-20T18:30:00.000Z', null, 'active');
 
 INSERT INTO statuses ( status, timestamp )
 VALUES
