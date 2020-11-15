@@ -74,7 +74,7 @@ const Profile = (props) => {
 
       <Feed petStatuses={petStatuses} />
 
-      {userId == petProfile.creator_id || user.is_admin ? <CreatorUtil /> : ""}
+      {userId === petProfile.creator_id || user.is_admin ? <CreatorUtil /> : ""}
     </div>
   );
 };

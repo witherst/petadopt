@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 
 import Following from "../Following";
 import MessageButton from "../messages/MessageButton";

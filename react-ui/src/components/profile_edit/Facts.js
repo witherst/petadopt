@@ -9,7 +9,6 @@ const Facts = (props) => {
     setBreed,
     color,
     setColor,
-    age,
     setAge,
     size,
     setSize,
@@ -30,8 +29,8 @@ const Facts = (props) => {
     };
   });
 
-  const [age_years, setAgeYears] = useState();
-  const [age_months, setAgeMonths] = useState();
+  const [age_years, setAgeYears] = useState("");
+  const [age_months, setAgeMonths] = useState("");
 
   useEffect(() => {
     getOptions();
@@ -53,9 +52,16 @@ const Facts = (props) => {
     }
   };
 
-  const changeAge = () => {
-    var ageInMonths = age_years * 12 + age_months;
-    setAge(ageInMonths === 0 ? null : ageInMonths);
+  const handleChangeYears = (numYears) => {
+    console.log("changeYears: " + numYears);
+    setAgeYears(numYears);
+    setAge(numYears * 12 + age_months);
+  };
+
+  const handleChangeMonths = (numMonths) => {
+    console.log("changeMonths: " + numMonths);
+    setAgeMonths(numMonths);
+    setAge(age_years * 12 + numMonths);
   };
 
   return (
@@ -93,7 +99,7 @@ const Facts = (props) => {
         <div className="input-container">
           <label>Weight</label>
           <input
-            type="text"
+            type="number"
             value={weight}
             onChange={(e) => setWeight(e.target.value)}
           />{" "}
@@ -102,20 +108,20 @@ const Facts = (props) => {
         <div className="input-container">
           <label>Age</label>
           <input
-            type="text"
+            type="number"
             value={age_years}
             onChange={(e) => {
-              setAgeYears(e.target.value);
-              changeAge();
+              // setAgeYears(e.target.value);
+              handleChangeYears(e.target.value);
             }}
           />{" "}
           years
           <input
-            type="text"
+            type="number"
             value={age_months}
             onChange={(e) => {
-              setAgeMonths(e.target.value);
-              changeAge();
+              // setAgeMonths(e.target.value);
+              handleChangeMonths(e.target.value);
             }}
           />{" "}
           months
