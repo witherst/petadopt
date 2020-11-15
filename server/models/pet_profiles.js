@@ -196,13 +196,12 @@ router.route("/insert").post((req, res) => {
     creationTimestamp: timestamp,
     profileStatus: "Active",
   };
-  pet.age = isNaN(req.body.age) ? null : parseInt(req.body.age);
-  pet.weight = isNaN(req.body.weight) ? null : parseInt(req.body.weight);
+  pet.age = req.body.age ? parseInt(req.body.age) : null;
+  pet.weight = req.body.weight ? parseInt(req.body.weight) : null;
   pet.profilePicId = isNaN(req.body.profilePicId)
     ? null
     : parseInt(req.body.profilePicId);
 
-  console.log(pet);
   const insertQuery = `
         INSERT INTO pet_profiles (
                 external_pet_id, 

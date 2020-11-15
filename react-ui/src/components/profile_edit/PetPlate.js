@@ -22,15 +22,15 @@ const PetPlate = (props) => {
 
   useEffect(() => {}, []);
 
+  const handleUploadPhoto = () => {};
+
   return (
     <div>
       <div className="profile-pic-container">
-        <Link>
-          <p>
-            <img src={default_pet_profile_pic} />
-          </p>
-          <p>upload photo</p>
-        </Link>
+        <p>
+          <img src={default_pet_profile_pic} />
+        </p>
+        <input type="submit" onClick={handleUploadPhoto} value="upload photo" />
       </div>
       <div className="availability-container">
         <div className="input-container">

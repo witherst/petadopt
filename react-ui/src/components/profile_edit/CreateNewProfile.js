@@ -24,12 +24,12 @@ const CreateNewProfile = (props) => {
   const [petName, setPetName] = useState("");
   const [location, setLocation] = useState("");
   const [animalType, setAnimalType] = useState(initialState.animalType);
-  const [availability, setAvailability] = useState("");
+  const [availability, setAvailability] = useState(initialState.availability);
   const [breed, setBreed] = useState("");
   const [color, setColor] = useState("");
-  const [age, setAge] = useState();
+  const [age, setAge] = useState("");
   const [size, setSize] = useState("");
-  const [weight, setWeight] = useState();
+  const [weight, setWeight] = useState("");
   const [sex, setSex] = useState("");
   const [story, setStory] = useState("");
   const [dispositions, setDispositions] = useState({});
@@ -43,7 +43,6 @@ const CreateNewProfile = (props) => {
     }
 
     if (!user.is_creator && !user.is_admin) {
-      console.log(user);
       history.push("/");
     }
   }, [user]);
@@ -79,7 +78,6 @@ const CreateNewProfile = (props) => {
     }
 
     // check db for matching existing petname for user
-    console.log("userId: " + userId);
     const promise = await fetch("/api/pet/verify/" + userId + "/" + petName);
     const existingData = await promise.json();
 
@@ -109,7 +107,6 @@ const CreateNewProfile = (props) => {
         story,
       }),
     };
-    console.log(requestOptions.body);
     const promise = await fetch("/api/pet/insert", requestOptions);
     return await promise.json();
   };
@@ -119,7 +116,6 @@ const CreateNewProfile = (props) => {
     var pet_selection = [];
     Object.keys(dispositions).forEach((key) => {
       pet_selection.push(`(${petId}, ${key})`);
-      // '(' + petId + ') , (' + key +')')
     });
     const requestOptions = {
       method: "POST",
@@ -128,7 +124,6 @@ const CreateNewProfile = (props) => {
         pet_selection,
       }),
     };
-    console.log(requestOptions.body);
     await fetch("/api/disposition/insert/list", requestOptions);
   };
 
