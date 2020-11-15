@@ -1,0 +1,31 @@
+.paraLink {
+  text-align: center;
+  color: rgb(27, 129, 69);
+  font-size: 18px;
+}
+
+.paraLink:hover {
+  color: cornflowerblue;
+  font-weight: bold;
+}
+
+/* Header 1 text style */
+h1 {
+    text-align: center;
+}
+
+/* Header 2 text style */
+h2 {
+  text-align: center;
+}
+
+/* Body text style */
+body {
+    margin: 0 auto;
+    padding: 0 20px 20px 20px;
+}
+
+/* Divider lines */
+hr.solid {
+    border-top: 1px solid #bbb;
+  }

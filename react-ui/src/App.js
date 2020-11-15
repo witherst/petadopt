@@ -4,20 +4,21 @@ import { Link, BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import fire from './fire';
 import Home from './components/home/Home';
 import Auth from './components/auth/Auth';
-import Messages from './components/messages/Messages'
-import Settings from './components/settings/Settings'
-import SearchFriend from './components/search/SearchFriend'
-import SearchHome from './components/search/SearchHome'
-import Profile from './components/profile/Profile'
-import CreateNewProfile from './components/profile_edit/CreateNewProfile'
-import {DropdownMenu, Navbar, NavItem} from './components/navbar/Navbar'
+import Messages from './components/messages/Messages';
+import Settings from './components/settings/Settings';
+import SearchFriend from './components/search/SearchFriend';
+import SearchHome from './components/search/SearchHome';
+import Profile from './components/profile/Profile';
+import CreateNewProfile from './components/profile_edit/CreateNewProfile';
+import {DropdownMenu, Navbar, NavItem} from './components/navbar/Navbar';
+import ProfileManage from './components/profile_manage/ProfileManage';
 
 // Icons
-import {ReactComponent as HomeIcon} from './components/navbar/icons/home.svg'
-import {ReactComponent as SearchIcon} from './components/navbar/icons/search.svg'
-import {ReactComponent as MessageIcon} from './components/navbar/icons/messages.svg'
-import {ReactComponent as NotificationIcon} from './components/navbar/icons/notification.svg'
-import {ReactComponent as SettingsIcon} from './components/navbar/icons/settings.svg'
+import {ReactComponent as HomeIcon} from './components/navbar/icons/home.svg';
+import {ReactComponent as SearchIcon} from './components/navbar/icons/search.svg';
+import {ReactComponent as MessageIcon} from './components/navbar/icons/messages.svg';
+import {ReactComponent as NotificationIcon} from './components/navbar/icons/notification.svg';
+import {ReactComponent as SettingsIcon} from './components/navbar/icons/settings.svg';
 
 const App = () => {
   const [user, setUser] = useState(false);
@@ -105,6 +106,10 @@ const App = () => {
           <Route
             path="/search/SearchHome" 
             render={(props) => <SearchHome {...props}/>}
+          />
+          <Route
+            path="/profile_manage/ProfileManage" 
+            render={(props) => <ProfileManage {...props}/>}
           />
           <Route
             exact path="/profile/create-new" 
