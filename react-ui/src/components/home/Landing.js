@@ -1,3 +1,10 @@
+/****************************************************************
+ * Description: This is the landing page. The user will see this 
+ *    first and can select links to redirect to other pages: 
+ *    Browse for friend, look for home, create pet profile, 
+ *    featured pets, and get started (sign in to get an account) 
+ *    page.
+ ****************************************************************/
 import React from 'react';
 import'./Landing.css';
 import cat from './images/PicPlaceholder.JPG'; //temp image path
