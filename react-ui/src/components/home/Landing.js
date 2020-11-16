@@ -1,3 +1,10 @@
+/****************************************************************
+ * Description: This is the landing page. The user will see this 
+ *    first and can select links to redirect to other pages: 
+ *    Browse for friend, look for home, create pet profile, 
+ *    featured pets, and get started (sign in to get an account) 
+ *    page.
+ ****************************************************************/
 import React from 'react';
 import'./Landing.css';
 import cat from './images/PicPlaceholder.JPG'; //temp image path
@@ -6,7 +13,7 @@ import {
   } from 'react-router-dom';
 
 
-  const Landing = () => {
+const Landing = () => {
       
   return (
     <div className="Landing">
@@ -21,7 +28,9 @@ import {
           alignItems: "center"
         }}>
         <Link to={"/search/SearchFriend"}>
-          <p className="paraLink">Browse for a furever furiend</p>
+          <p className="paraLink">
+            Browse for a furever furiend
+          </p>
         </Link>
       </div>
       
@@ -31,7 +40,9 @@ import {
           alignItems: "center"
         }}>
         <Link to={"/search/SearchHome"}>
-          <p className="paraLink"> Browse for a furever home </p>       
+          <p className="paraLink"> 
+            Look for a furever home
+          </p>       
         </Link>
       </div>
       
@@ -46,22 +57,30 @@ import {
           justifyContent: "center",
           alignItems: "center"
         }}>
-        <Link to= './Profile'>
-          <p className="paraLink"> Create a profile for adoptable furries</p>         
+
+        {/* Links to create new profile */}
+        <Link to= {"/profile/create-new"}>
+          <p className="paraLink"> 
+            Create a profile for adoptable furries
+          </p>         
         </Link>
-        </div>
-          <hr class="solid"></hr>
+      </div>
+         
+      <hr class="solid"></hr>
 
       {/* Secondary Header to Showcase Furries */}
       <h2>Featured furries</h2>
-        <div style={{
+
+      <div style={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center"
-          }}>
-          <img src={cat}/></div>
+        }}>
           
-            <hr class="solid"></hr>
+        <img src={cat}/>
+      </div>
+          
+      <hr class="solid"></hr>
 
       {/* Secondary Header to give user option to join site */}
       <h2>Join our furry community on PetLinked</h2>
@@ -71,12 +90,14 @@ import {
             justifyContent: "center",
             alignItems: "center"
           }}>
-        <Link to='./SignUp'>
-          <p className="paraLink"> Get Started</p>
-        </Link>
+          <Link to='./SignUp'>
+            <p className="paraLink"> 
+              Get Started
+            </p>
+          </Link>
       </div>
     </div>
-    );
-  }
+  );
+}
 
- export default Landing
+export default Landing
