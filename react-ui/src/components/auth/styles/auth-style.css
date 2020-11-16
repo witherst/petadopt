@@ -1,0 +1,75 @@
+@import "../../../index.css";    /* Root styles */
+
+* {
+    margin: 0;
+}
+
+.auth{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--secondary-color);
+    min-width: 100%;
+    min-height: 100px;
+    padding-bottom: 20px;
+}
+
+.auth-header h1{
+    color: var(--primary-color);
+    font-weight: 600;
+    letter-spacing: .1rem;
+}
+
+.auth-header h1{
+    font-size: 4rem;
+}
+
+.auth-header h2{
+    color: var(--primary-color);
+    font-weight: 300;
+}
+
+.auth-header-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-header-container svg{
+    min-width: 100px;
+    min-height: auto;
+}
+
+.auth-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.auth-container-buttons-container{
+    display: flex;
+}
+
+.auth-join-button{
+    background-color: white;
+    height: 40px;
+    width: 120px;
+}
+
+.auth-signin-button{
+    height: 40px;
+    width: 120px;
+    background-color: red;
+}
+
+.auth-container-signin{
+    background-color: lawngreen;
+    /* min-height: 200px;
+    min-width: 200px; */
+}

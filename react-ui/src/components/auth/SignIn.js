@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import "./styles/signin-style.css";
 
 import '../../App.css';
 
@@ -15,11 +16,7 @@ const SignIn = (props) => {
     } = props;
     
     return (
-        <section className="authBody">
-            <div className="authHeader">
-                <h3>Welcome back!</h3>
-                <h4>Don't miss your opportunity to connect with your future furry friends. Sign in to stay updated on the latest adoptable pets.</h4>
-            </div>
+        <div className="login-container">
             <div className="authContainer">
                 <label htmlFor="email">email</label>
                 <input
@@ -48,7 +45,7 @@ const SignIn = (props) => {
                     </p>
                 </div>
             </div>
-        </section>
+        </div>
     );
 };
 

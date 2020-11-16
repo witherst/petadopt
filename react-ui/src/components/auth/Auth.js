@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import "./styles/auth-style.css";
+import {ReactComponent as PawIcon} from '../navbar/icons/paw.svg'
 
 import fire from '../../fire';
 import '../../App.css';
@@ -132,44 +134,61 @@ const Auth = (props) => {
   }, []);
   
     return (
-      <section className="auth">
         <div className="auth">
+            <div className="auth-header">
+              <div className="auth-header-container">
+                <div><svg viewBox="0 0 278 278"><PawIcon/></svg></div>
+                <div><h1>PetLinked</h1></div>
+              </div>
+              <h2>Make the most of your life with a furfriend</h2>
+            </div>
+
+            <div className="auth-container">
+              <div className="auth-container-buttons-container">
+                <div className="auth-join-button">
+
+                </div>
+                <div className="auth-signin-button">
+
+                </div>
+              </div>
+
+              <div className="auth-container-signin">
+                {needsAccount ? (
+                  // user has account, show sign in components
+                  <SignUp
+                    handleSignUp={handleSignUp}
+                    username={username}
+                    setUsername={setUsername}
+                    email={email} 
+                    setEmail={setEmail}
+                    password={password}
+                    setPassword={setPassword}
+                    usernameError={usernameError}
+                    emailError={emailError}
+                    passwordError={passwordError}
+                    isShelter={isShelter}
+                    setIsShelter={setIsShelter}
+                    needsAccount={true}
+                    />
+                  ) : (
+                    // otherwise, show sign up components
+                    <SignIn
+                      user={user}
+                      history={history}
+                      handleSignIn={handleSignIn}
+                      email={email} 
+                      setEmail={setEmail}
+                      password={password}
+                      setPassword={setPassword}
+                      emailError={emailError}
+                      passwordError={passwordError}
+                      needsAccount={false}
+                    />
+                  )}
+              </div>
+            </div>
         </div>
-        {
-           needsAccount ? (
-            // user has account, show sign in components
-            <SignUp
-              handleSignUp={handleSignUp}
-              username={username}
-              setUsername={setUsername}
-              email={email} 
-              setEmail={setEmail}
-              password={password}
-              setPassword={setPassword}
-              usernameError={usernameError}
-              emailError={emailError}
-              passwordError={passwordError}
-              isShelter={isShelter}
-              setIsShelter={setIsShelter}
-              needsAccount={true}
-              />
-          ) : (
-            // otherwise, show sign up components
-            <SignIn
-              user={user}
-              history={history}
-              handleSignIn={handleSignIn}
-              email={email} 
-              setEmail={setEmail}
-              password={password}
-              setPassword={setPassword}
-              emailError={emailError}
-              passwordError={passwordError}
-              needsAccount={false}
-            />
-          )
-        }
-      </section>
     );
 };
 
