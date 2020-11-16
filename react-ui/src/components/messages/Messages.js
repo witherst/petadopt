@@ -242,7 +242,6 @@ function MessageFriendsPanel(props) {
   return (
     <div className="petnames-display">
       <h1>Messages</h1>
-      {console.log(dbuser)}
 
       {/* Drop down user list IF the dbuser is a creator. */}
       {dbuser && dbuser.is_creator && (
