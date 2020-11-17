@@ -38,8 +38,6 @@ const getFilterQuery = (req) => {
   if (context.type) {
     if (andConcat) {
       getQuery += ` AND `;
-    } else {
-      getQuery += ` WHERE `;
     }
     getQuery += `animal_type=('${context.type}')`;
     andConcat = true;
@@ -47,8 +45,6 @@ const getFilterQuery = (req) => {
   if (context.breed) {
     if (andConcat) {
       getQuery += ` AND `;
-    } else {
-      getQuery += ` WHERE `;
     }
     getQuery += `breed=('${context.breed}')`;
     andConcat = true;
@@ -56,8 +52,6 @@ const getFilterQuery = (req) => {
   if (context.color) {
     if (andConcat) {
       getQuery += ` AND `;
-    } else {
-      getQuery += ` WHERE `;
     }
     andConcat = true;
     getQuery += `color=('${context.color}')`;
