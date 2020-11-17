@@ -9,6 +9,7 @@ import Settings from "./components/settings/Settings";
 import SearchHome from "./components/search/SearchHome";
 import Browse from "./components/search/Browse";
 import Profile from "./components/profile/Profile";
+import ProfileManage from './components/profile_manage/ProfileManage'; //For Manage Profile page
 import CreateNewProfile from "./components/profile_edit/CreateNewProfile";
 import { DropdownMenu, Navbar, NavItem } from "./components/navbar/Navbar";
 
@@ -133,6 +134,11 @@ const App = () => {
             exact
             path="/profile/create-new"
             render={(props) => <CreateNewProfile {...props} user={dbUser} />}
+          />
+          {/* ym-added for manage profile page */}
+          <Route
+            path="/profile_manage/ProfileManage" 
+            render={(props) => <ProfileManage {...props}/>}
           />
           <Route
             exact
