@@ -25,6 +25,8 @@ const Auth = (props) => {
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [isShelter, setIsShelter] = useState(false);
+  const [joinButtonState, setJoinButtonState] = useState(false);
+  const [signinButtonState, setSigninButtonState] = useState(true);
 
   const clearInputs = () => {
     setUsername('')
@@ -145,12 +147,12 @@ const Auth = (props) => {
 
             <div className="auth-container">
               <div className="auth-container-buttons-container">
-                <div className="auth-join-button">
-
-                </div>
-                <div className="auth-signin-button">
-
-                </div>
+                <button className="auth-join-button">
+                  Join
+                </button>
+                <button className="auth-signin-button">
+                  Sign In
+                </button>
               </div>
 
               <div className="auth-container-signin">

@@ -1,2 +1,52 @@
 @import "../../../index.css";    /* Root styles */
 
+.login-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.email-input, .password-input{
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif, 'mon';
+    font-size: 1rem;
+    min-width: 20%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+}
+
+.email-input{
+    margin-top: 30px;
+}
+
+.password-input{
+    margin-top: 10px;
+}
+
+.sign-in-button{
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif, 'mon';
+    height: 40px; 
+    min-width: 20%;
+    width: 50%;
+    font-weight: 500;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+
+    margin-top: 15%;
+    margin-bottom: 30px;
+}
+
+.sign-in-button:hover{
+    filter: brightness(.85);
+}
+
+.sign-in-button:active{
+    filter: brightness(.75);
+}

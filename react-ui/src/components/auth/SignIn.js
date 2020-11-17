@@ -17,34 +17,33 @@ const SignIn = (props) => {
     
     return (
         <div className="login-container">
-            <div className="authContainer">
-                <label htmlFor="email">email</label>
-                <input
-                    type="email"
-                    autoFocus
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <p className="errorMessage">{emailError}</p>
-                <label htmlFor="password">password</label>
-                <input
-                    type="password"
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <p className="errorMessage">{passwordError}</p>
-                <br />
-                
-                <div className="buttonContainer">
-                    <button onClick={handleSignIn}>Sign In</button>
-                    <p>
-                        New to PetLinked?
-                        <Link to="/signup">Join now</Link>
-                    </p>
-                </div>
-            </div>
+            <input
+                className="email-input"
+                type="email"
+                autoFocus
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="email"
+            />
+            {/* <p className="errorMessage">{emailError}</p> */}
+            <input
+                className="password-input"
+                type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="password"
+            />
+            {/* <div style={{margin: "0"}}> {passwordError} JKFLds</div> */}
+            {/* <p className="errorMessage">{passwordError}</p> */}
+            {/* <br /> */}
+            
+            <button className="sign-in-button" onClick={handleSignIn}>Sign In</button>
+            {/* <p>
+                New to PetLinked?
+                <Link to="/signup">Join now</Link>
+            </p> */}
         </div>
     );
 };
