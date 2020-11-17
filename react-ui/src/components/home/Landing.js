@@ -20,7 +20,7 @@ import {
           justifyContent: "center",
           alignItems: "center"
         }}>
-        <Link to={"/search/SearchFriend"}>
+        <Link to={"/browse"}>
           <p className="paraLink">Browse for a furever furiend</p>
         </Link>
       </div>
