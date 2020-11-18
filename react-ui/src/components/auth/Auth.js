@@ -27,7 +27,7 @@ const Auth = (props) => {
   const [isShelter, setIsShelter] = useState(false);
   const [joinButtonClass, setJoinButtonState] = useState("button-active button-not-active");
   const [signinButtonClass, setSigninButtonState] = useState("button-active");
-  const [showJoin, setShowJoin] = useState(true);
+  const [showJoin, setShowJoin] = useState(false);
 
   const clearInputs = () => {
     setUsername('')
