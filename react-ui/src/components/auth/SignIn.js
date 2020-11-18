@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import "./styles/signin-style.css";
 
@@ -14,6 +14,12 @@ const SignIn = (props) => {
         emailError,
         passwordError
     } = props;
+
+    const [error, setError] = useState("");
+
+    const handleForgotPassword = () => {
+        setError("Maybe you should write it down next time.");
+    }
     
     return (
         <div className="login-container">
@@ -26,7 +32,6 @@ const SignIn = (props) => {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="email"
             />
-            {/* <p className="errorMessage">{emailError}</p> */}
             <input
                 className="password-input"
                 type="password"
@@ -35,15 +40,9 @@ const SignIn = (props) => {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="password"
             />
-            {/* <div style={{margin: "0"}}> {passwordError} JKFLds</div> */}
-            {/* <p className="errorMessage">{passwordError}</p> */}
-            {/* <br /> */}
-            
+            <div className="error-message-div">{emailError} {passwordError} {error}</div>
+            <div className="forgot-password-div" onClick={() => handleForgotPassword()}>Forgot your password?</div>
             <button className="sign-in-button" onClick={handleSignIn}>Sign In</button>
-            {/* <p>
-                New to PetLinked?
-                <Link to="/signup">Join now</Link>
-            </p> */}
         </div>
     );
 };

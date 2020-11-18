@@ -25,8 +25,9 @@ const Auth = (props) => {
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [isShelter, setIsShelter] = useState(false);
-  const [joinButtonState, setJoinButtonState] = useState(false);
-  const [signinButtonState, setSigninButtonState] = useState(true);
+  const [joinButtonClass, setJoinButtonState] = useState("button-active button-not-active");
+  const [signinButtonClass, setSigninButtonState] = useState("button-active");
+  const [showJoin, setShowJoin] = useState(true);
 
   const clearInputs = () => {
     setUsername('')
@@ -134,29 +135,45 @@ const Auth = (props) => {
     clearErrors();
     clearInputs();
   }, []);
+
+  /* Probably better way to do this. I just spent 4 hours on one leetcode problem. My brain is fried. */
+  const handleAuthButtonClick = (button_type) => {
+      if(button_type == "signin"){
+        setShowJoin(false);
+        setJoinButtonState("button-active button-not-active");
+        setSigninButtonState("button-active");
+      }
+      else{
+        setShowJoin(true);
+        setJoinButtonState("button-active");
+        setSigninButtonState("button-active button-not-active");
+      }
+  };
   
     return (
         <div className="auth">
             <div className="auth-header">
               <div className="auth-header-container">
-                <div><svg viewBox="0 0 278 278"><PawIcon/></svg></div>
-                <div><h1>PetLinked</h1></div>
+              <a href='/'> 
+                <svg viewBox="0 0 278 278"><PawIcon/></svg>
+                <h1>PetLinked</h1>
+              </a>
               </div>
               <h2>Make the most of your life with a furfriend</h2>
             </div>
 
             <div className="auth-container">
               <div className="auth-container-buttons-container">
-                <button className="auth-join-button">
-                  Join
-                </button>
-                <button className="auth-signin-button">
+                <button className={"auth-signin-button " + signinButtonClass} onClick={() => handleAuthButtonClick("signin")}>
                   Sign In
+                </button>
+                <button className={"auth-join-button " + joinButtonClass} onClick={() => handleAuthButtonClick("join")}>
+                  Join
                 </button>
               </div>
 
               <div className="auth-container-signin">
-                {needsAccount ? (
+                {showJoin ? (
                   // user has account, show sign in components
                   <SignUp
                     handleSignUp={handleSignUp}
