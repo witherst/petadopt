@@ -70,6 +70,8 @@ router
     const getQuery = `
             SELECT * 
             FROM pet_profiles
+            LEFT JOIN photos
+            ON photos.internal_pic_id=pet_profiles.profile_pic_id
             ORDER BY last_updated_timestamp DESC;
         `;
     client
@@ -95,7 +97,10 @@ router
   .get((req, res) => {
     const creator_id = parseInt(req.params.id);
     const getQuery = `
-            SELECT * FROM pet_profiles WHERE creator_id=($1)
+            SELECT * FROM pet_profiles 
+            LEFT JOIN photos
+            ON photos.internal_pic_id=pet_profiles.profile_pic_id
+            WHERE creator_id=($1)
             ORDER BY last_updated_timestamp;
         `;
 
@@ -116,7 +121,10 @@ router
     const internal_pet_id = parseInt(req.params.id);
 
     const getQuery = `
-            SELECT * FROM pet_profiles WHERE internal_pet_id=($1)
+            SELECT * FROM pet_profiles 
+            LEFT JOIN photos
+            ON photos.internal_pic_id=pet_profiles.profile_pic_id
+            WHERE internal_pet_id=($1)
         `;
 
     client

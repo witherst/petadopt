@@ -1,64 +1,70 @@
-var express = require('express'),
-    router = express.Router()
+var express = require("express"),
+  router = express.Router();
 
-const { Client } = require('pg');
+const { Client } = require("pg");
 const client = new Client({
-    connectionString: process.env.DATABASE_URL,
-    ssl:{
-        rejectUnauthorized: false
-    }
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 client.connect();
 
-router.route('/')
-    // get all petmarks
-    .get((req, res) => {
-        res.set('Content-Type', 'application/json');
+router
+  .route("/")
+  // get all petmarks
+  .get((req, res) => {
+    res.set("Content-Type", "application/json");
 
-        const getQuery = `
+    const getQuery = `
             SELECT * FROM petmarks 
             INNER JOIN pet_profiles 
             ON pet_profiles.internal_pet_id = petmarks.pet_id;
+            LEFT JOIN photos
+            ON photos.internal_pic_id=pet_profiles.profile_pic_id
         `;
-        client.query(getQuery)
-            .then(data => {
-                res.send(data.rows)
-            })
-            .catch(err => {
-                console.error(err);
-            })
-    })
+    client
+      .query(getQuery)
+      .then((data) => {
+        res.send(data.rows);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  });
 
-router.route('/state')
-    .get((req, res) => {
-        const petmark = {
-            user_id: parseInt(req.query.user_id),
-            pet_id: parseInt(req.query.pet_id)
-        }
+router
+  .route("/state")
+  .get((req, res) => {
+    const petmark = {
+      user_id: parseInt(req.query.user_id),
+      pet_id: parseInt(req.query.pet_id),
+    };
 
-        const getQuery = `
+    const getQuery = `
             SELECT * FROM petmarks WHERE user_id=($1) AND pet_id=($2)
         `;
 
-        client.query(getQuery, [petmark.user_id, petmark.pet_id])
-            .then(data => {
-                if (data.rows[0]) {
-                    res.send(true)
-                } else {
-                    res.send(false)
-                }
-            })
-            .catch(err => {
-                console.error(err);
-            })
-    })
-    .post((req, res) => {
-        const petmark = {
-            userId: parseInt(req.body.userId),
-            petId: parseInt(req.body.petId)
+    client
+      .query(getQuery, [petmark.user_id, petmark.pet_id])
+      .then((data) => {
+        if (data.rows[0]) {
+          res.send(true);
+        } else {
+          res.send(false);
         }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  })
+  .post((req, res) => {
+    const petmark = {
+      userId: parseInt(req.body.userId),
+      petId: parseInt(req.body.petId),
+    };
 
-        const insertQuery = `
+    const insertQuery = `
             INSERT INTO petmarks (
                     user_id, pet_id
                 ) 
@@ -66,49 +72,42 @@ router.route('/state')
             RETURNING *
         `;
 
-        client.query(insertQuery,
-            [
-                petmark.userId,
-                petmark.petId,
-            ]
-        )
-            .then(data => {
-                res.send(data.rows)
-            })
-            .catch(err => {
-                console.error(err);
-            })
-    })
-    .delete((req, res) => {
-        const petmark = {
-            userId: parseInt(req.body.userId),
-            petId: parseInt(req.body.petId)
-        }
+    client
+      .query(insertQuery, [petmark.userId, petmark.petId])
+      .then((data) => {
+        res.send(data.rows);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  })
+  .delete((req, res) => {
+    const petmark = {
+      userId: parseInt(req.body.userId),
+      petId: parseInt(req.body.petId),
+    };
 
-        const insertQuery = `
+    const insertQuery = `
             DELETE FROM petmarks 
             WHERE user_id=($1) AND pet_id=($2)
         `;
 
-        client.query(insertQuery,
-            [
-                petmark.userId,
-                petmark.petId,
-            ]
-        )
-            .then(data => {
-                res.send(data.rows)
-            })
-            .catch(err => {
-                console.error(err);
-            })
-    })
+    client
+      .query(insertQuery, [petmark.userId, petmark.petId])
+      .then((data) => {
+        res.send(data.rows);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  });
 
-router.route('/statuses/:id')
-    // get user petmarks
-    .get((req, res) => {
-        const id = parseInt(req.params.id)
-        const getQuery = `
+router
+  .route("/statuses/:id")
+  // get user petmarks
+  .get((req, res) => {
+    const id = parseInt(req.params.id);
+    const getQuery = `
             SELECT 
                 pet_profiles.internal_pet_id, 
                 pet_profiles.external_pet_id, 
@@ -119,27 +118,28 @@ router.route('/statuses/:id')
                 INNER JOIN pet_statuses ON petmarks.pet_id = pet_statuses.pet_id
                 INNER JOIN statuses ON pet_statuses.status_id = statuses.status_id
                 INNER JOIN pet_profiles ON pet_statuses.pet_id = pet_profiles.internal_pet_id
+                LEFT JOIN photos ON photos.internal_pic_id=pet_profiles.profile_pic_id
                 WHERE petmarks.user_id=($1)
                 ORDER BY statuses.timestamp DESC;
         `;
 
-        client.query(getQuery, [id])
-            .then(data => {
-                console.log(data.rows)
-                res.send(data.rows)
-            })
-            .catch(err => {
-                console.error(err);
-            })
-    })
+    client
+      .query(getQuery, [id])
+      .then((data) => {
+        res.send(data.rows);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  });
 
-router.route('/insert').post((req, res) => {
-    var petmark = {
-        userId: parseInt(req.body.userId),
-        petId: parseInt(req.body.petId)
-    }
+router.route("/insert").post((req, res) => {
+  var petmark = {
+    userId: parseInt(req.body.userId),
+    petId: parseInt(req.body.petId),
+  };
 
-    const insertQuery = `
+  const insertQuery = `
         INSERT INTO petmarks (
                 user_id, pet_id
             ) 
@@ -147,18 +147,14 @@ router.route('/insert').post((req, res) => {
         RETURNING *
     `;
 
-    client.query(insertQuery,
-        [
-            petmark.userId,
-            petmark.petId,
-        ]
-    )
-        .then(data => {
-            res.send(data.rows)
-        })
-        .catch(err => {
-            console.error(err);
-        })
-})
+  client
+    .query(insertQuery, [petmark.userId, petmark.petId])
+    .then((data) => {
+      res.send(data.rows);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+});
 
 module.exports = router;

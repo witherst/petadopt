@@ -52,7 +52,7 @@ CREATE TABLE public.pet_profiles
 CREATE TABLE public.photos
 (
     internal_pic_id SERIAL NOT NULL,
-    endpoint VARCHAR(64),
+    endpoint VARCHAR(256),
     PRIMARY KEY (internal_pic_id)
 );
 
