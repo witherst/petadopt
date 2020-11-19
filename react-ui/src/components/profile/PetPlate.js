@@ -5,6 +5,7 @@ import MessageButton from "../messages/MessageButton";
 
 import "../../App.css";
 import ProfilePic from "../../images/ProfilePic";
+import "./styles/petplate-styles.css";
 
 const PetPlate = (props) => {
   const { petProfile, user } = props;
@@ -12,16 +13,16 @@ const PetPlate = (props) => {
   useEffect(() => {}, [user]);
 
   return (
-    <div>
+    <div className="petplate-container">
       <div className="availability-container">
-        <p>dot color</p>
-        <p>{petProfile.availability}</p>
+        <div>dot color</div>
+        <div>{petProfile.availability}</div>
       </div>
       <div className="profile-pic-container">
         <ProfilePic image={petProfile.endpoint} />
       </div>
-      <div className="profile-badge-container">
-        <h1>{petProfile.external_pet_id}</h1>
+      <div className="pet-info-container">
+        <p>{petProfile.external_pet_id}</p>
         <p>{petProfile.location}</p>
         <p>{petProfile.animal_type}</p>
         <p>

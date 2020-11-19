@@ -8,7 +8,7 @@ import Story from "./Story";
 import Feed from "./Feed";
 import CreatorUtil from "./CreatorUtil";
 
-import "../../App.css";
+import "./styles/profile-styles.css";
 
 // route: /pet/:petId
 const Profile = (props) => {
@@ -65,8 +65,7 @@ const Profile = (props) => {
     return <div />;
   }
   return (
-    <div>
-      <h1>PetId {petId}</h1>
+    <div className="profile-container">
       <PetPlate petProfile={petProfile} user={user} />
 
       <Facts petProfile={petProfile} />
