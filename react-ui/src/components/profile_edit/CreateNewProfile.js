@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { useHistory } from "react-router-dom";
 
 import * as Constants from "../options/constants/animal_options";
+import { storage } from "../../fire";
 
 import PetPlate from "./PetPlate";
 import Facts from "./Facts";
@@ -33,6 +35,7 @@ const CreateNewProfile = (props) => {
   const [sex, setSex] = useState("");
   const [story, setStory] = useState("");
   const [dispositions, setDispositions] = useState({});
+  const [photo, setPhoto] = useState(false);
 
   const [petNameError, setPetNameError] = useState("");
 
@@ -87,8 +90,40 @@ const CreateNewProfile = (props) => {
     return existingData ? false : true;
   };
 
+  // upload image to storage and return image endpoint
+  const uploadImage = async function () {
+    try {
+      const uploadTask = await storage.ref(`images/${uuidv4()}`).put(photo);
+      const downloadURL = await uploadTask.ref.getDownloadURL();
+      return downloadURL;
+    } catch (err) {
+      console.log(err);
+      alert("failed to upload image");
+    }
+  };
+
+  const getPic = async function () {
+    if (!photo) {
+      return;
+    }
+
+    const endpoint = await uploadImage();
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        endpoint,
+      }),
+    };
+
+    const promise = await fetch("/api/photo/insert", requestOptions);
+    const res = await promise.json();
+    return res.internal_pic_id;
+  };
+
   const createPetProfile = async function () {
     const creatorId = user.internal_user_id;
+    const profilePicId = await getPic();
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -105,6 +140,7 @@ const CreateNewProfile = (props) => {
         weight,
         sex,
         story,
+        profilePicId,
       }),
     };
     const promise = await fetch("/api/pet/insert", requestOptions);
@@ -165,6 +201,8 @@ const CreateNewProfile = (props) => {
         setAnimalType={setAnimalType}
         availability={availability}
         setAvailability={setAvailability}
+        photo={photo}
+        setPhoto={setPhoto}
       />
       <Facts
         animalType={animalType}

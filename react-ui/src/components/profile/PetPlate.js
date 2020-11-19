@@ -4,6 +4,7 @@ import Following from "../Following";
 import MessageButton from "../messages/MessageButton";
 
 import "../../App.css";
+import ProfilePic from "../../images/ProfilePic";
 
 const PetPlate = (props) => {
   const { petProfile, user } = props;
@@ -17,8 +18,7 @@ const PetPlate = (props) => {
         <p>{petProfile.availability}</p>
       </div>
       <div className="profile-pic-container">
-        imageplaceholderhere
-        <p>view photos</p>
+        <ProfilePic image={petProfile.endpoint} />
       </div>
       <div className="profile-badge-container">
         <h1>{petProfile.external_pet_id}</h1>

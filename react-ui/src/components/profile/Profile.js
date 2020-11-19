@@ -61,6 +61,9 @@ const Profile = (props) => {
       });
   };
 
+  if (!petProfile) {
+    return <div />;
+  }
   return (
     <div>
       <h1>PetId {petId}</h1>

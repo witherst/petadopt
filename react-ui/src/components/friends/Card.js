@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import moment from "moment";
 
 import Following from "../Following";
+import ProfilePic from "../../images/ProfilePic";
 
 const Card = (props) => {
   const { user, petId, name, timestamp, pic, path } = props;
@@ -12,7 +13,7 @@ const Card = (props) => {
     <div className="container">
       <a href={path}>
         <div>
-          <img src={pic} />
+          <ProfilePic image={pic} />
           <h3>{name}</h3>
           <p>{moment(timestamp).fromNow()}</p>
         </div>

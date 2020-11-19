@@ -19,7 +19,7 @@ const Community = (props) => {
             petId={pet.internal_pet_id}
             name={pet.external_pet_id}
             timestamp={pet.last_updated_timestamp}
-            pic={cat}
+            pic={pet.endpoint}
             path={"/pet/" + pet.internal_pet_id}
           />
         ))
