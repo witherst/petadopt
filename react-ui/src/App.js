@@ -76,20 +76,6 @@ const App = () => {
           </Navbar>
         )}
 
-        {!user && (
-          <ul>
-            <Link to="/">
-              <li>home</li>
-            </Link>
-            <Link to="/signup">
-              <li>signup</li>
-            </Link>
-            <Link to="/signin">
-              <li>signin</li>
-            </Link>
-          </ul>
-        )}
-
         <Switch>
           <Route
             exact
@@ -146,6 +132,20 @@ const App = () => {
             render={(props) => <Profile {...props} user={dbUser} />}
           />
         </Switch>
+
+        {!user && (
+          <ul>
+            <Link to="/">
+              <li>home</li>
+            </Link>
+            <Link to="/signup">
+              <li>signup</li>
+            </Link>
+            <Link to="/signin">
+              <li>signin</li>
+            </Link>
+          </ul>
+        )}
       </div>
     </Router>
   );

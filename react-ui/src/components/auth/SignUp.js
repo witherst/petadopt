@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import './styles/signup-style.css'
 
 
 const SignUp = (props) => {
@@ -19,52 +20,44 @@ const SignUp = (props) => {
     } = props;
     
     return (
-        <section className="authBody">
-            <div className="authHeader">
-                <h3>Make the most of your life with a furiend</h3>
-            </div>
-            <div className="authContainer">
-                <label>username</label>
-                <input
-                    type="text"
-                    autoFocus
-                    required
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-                <p className="errorMessage">{usernameError}</p>
-                <label>email</label>
-                <input
-                    type="text"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <p className="errorMessage">{emailError}</p>
-                <label>password</label>
-                <input
-                    type="password"
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <p className="errorMessage">{passwordError}</p>
+        <div className="login-container">
+            <input
+                className="username-input"
+                type="text"
+                autoFocus
+                required
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="username"
+            />
+            <input
+                className="email-input"
+                type="text"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="email"
+            />
+            <input
+                className="password-input"
+                type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="password"
+            />
+            <div className="error-message-div">{passwordError} {usernameError} {emailError}</div>
+            <div className="checkbox-div">
                 <input
                     type="checkbox"
                     required
                     value={isShelter}
                     onChange={(e) => { setIsShelter(!isShelter) }}
                 />
-                <label>i have furiends who need furever homes</label><br />
-                <div className="buttonContainer">
-                    <button onClick={handleSignUp}>Join</button>
-                    <p>
-                        Already on PetLinked?
-                        <Link to="/signin">Sign in</Link>
-                    </p>
-                </div>
+                <h2>I have furiends who need furever homes</h2>
             </div>
-        </section>
+            <button className="sign-up-button" onClick={handleSignUp}>Join</button>
+        </div>
     )
 }
 

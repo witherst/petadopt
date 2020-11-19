@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import "./styles/auth-style.css";
+import {ReactComponent as PawIcon} from '../navbar/icons/paw.svg'
 
 import fire from '../../fire';
 import '../../App.css';
@@ -23,6 +25,9 @@ const Auth = (props) => {
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [isShelter, setIsShelter] = useState(false);
+  const [joinButtonClass, setJoinButtonState] = useState("button-active button-not-active");
+  const [signinButtonClass, setSigninButtonState] = useState("button-active");
+  const [showJoin, setShowJoin] = useState(false);
 
   const clearInputs = () => {
     setUsername('')
@@ -130,46 +135,79 @@ const Auth = (props) => {
     clearErrors();
     clearInputs();
   }, []);
+
+  /* Probably better way to do this. I just spent 4 hours on one leetcode problem. My brain is fried. */
+  const handleAuthButtonClick = (button_type) => {
+      if(button_type == "signin"){
+        setShowJoin(false);
+        setJoinButtonState("button-active button-not-active");
+        setSigninButtonState("button-active");
+      }
+      else{
+        setShowJoin(true);
+        setJoinButtonState("button-active");
+        setSigninButtonState("button-active button-not-active");
+      }
+  };
   
     return (
-      <section className="auth">
         <div className="auth">
+            <div className="auth-header">
+              <div className="auth-header-container">
+              <a href='/'> 
+                <svg viewBox="0 0 278 278"><PawIcon/></svg>
+                <h1>PetLinked</h1>
+              </a>
+              </div>
+              <h2>Make the most of your life with a furfriend</h2>
+            </div>
+
+            <div className="auth-container">
+              <div className="auth-container-buttons-container">
+                <button className={"auth-signin-button " + signinButtonClass} onClick={() => handleAuthButtonClick("signin")}>
+                  Sign In
+                </button>
+                <button className={"auth-join-button " + joinButtonClass} onClick={() => handleAuthButtonClick("join")}>
+                  Join
+                </button>
+              </div>
+
+              <div className="auth-container-signin">
+                {showJoin ? (
+                  // user has account, show sign in components
+                  <SignUp
+                    handleSignUp={handleSignUp}
+                    username={username}
+                    setUsername={setUsername}
+                    email={email} 
+                    setEmail={setEmail}
+                    password={password}
+                    setPassword={setPassword}
+                    usernameError={usernameError}
+                    emailError={emailError}
+                    passwordError={passwordError}
+                    isShelter={isShelter}
+                    setIsShelter={setIsShelter}
+                    needsAccount={true}
+                    />
+                  ) : (
+                    // otherwise, show sign up components
+                    <SignIn
+                      user={user}
+                      history={history}
+                      handleSignIn={handleSignIn}
+                      email={email} 
+                      setEmail={setEmail}
+                      password={password}
+                      setPassword={setPassword}
+                      emailError={emailError}
+                      passwordError={passwordError}
+                      needsAccount={false}
+                    />
+                  )}
+              </div>
+            </div>
         </div>
-        {
-           needsAccount ? (
-            // user has account, show sign in components
-            <SignUp
-              handleSignUp={handleSignUp}
-              username={username}
-              setUsername={setUsername}
-              email={email} 
-              setEmail={setEmail}
-              password={password}
-              setPassword={setPassword}
-              usernameError={usernameError}
-              emailError={emailError}
-              passwordError={passwordError}
-              isShelter={isShelter}
-              setIsShelter={setIsShelter}
-              needsAccount={true}
-              />
-          ) : (
-            // otherwise, show sign up components
-            <SignIn
-              user={user}
-              history={history}
-              handleSignIn={handleSignIn}
-              email={email} 
-              setEmail={setEmail}
-              password={password}
-              setPassword={setPassword}
-              emailError={emailError}
-              passwordError={passwordError}
-              needsAccount={false}
-            />
-          )
-        }
-      </section>
     );
 };
 
