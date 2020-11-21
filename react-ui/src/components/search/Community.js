@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 
-import cat from "./friendImages/cat4.jpg"; //temp image path
-
 import Card from "../friends/Card";
 
 const Community = (props) => {

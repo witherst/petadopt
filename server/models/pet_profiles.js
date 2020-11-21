@@ -84,6 +84,25 @@ router
       });
   });
 
+router.route("/featured").get((req, res) => {
+  const getQuery = `
+            SELECT * 
+            FROM pet_profiles
+            LEFT JOIN photos
+            ON photos.internal_pic_id=pet_profiles.profile_pic_id
+            ORDER BY last_updated_timestamp DESC
+            LIMIT ($1);
+        `;
+  client
+    .query(getQuery, [req.query.num])
+    .then((data) => {
+      res.send(data.rows);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+});
+
 router.route("/filter").get((req, res) => {
   var getQuery = getFilterQuery(req);
   client.query(getQuery).then((data) => {
