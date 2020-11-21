@@ -49,11 +49,23 @@
     background-color: var(--bg);
     width: 85%;
     border-radius: 4px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
 }
 
-.filter-container h1{
+.filter-container h1, .pet-community-container h1{
     font-weight: 400;
     color: var(--text-color);
+}
+
+.pet-community-container{
+    display: flex;
+    margin-top: 25px;
+    flex-direction: column;
+    background-color: var(--bg);
+    width: 85%;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 @media only screen and (max-width: 650px){

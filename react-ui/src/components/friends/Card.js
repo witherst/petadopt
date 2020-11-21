@@ -10,7 +10,7 @@ const Card = (props) => {
   useEffect(() => {}, [user]);
 
   return (
-    <div className="container">
+    <div className="card-container">
       <a href={path}>
         <div>
           <ProfilePic image={pic} />
