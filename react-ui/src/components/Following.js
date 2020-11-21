@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 const Following = (props) => {
   const { user, petId } = props;
@@ -13,7 +12,7 @@ const Following = (props) => {
     }
     setUserId(user.internal_user_id);
     getFollowingState();
-  }, [userId]);
+  }, [user, userId]);
 
   const updateFollowingState = () => {
     if (!isFollowing) {
@@ -73,9 +72,9 @@ const Following = (props) => {
   return (
     <div>
       {user && !user.is_creator && !user.is_admin ? (
-        <Link onClick={updateFollowingState}>
+        <a onClick={updateFollowingState}>
           {isFollowing ? "unfollow" : "follow"}
-        </Link>
+        </a>
       ) : (
         ""
       )}
