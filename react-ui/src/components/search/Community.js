@@ -2,16 +2,18 @@ import React, { useEffect } from "react";
 
 import Card from "../friends/Card";
 
+import './styles/community-styles.css'
+
 const Community = (props) => {
   const { user, pets } = props;
 
   useEffect(() => {}, [user, pets]);
 
   return (
-    <div>
+    <div className="img-grid">
       {pets || pets.length > 0 ? (
         pets.map((pet) => (
-          <Card
+          <Card className="img-wrap"
             key={pet.internal_pet_id}
             user={user}
             petId={pet.internal_pet_id}
