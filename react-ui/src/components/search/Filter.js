@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "./Search.css";
-
 import * as Constants from "../options/constants/animal_options";
 import { option as SortOptions } from "../options/constants/sort_options";
 import DropdownSelection from "../options/DropdownSelection";
+
+import './styles/filter-styles.css'
 
 const Filter = (props) => {
   const { user, setPets } = props;
@@ -196,42 +196,45 @@ const Filter = (props) => {
 
   return (
     <div>
-      <DropdownSelection
-        label={"Choose Care & Behavior"}
-        options={options.disposition}
-        selection={dispositionSelection}
-        setSelection={setDispositionSelection}
-        showEmpty={true}
-      />
-      <DropdownSelection
-        label={"Choose Type"}
-        options={options.type}
-        selection={typeSelection}
-        setSelection={setTypeSelection}
-        showEmpty={true}
-      />
-      <DropdownSelection
-        label={"Choose Breed"}
-        options={options.breed}
-        selection={breedSelection}
-        setSelection={setBreedSelection}
-        showEmpty={true}
-      />
-      <DropdownSelection
-        label={"Choose Color"}
-        options={options.color}
-        selection={colorSelction}
-        setSelection={setColorSelection}
-        showEmpty={true}
-      />
-      {/* sort by option */}
-      <SortDropdownSelection
-        label={"Sort by"}
-        options={options.sort}
-        selection={sortSelection}
-        setSelection={setSortSelection}
-      />
-      <input type="submit" value="Clear" onClick={clearSelection} />
+      <div className="dropdown-container">
+        <DropdownSelection
+          label={"Choose Care & Behavior"}
+          options={options.disposition}
+          selection={dispositionSelection}
+          setSelection={setDispositionSelection}
+          showEmpty={true}
+        />
+        <DropdownSelection
+          label={"Choose Type"}
+          options={options.type}
+          selection={typeSelection}
+          setSelection={setTypeSelection}
+          showEmpty={true}
+        />
+        <DropdownSelection
+          label={"Choose Breed"}
+          options={options.breed}
+          selection={breedSelection}
+          setSelection={setBreedSelection}
+          showEmpty={true}
+        />
+        <DropdownSelection
+          label={"Choose Color"}
+          options={options.color}
+          selection={colorSelction}
+          setSelection={setColorSelection}
+          showEmpty={true}
+        />
+        {/* sort by option */}
+        <SortDropdownSelection
+          label={"Sort by"}
+          options={options.sort}
+          selection={sortSelection}
+          setSelection={setSortSelection}
+        />
+      </div>
+      
+      <div><input className="clear-button" type="submit" value="clear filters" onClick={clearSelection}/></div>
     </div>
   );
 };

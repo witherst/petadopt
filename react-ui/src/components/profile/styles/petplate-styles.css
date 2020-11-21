@@ -1,0 +1,13 @@
+@import "../../../index.css";    /* Root styles */
+
+.petplate-container{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg);
+    width: 750px;
+}
+
+.availability-container{
+    display: flex;
+    align-self: flex-end;
+}
