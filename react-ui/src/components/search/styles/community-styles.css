@@ -1,61 +1,61 @@
-@import "../../../index.css";    /* Root styles */
+@import "../../../index.css"; /* Root styles */
 
-.img-grid{
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0 4px;
-    justify-content: space-evenly;
-
+.img-grid {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+  justify-content: space-evenly;
 }
 
 .card-container {
-    flex: 25%;
-    border-radius: 4px;
-    max-width: 15%;
-    padding: 0 45px;
-    padding-bottom: 45px;
-    margin: 25px;
-    background-color: var(--secondary-color);
-    position: relative;
-    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 1px 8px 0 rgba(0, 0, 0, 0.19);
+  flex: 25%;
+  border-radius: 4px;
+  max-width: 15%;
+  padding: 0 45px;
+  padding-bottom: 45px;
+  margin: 25px;
+  background-color: var(--primary-color);
+  position: relative;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 1px 8px 0 rgba(0, 0, 0, 0.19);
 }
 
-.card-container:hover{
-    filter: brightness(1.1);
+.card-container:hover {
+  filter: brightness(1.1);
 }
 
-.card-container h3, p{
-    text-align: center;
-    color: var(--bg);
+.card-container h3,
+p {
+  text-align: center;
+  color: var(--text-color);
 }
 
-.card-container h3{
-    margin-bottom: -8px;
-    font-weight: 500;
-    font-size: 1.5rem;
+.card-container h3 {
+  margin-bottom: -8px;
+  font-weight: 500;
+  font-size: 1.5rem;
 }
 
-.card-container p{
-    font-size: .75rem;
+.card-container p {
+  font-size: 0.75rem;
 }
 
-.card-container .profile-pic img{
-    margin-top: 8px;
-    vertical-align: middle;
-    width: 100%;
-    opacity: .8;
+.card-container .profile-pic img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+  opacity: 0.8;
 }
 
-@media only screen and (max-width: 1299px){
-    .card-container{
-        max-width: 25%;
-        flex: 50%;
-    }
+@media only screen and (max-width: 1299px) {
+  .card-container {
+    max-width: 25%;
+    flex: 50%;
+  }
 }
 
-@media only screen and (max-width: 800px){
-    .card-container{
-        max-width: 50%;
-        flex: 100%;
-    }
+@media only screen and (max-width: 800px) {
+  .card-container {
+    max-width: 50%;
+    flex: 100%;
+  }
 }

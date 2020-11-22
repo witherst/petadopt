@@ -1,107 +1,107 @@
-@import "../../../index.css";    /* Root styles */
+@import "../../../index.css"; /* Root styles */
 
-.friends-container{
-    background-color: var(--bg);
-    border-radius: 10px;
+.friends-container {
+  background-color: var(--bg);
+  border-radius: 10px;
 
-    /* Below are temps (maybe) until we get data populating */
-    width: 400px;
-    min-height: 350px;
-    max-height: 400px;
+  /* Below are temps (maybe) until we get data populating */
+  width: 400px;
+  min-height: 350px;
+  max-height: 400px;
 
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 
-    overflow-y: scroll;
-    overflow-x: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 /* Scrollbar in friends container */
 .friends-container::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 
-.friends-container::-webkit-scrollbar-thumb{
-    border-radius: 15px;
-    background: var(--secondary-color);
+.friends-container::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  background: var(--secondary-color);
 }
 
-.friends-container::-webkit-scrollbar-thumb:hover{
-    background: var(--secondary-color-hover);
+.friends-container::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color-hover);
 }
 
-.friends-container h1{
-    margin-top: 10px;
-    margin-bottom: 0px;
-    font-size: 1.25rem;
-    color: var(--text-color);
-    font-weight: 400;
-    letter-spacing: .1rem;
+.friends-container h1 {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  font-size: 1.25rem;
+  color: var(--text-color);
+  font-weight: 400;
+  letter-spacing: 0.1rem;
 }
 
-.spacer{
-    width: 90%; 
-    border-color: var(--secondary-color);
-    border-style: solid;
+.spacer {
+  width: 90%;
+  border-color: var(--secondary-color);
+  border-style: solid;
 }
 
-.individual-friend-div-container{
-    margin-left: 15px;
-    margin-right: 15px;
-    display: flex;
-    flex-direction: column;
+.individual-friend-div-container {
+  margin-left: 15px;
+  margin-right: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
-.individual-friend-div-container:hover div{
-   background: var(--secondary-color-hover);
-   border-radius: 15px;
-   cursor: pointer;
+.individual-friend-div-container:hover div {
+  background: var(--secondary-color-hover);
+  border-radius: 15px;
+  cursor: pointer;
 }
 
-.individual-friend-div-container:hover h1{
-    color: var(--primary-color);
+.individual-friend-div-container:hover h1 {
+  color: var(--primary-color);
 }
 
-.individual-friend-div-container-content{
-    display: flex;
-    justify-content: center;
-    width: 100%;
+.individual-friend-div-container-content {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
-.individual-friend-div-container h1{
-    margin: auto;
-    font-size: 1rem;
-    word-wrap: normal;
-    margin-left: 15px;
+.individual-friend-div-container h1 {
+  margin: auto;
+  font-size: 1rem;
+  word-wrap: normal;
+  margin-left: 15px;
 }
 
-.individual-friend-div-container-content img{
-    height: 75px;
-    width: auto;
-    border-radius: 15px;
-    opacity: .85;
+.individual-friend-div-container-content img {
+  height: 75px;
+  width: auto;
+  border-radius: 15px;
+  opacity: 0.85;
 }
 
-.create-profile-container{
-    display: flex;
-    justify-content: center;
+.create-profile-container {
+  display: flex;
+  justify-content: center;
 }
 
-.create-profile-div{
-    margin-top: 10px;
-    border-radius: 5px;
-    color: var(--secondary-color);
-    width: fit-content;
-    cursor: pointer;
+.create-profile-div {
+  margin-top: 10px;
+  border-radius: 5px;
+  color: var(--secondary-color);
+  width: fit-content;
+  cursor: pointer;
 }
 
-.create-profile-div:hover{
-    filter:brightness(.75);
+.create-profile-div:hover {
+  filter: brightness(0.75);
 }
 
-.create-profile-div h2{
-    margin: 5px;
-    font-weight: 500;
-    font-size: 1rem;
+.create-profile-div h2 {
+  margin: 5px;
+  font-weight: 500;
+  font-size: 1rem;
 }
