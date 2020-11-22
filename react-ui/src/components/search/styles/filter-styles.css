@@ -1,82 +1,80 @@
-@import "../../../index.css";    /* Root styles */
+@import "../../../index.css"; /* Root styles */
 
-.dropdown-container{
-    display: flex;
-    flex-wrap: wrap;
+.dropdown-container {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.input-container{
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    margin-bottom: 15px;
-    margin-left: 15px;
+.input-container {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin-bottom: 15px;
+  margin-left: 15px;
 }
 
 /* Style the inside of the filter options dropdown menu here */
-.input-container select{
-    padding: 5px;
-    max-width: 300px;
-    border-style: none;
-    border-radius: 5px;
-    background-color: var(--secondary-color);
-    color: var(--bg);
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: 400;
-    max-height: 35px;
+.input-container select {
+  padding: 5px;
+  max-width: 300px;
+  border-style: none;
+  border-radius: 5px;
+  background-color: var(--bg);
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  max-height: 35px;
 }
 
 .input-container select:focus {
-    outline: none;
+  outline: none;
 }
 
-.input-container label{
-    color: var(--text-color);
-    font-weight: 500;
-    margin-bottom: 5px;
-    width: fit-content;
+.input-container label {
+  color: var(--text-color);
+  font-weight: 500;
+  margin-bottom: 5px;
+  width: fit-content;
 }
 
-.clear-button{
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif, 'mon';
-    max-height: 35px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-bottom: 5px;
-    background-color: transparent;
-    color: var(--secondary-color);
-    font-weight: 500;
-    font-size: .85rem;
-    border: none;
-    border-radius: 4px;
-    outline: none;
-    cursor: pointer;
-    align-self: center;
-    
+.clear-button {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif, "mon";
+  max-height: 35px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 5px;
+  background-color: transparent;
+  color: var(--secondary-color);
+  font-weight: 500;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  align-self: center;
 }
 
-.clear-button:hover{
-    filter: brightness(.85);
+.clear-button:hover {
+  filter: brightness(0.85);
 }
 
-.clear-button:active{
-    filter: brightness(.55);
+.clear-button:active {
+  filter: brightness(0.55);
 }
 
-@media only screen and (max-width: 1020px){
-    .dropdown-container{
-        flex-direction: column;
-        align-items: center;
-    }
-    .input-container{
-        align-items: center;
-        width: 75%;
-    }
-    .input-container select{
-        width: 75%;
-    }
-
+@media only screen and (max-width: 1020px) {
+  .dropdown-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .input-container {
+    align-items: center;
+    width: 75%;
+  }
+  .input-container select {
+    width: 75%;
+  }
 }
