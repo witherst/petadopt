@@ -30,28 +30,25 @@ import { ReactComponent as SettingsIcon } from "./components/navbar/icons/settin
 const App = () => {
   const [user, setUser] = useState(false);
   const [dbUser, setDbUser] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(true);
 
   const handleLogout = () => {
     fire.auth().signOut();
     setDbUser(false);
+    setIsSignedIn(false);
   };
 
   const authListener = () => {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
         setUser(user);
+        setIsSignedIn(true);
       } else {
         setUser(false);
+        setIsSignedIn(false);
       }
     });
   };
-
-  useEffect(() => {
-    authListener();
-    if (user.email) {
-      getUserId();
-    }
-  }, [user, dbUser]);
 
   const getUserId = () => {
     if (!user) {
@@ -63,6 +60,13 @@ const App = () => {
         setDbUser(res);
       });
   };
+
+  useEffect(() => {
+    authListener();
+    if (user.email) {
+      getUserId();
+    }
+  }, [user, dbUser, isSignedIn]);
 
   return (
     <Router>
@@ -82,37 +86,28 @@ const App = () => {
             </NavItem>
           </Navbar>
         )}
-
         <Switch>
           <Route exact path="/">
-            {user ? (
+            {isSignedIn ? (
               <Home user={dbUser} handleLogout={handleLogout} />
             ) : (
               <Landing />
             )}
           </Route>
-          <Route
-            path="/signup"
-            render={(props) => (
-              <Auth
-                {...props}
-                user={user}
-                setUser={setUser}
-                needsAccount={true}
-              />
+          <Route path="/signup">
+            {isSignedIn ? (
+              <Redirect to="/" />
+            ) : (
+              <Auth user={user} authListener={authListener} />
             )}
-          />
-          <Route
-            path="/signin"
-            render={(props) => (
-              <Auth
-                {...props}
-                user={user}
-                setUser={setUser}
-                needsAccount={false}
-              />
+          </Route>
+          <Route path="/signin">
+            {isSignedIn ? (
+              <Redirect to="/" />
+            ) : (
+              <Auth user={user} authListener={authListener} />
             )}
-          />
+          </Route>
           <Route
             path="/messages"
             render={(props) => <Messages {...props} dbuser={dbUser} />}
