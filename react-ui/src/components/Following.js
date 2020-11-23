@@ -70,10 +70,10 @@ const Following = (props) => {
   };
 
   return (
-    <div>
+    <div className="follow-text-div">
       {user && !user.is_creator && !user.is_admin ? (
         <a onClick={updateFollowingState}>
-          {isFollowing ? "unfollow" : "follow"}
+          {isFollowing ? "Unfollow" : "Follow"}
         </a>
       ) : (
         ""
