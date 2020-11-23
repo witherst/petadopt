@@ -5,7 +5,7 @@ const ProfilePic = (props) => {
   const { image } = props;
 
   return (
-    <div>
+    <div className="profile-pic">
       <img src={image ? image : default_pic} />
     </div>
   );

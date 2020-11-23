@@ -1,0 +1,60 @@
+@import "../../../index.css";    /* Root styles */
+
+.info-container{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg);
+    justify-content: center;
+    min-width: 475px;
+    width: 50%;
+    max-width: 750px;
+    margin-top: 25px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+}
+
+.info-container h1{
+    color: var(--text-color);
+    text-align: left;
+    margin-left: 40px;
+    font-weight: 500;
+}
+
+.body-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 40px;
+    max-width: fit-content;
+    
+}
+
+.disposition-container{
+    display: flex;
+    flex: 33%;
+    width: 100%;
+    margin-bottom: 30px;
+    align-content: center;
+}
+
+.disposition-container h3{
+    color: var(--text-color);
+    font-weight: 400;
+    font-size: 1.1rem;
+}
+
+.disposition-container svg{
+    fill: green;
+    width: 30px;
+    height: 30px;
+}
+
+@media only screen and (max-width: 1200px){
+    .disposition-container{
+        flex:50%;
+    }
+}
+
+@media only screen and (max-width: 550px){
+    .disposition-container{
+        flex:100%;
+    }
+}

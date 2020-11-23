@@ -1,0 +1,46 @@
+@import "../../../index.css";    /* Root styles */
+
+.facts-container{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg);
+    justify-content: center;
+    min-width: 475px;
+    width: 50%;
+    max-width: 750px;
+    margin-top: 25px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+}
+
+.facts-container h1{
+    text-align: left;
+    color: var(--text-color);
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.facts-info-div{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+    margin-left: 40px;
+    text-transform: capitalize;
+}
+
+.facts-info-div div{
+    flex: 33%;
+    margin-bottom: 30px;
+    color: var(--text-color);
+}
+
+.facts-info-div div h3{
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+@media only screen and (max-width: 1200px){
+    .facts-info-div div{
+        flex:50%;
+    }
+}

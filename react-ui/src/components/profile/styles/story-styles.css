@@ -1,0 +1,32 @@
+@import "../../../index.css";    /* Root styles */
+
+.story-container{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg);
+    justify-content: center;
+    min-width: 475px;
+    width: 50%;
+    max-width: 750px;
+    margin-top: 25px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+    word-wrap: break-word;
+}
+
+.story-container h1{
+    color: var(--text-color);
+    text-align: left;
+    margin-left: 40px;
+    font-weight: 500;
+}
+
+.story-container p{
+    margin: 0;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 30px;
+    color: var(--text-color);
+    word-wrap: break-word;
+    max-width: fit-content;
+    text-align: justify;
+}

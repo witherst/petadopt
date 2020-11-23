@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import './styles/info-styles.css'
+import {ReactComponent as CheckIcon} from './icons/check.svg'
 
 const Info = (props) => {
     const {
@@ -9,9 +11,9 @@ const Info = (props) => {
     }, []);
 
     return (
-        <div>
+        <div className="info-container">
             <h1>Info</h1>
-            <div className='body-container'>
+            <div className="body-container">
                 {petDispositions ? petDispositions.map((item) =>
                     <Disposition key={item.id} disposition={item.disposition} />) :
                     ''}
@@ -23,8 +25,8 @@ const Info = (props) => {
 const Disposition = (props) => {
     return (
         <div className='disposition-container'>
-            <div className='icon-container'>icon</div>
-            <p>{props.disposition}</p>
+            <svg viewBox="0 0 700 700"><CheckIcon/></svg>            
+            <h3>{props.disposition}</h3>
         </div>
     )
 }
