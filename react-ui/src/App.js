@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Link, BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  Link,
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
 import fire from "./fire";
 import Home from "./components/home/Home";
+import Landing from "./components/home/Landing";
 import Auth from "./components/auth/Auth";
 import Messages from "./components/messages/Messages";
 import Settings from "./components/settings/Settings";
 import SearchHome from "./components/search/SearchHome";
 import Browse from "./components/search/Browse";
 import Profile from "./components/profile/Profile";
-import ProfileManage from './components/profile_manage/ProfileManage'; //For Manage Profile page
+import ProfileManage from "./components/profile_manage/ProfileManage"; //For Manage Profile page
 import CreateNewProfile from "./components/profile_edit/CreateNewProfile";
 import { DropdownMenu, Navbar, NavItem } from "./components/navbar/Navbar";
 
@@ -44,7 +51,7 @@ const App = () => {
     if (user.email) {
       getUserId();
     }
-  }, [user]);
+  }, [user, dbUser]);
 
   const getUserId = () => {
     if (!user) {
@@ -71,19 +78,19 @@ const App = () => {
               name="notifications"
             />
             <NavItem icon={<SettingsIcon />} route="#" name="settings">
-              <DropdownMenu />
+              <DropdownMenu handleLogout={handleLogout} />
             </NavItem>
           </Navbar>
         )}
 
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={(props) => (
-              <Home {...props} user={dbUser} handleLogout={handleLogout} />
+          <Route exact path="/">
+            {user ? (
+              <Home user={dbUser} handleLogout={handleLogout} />
+            ) : (
+              <Landing />
             )}
-          />
+          </Route>
           <Route
             path="/signup"
             render={(props) => (
@@ -106,7 +113,10 @@ const App = () => {
               />
             )}
           />
-          <Route path="/messages" render={(props) => <Messages {...props}  dbuser={dbUser}/>} />
+          <Route
+            path="/messages"
+            render={(props) => <Messages {...props} dbuser={dbUser} />}
+          />
           <Route path="/settings" render={(props) => <Settings {...props} />} />
           <Route
             path="/Browse"
@@ -123,8 +133,8 @@ const App = () => {
           />
           {/* ym-added for manage profile page */}
           <Route
-            path="/profile_manage/ProfileManage" 
-            render={(props) => <ProfileManage {...props}/>}
+            path="/profile_manage/ProfileManage"
+            render={(props) => <ProfileManage {...props} />}
           />
           <Route
             exact
