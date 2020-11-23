@@ -12,12 +12,16 @@
     flex: 25%;
     border-radius: 4px;
     max-width: 15%;
-    padding: 0 45px;    /*  up and down 0px, left and right 45px */
+    padding: 0 45px;
+    padding-bottom: 45px;
     margin: 25px;
     background-color: var(--secondary-color);
     position: relative;
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 1px 8px 0 rgba(0, 0, 0, 0.19);
+}
 
+.card-container:hover{
+    filter: brightness(1.1);
 }
 
 .card-container h3, p{
@@ -35,9 +39,8 @@
     font-size: .75rem;
 }
 
-.card-container img{
+.card-container .profile-pic img{
     margin-top: 8px;
-    margin-bottom: -10px;
     vertical-align: middle;
     width: 100%;
     opacity: .8;

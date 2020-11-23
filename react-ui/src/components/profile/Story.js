@@ -1,14 +1,13 @@
 import React from "react";
+import './styles/story-styles.css'
 
 const Story = (props) => {
   const { story } = props;
 
   return (
-    <div>
+    <div className="story-container">
       <h1>Story</h1>
-      <div className="body-container">
-        <p>{story}</p>
-      </div>
+      <p>{story}</p>
     </div>
   );
 };

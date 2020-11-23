@@ -66,6 +66,7 @@
 .individual-friend-div-container-content{
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .individual-friend-div-container h1{

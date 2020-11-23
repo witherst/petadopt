@@ -125,6 +125,7 @@ a {
     border-radius: var(--border-radius);
     padding: 1rem;
     overflow: hidden;
+    box-shadow: var(--shadow);
 }
 
 .menu-item{
