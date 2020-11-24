@@ -18,14 +18,7 @@ import Browse from "./components/search/Browse";
 import Profile from "./components/profile/Profile";
 import Manage from "./components/manage/Manage";
 import CreateNewProfile from "./components/profile_edit/CreateNewProfile";
-import { DropdownMenu, Navbar, NavItem } from "./components/navbar/Navbar";
-
-// Icons
-import { ReactComponent as HomeIcon } from "./components/navbar/icons/home.svg";
-import { ReactComponent as SearchIcon } from "./components/navbar/icons/search.svg";
-import { ReactComponent as MessageIcon } from "./components/navbar/icons/messages.svg";
-import { ReactComponent as NotificationIcon } from "./components/navbar/icons/notification.svg";
-import { ReactComponent as SettingsIcon } from "./components/navbar/icons/settings.svg";
+import { Navbar } from "./components/navbar/Navbar";
 
 const App = () => {
   const [user, setUser] = useState(false);
@@ -66,6 +59,7 @@ const App = () => {
   };
 
   useEffect(() => {
+    if (isSignedIn && dbUser) return;
     authListener();
     if (user.email) {
       getUserId();
@@ -75,21 +69,7 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        {user && (
-          <Navbar>
-            <NavItem icon={<HomeIcon />} route="/" name="home" />
-            <NavItem icon={<SearchIcon />} route="/browse" name="search" />
-            <NavItem icon={<MessageIcon />} route="/messages" name="messages" />
-            <NavItem
-              icon={<NotificationIcon />}
-              route="/notifications"
-              name="notifications"
-            />
-            <NavItem icon={<SettingsIcon />} route="#" name="settings">
-              <DropdownMenu handleLogout={handleLogout} />
-            </NavItem>
-          </Navbar>
-        )}
+        <Navbar handleLogout={handleLogout} isSignedIn={isSignedIn} />
         <Switch>
           <Route exact path="/">
             {isSignedIn ? (

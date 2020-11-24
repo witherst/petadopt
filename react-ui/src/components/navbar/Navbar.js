@@ -2,6 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import { ReactComponent as PawIcon } from "./icons/paw.svg";
 import "./styles/navbar-styles.css";
 
+// Icons
+import { ReactComponent as HomeIcon } from "./icons/home.svg";
+import { ReactComponent as SearchIcon } from "./icons/search.svg";
+import { ReactComponent as MessageIcon } from "./icons/messages.svg";
+import { ReactComponent as NotificationIcon } from "./icons/notification.svg";
+import { ReactComponent as SettingsIcon } from "./icons/settings.svg";
+
 export function Navbar(props) {
   return (
     <div className="navbar-div">
@@ -21,6 +28,28 @@ export function Navbar(props) {
       <div className="navbar">
         <ul className="navbar-nav">{props.children}</ul>
       </div>
+
+      {props.isSignedIn && (
+        <NavItem icon={<HomeIcon />} route="/" name="home" />
+      )}
+      {props.isSignedIn && (
+        <NavItem icon={<SearchIcon />} route="/browse" name="search" />
+      )}
+      {props.isSignedIn && (
+        <NavItem icon={<MessageIcon />} route="/messages" name="messages" />
+      )}
+      {props.isSignedIn && (
+        <NavItem
+          icon={<NotificationIcon />}
+          route="/notifications"
+          name="notifications"
+        />
+      )}
+      {props.isSignedIn && (
+        <NavItem icon={<SettingsIcon />} route="#" name="settings">
+          <DropdownMenu handleLogout={props.handleLogout} />
+        </NavItem>
+      )}
     </div>
   );
 }
