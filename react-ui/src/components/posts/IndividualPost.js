@@ -15,7 +15,7 @@ const IndividualPost = (props) => {
       <a href={route}>
         <div className="individual-post-nameplate-div">
           <Nameplate
-            name={post.external_pet_id}
+            name={props.external_pet_id}
             subtext={moment(post.timestamp).fromNow()}
             picLoc={post.endpoint}
           />
