@@ -273,4 +273,41 @@ router.route("/insert").post((req, res) => {
     });
 });
 
+router.route("/delete").delete((req, res) => {
+  const petId = req.body.petId;
+  const deleteQuery = `
+    DELETE FROM pet_profiles WHERE internal_pet_id=($1)
+  `;
+  client
+    .query(deleteQuery, [petId])
+    .then((data) => {
+      res.send(true);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+});
+
+router.route("/update/availability").put((req, res) => {
+  const context = {
+    petId: req.body.petId,
+    availability: req.body.availability,
+  };
+  const putQuery = `
+    UPDATE pet_profiles
+    SET availability=($1)
+    WHERE internal_pet_id=($2)
+    RETURNING *;
+  `;
+
+  client
+    .query(putQuery, [context.availability, context.petId])
+    .then((data) => {
+      res.send(data.rows[0]);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 module.exports = router;

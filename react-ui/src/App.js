@@ -16,7 +16,7 @@ import Settings from "./components/settings/Settings";
 import SearchHome from "./components/search/SearchHome";
 import Browse from "./components/search/Browse";
 import Profile from "./components/profile/Profile";
-import ProfileManage from "./components/profile_manage/ProfileManage"; //For Manage Profile page
+import Manage from "./components/manage/Manage";
 import CreateNewProfile from "./components/profile_edit/CreateNewProfile";
 import { DropdownMenu, Navbar, NavItem } from "./components/navbar/Navbar";
 
@@ -58,6 +58,10 @@ const App = () => {
       .then((res) => res.json())
       .then((res) => {
         setDbUser(res);
+      })
+      .catch((err) => {
+        console.error(user.email);
+        console.error(err);
       });
   };
 
@@ -126,11 +130,9 @@ const App = () => {
             path="/profile/create-new"
             render={(props) => <CreateNewProfile {...props} user={dbUser} />}
           />
-          {/* ym-added for manage profile page */}
-          <Route
-            path="/profile_manage/ProfileManage"
-            render={(props) => <ProfileManage {...props} />}
-          />
+          <Route path="/manage">
+            {isSignedIn ? <Manage user={dbUser} /> : <Redirect to="/" />}
+          </Route>
           <Route
             exact
             path="/pet/:petId"
