@@ -49,7 +49,7 @@ export function Posts(props) {
             {(user.is_creator || user.is_admin) && <PostInput pets={pets} setPosts={setPosts}/>}
             <div>
                 { posts ? posts.map(post => 
-                    <IndividualPost key={post.status_id} post={post} />
+                    <IndividualPost key={post.status_id} post={post} external_pet_id={post.external_pet_id}/>
                 ) : '' }
             </div>
         </div>

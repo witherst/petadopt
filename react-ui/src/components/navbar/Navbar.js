@@ -27,29 +27,28 @@ export function Navbar(props) {
       ></input>
       <div className="navbar">
         <ul className="navbar-nav">{props.children}</ul>
+        {props.isSignedIn && (
+          <NavItem icon={<HomeIcon />} route="/" name="home" />
+        )}
+        {props.isSignedIn && (
+          <NavItem icon={<SearchIcon />} route="/browse" name="search" />
+        )}
+        {props.isSignedIn && (
+          <NavItem icon={<MessageIcon />} route="/messages" name="messages" />
+        )}
+        {props.isSignedIn && (
+          <NavItem
+            icon={<NotificationIcon />}
+            route="/notifications"
+            name="notifications"
+          />
+        )}
+        {props.isSignedIn && (
+          <NavItem icon={<SettingsIcon />} route="#" name="settings">
+            <DropdownMenu handleLogout={props.handleLogout} />
+          </NavItem>
+        )}
       </div>
-
-      {props.isSignedIn && (
-        <NavItem icon={<HomeIcon />} route="/" name="home" />
-      )}
-      {props.isSignedIn && (
-        <NavItem icon={<SearchIcon />} route="/browse" name="search" />
-      )}
-      {props.isSignedIn && (
-        <NavItem icon={<MessageIcon />} route="/messages" name="messages" />
-      )}
-      {props.isSignedIn && (
-        <NavItem
-          icon={<NotificationIcon />}
-          route="/notifications"
-          name="notifications"
-        />
-      )}
-      {props.isSignedIn && (
-        <NavItem icon={<SettingsIcon />} route="#" name="settings">
-          <DropdownMenu handleLogout={props.handleLogout} />
-        </NavItem>
-      )}
     </div>
   );
 }

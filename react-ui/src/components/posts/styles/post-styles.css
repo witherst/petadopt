@@ -14,6 +14,8 @@
     background-color: var(--bg);
     margin: 25px;
     border-radius: 10px;
+
+    box-shadow: var(--shadow);
 }
 
 .post-as-container{
@@ -47,6 +49,12 @@
     font-size: 1.25rem;
     font-weight: 400;
 }
+
+/* .post-input-container textarea:focus{
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--secondary-color);
+} */
 
 .post-as-container select:focus {
     outline: none;
@@ -104,6 +112,7 @@
     background-color: var(--bg);
     margin: 25px;
     border-radius: 10px;
+    box-shadow: var(--shadow);
 }
 
 /* Style individual nameplate with this css tag */
@@ -159,7 +168,7 @@
 }
 
 .like-container:hover, .share-container:hover, .post-button-container:hover{
-    filter: brightness(.75);
+    filter: brightness(.5);
 }
 
 .like-container h1, .share-container h1{

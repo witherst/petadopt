@@ -1,0 +1,32 @@
+@import "../../../index.css";    /* Root styles */
+
+.profile-container .creator-utils-container{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: var(--bg);
+    min-width: 475px;
+    min-height: 50px;
+    width: 50%;
+    max-width: 750px;
+    margin-top: 25px;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+    font-weight: 500;
+}
+
+.profile-container .creator-utils-container a:hover{
+    filter: brightness(5);
+}
+
+@media only screen and (max-width: 1200px){
+    .profile-container .creator-utils-container{
+        flex-direction: column;
+    }
+
+    .profile-container .creator-utils-container a{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}

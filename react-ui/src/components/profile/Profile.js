@@ -22,7 +22,6 @@ const Profile = (props) => {
   const [petProfile, setPetProfile] = useState(false);
   const [petDispositions, setPetDispositions] = useState(false);
   const [petStatuses, setPetStatuses] = useState(false);
-
   useEffect(() => {
     initializeIds();
     if (petId) {
@@ -66,6 +65,8 @@ const Profile = (props) => {
   }
   return (
     <div className="profile-container">
+      {userId === petProfile.creator_id || user.is_admin ? <CreatorUtil /> : ""}
+
       <PetPlate petProfile={petProfile} user={user} />
 
       <Facts petProfile={petProfile} />
@@ -74,9 +75,7 @@ const Profile = (props) => {
 
       <Story story={petProfile.story} />
 
-      <Feed petStatuses={petStatuses} />
-
-      {userId === petProfile.creator_id || user.is_admin ? <CreatorUtil /> : ""}
+      <Feed petStatuses={petStatuses} external_pet_id={petProfile.external_pet_id}/>
     </div>
   );
 };

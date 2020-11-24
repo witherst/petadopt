@@ -1,0 +1,40 @@
+@import "../../../index.css";    /* Root styles */
+
+.feed-container{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg);
+    justify-content: center;
+    min-width: 475px;
+    width: 50%;
+    max-width: 750px;
+    margin-top: 25px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+}
+
+.feed-container h1{
+    text-align: left;
+    color: var(--text-color);
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.feed-body-container{
+    align-self: center;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    width: 75%;
+}
+
+.feed-body-container .individual-post .individual-post-nameplate-div .nameplate-container .nameplate-text-container h1{
+    margin: 0;
+    margin-bottom: -15px;
+}
+
+.feed-body-container .individual-post .individual-post-likeshare-container .like-container h1{
+    margin-left: 5px;
+}
+
+.feed-body-container .individual-post .individual-post-likeshare-container .share-container h1{
+    margin-left: 5px;
+}
