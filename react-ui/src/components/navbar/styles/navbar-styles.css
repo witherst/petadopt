@@ -51,15 +51,19 @@ a {
     flex:1;
     padding: 10px 20px;
     margin: 20px 0;
-    border: none;
+    /* border: none; */
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--secondary-color);
     border-radius: 4px;
     max-width: 30%;
     justify-self: center;
-    outline: none;
+    outline: 0;
 }
 
 
 .navbar {
+    display: flex;
     margin: auto;
     padding: 0 1rem;
 }
