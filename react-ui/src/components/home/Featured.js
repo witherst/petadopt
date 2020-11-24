@@ -30,6 +30,7 @@ const Featured = (props) => {
             <Card
               key={pet.internal_pet_id}
               user={false}
+              name={pet.external_pet_id}
               petId={pet.internal_pet_id}
               timestamp={pet.last_updated_timestamp}
               pic={pet.endpoint}
