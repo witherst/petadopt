@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import * as Constants from "../options/constants/animal_options";
 
 import default_pet_profile_pic from "../../images/default-photo-pet.png";
+import './styles/petplate-styles.css'
 
-import "../../App.css";
 
 const PetPlate = (props) => {
   const {
@@ -51,28 +51,25 @@ const PetPlate = (props) => {
   };
 
   return (
-    <div>
-      <div className="profile-pic-container">
-        <div onClick={handleEditImage}>
-          <img src={imagePreview ? imagePreview : default_pet_profile_pic} />
-          <input
-            type="file"
-            id="image-select"
-            onChange={handlePhotoChange}
-            accept="image/*"
-            hidden="hidden"
-          />
-          <a htmlFor="input">Edit profile pic</a>
-        </div>
+    <div className="pet-plate-container">
+      <div className="profile-pic-container" onClick={handleEditImage}>
+        <img src={imagePreview ? imagePreview : default_pet_profile_pic} />
+        <input
+          type="file"
+          id="image-select"
+          onChange={handlePhotoChange}
+          accept="image/*"
+          hidden="hidden"/>
+        <a htmlFor="input">Add/Edit Profile Picture</a>
       </div>
+
       <div className="availability-container">
         <div className="input-container">
           <label>Availability</label>
           <select
             required
             value={availability}
-            onChange={(e) => setAvailability(e.target.value)}
-          >
+            onChange={(e) => setAvailability(e.target.value)}>
             {Object.keys(Constants.availability_options).map((key) => (
               <option
                 key={key}
@@ -84,7 +81,27 @@ const PetPlate = (props) => {
             ))}
           </select>
         </div>
+              
+        <div className="input-container">
+          <label>Animal Type</label>
+          <select
+            value={animalType}
+            onChange={(e) => setAnimalType(e.target.value)}>
+
+            {Object.keys(Constants.types).map((key) => (
+              <option
+                key={key}
+                value={Constants.types[key]}
+                onChange={(e) => setAnimalType(e.target.value)}>
+
+                {Constants.types[key]}
+              </option>
+            ))}
+          </select>
+        </div>
+
       </div>
+
       <div className="profile-badge-container">
         <div className="input-container">
           <label>Petname</label>
@@ -92,38 +109,23 @@ const PetPlate = (props) => {
             type="text"
             required
             value={petName}
-            onChange={(e) => setPetName(e.target.value)}
-          />
+            placeholder="ex: snuffles"
+            onChange={(e) => setPetName(e.target.value)}/>
           <p className="errorMessage">{petNameError}</p>
         </div>
+
         <div className="input-container">
           <label>Location</label>
           <input
             type="text"
             required
             value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          />
+            placeholder="ex: Los Angeles, CA"
+            onChange={(e) => setLocation(e.target.value)}/>
         </div>
 
-        <div className="input-container">
-          <label>Animal Type</label>
-          <select
-            value={animalType}
-            onChange={(e) => setAnimalType(e.target.value)}
-          >
-            {Object.keys(Constants.types).map((key) => (
-              <option
-                key={key}
-                value={Constants.types[key]}
-                onChange={(e) => setAnimalType(e.target.value)}
-              >
-                {Constants.types[key]}
-              </option>
-            ))}
-          </select>
-        </div>
       </div>
+
     </div>
   );
 };

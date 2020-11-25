@@ -1,0 +1,63 @@
+@import "../../../index.css"; /* Root styles */
+
+.create-facts-container{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg);
+    align-items: flex-start;
+    min-width: fit-content;
+    width: 50%;
+    max-width: 750px;
+    margin-top: 25px;
+    box-shadow: var(--shadow);
+    padding: 25px;
+}
+
+.create-facts-container h1{
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.create-facts-container .body-container{
+    justify-content: space-between;
+    margin: 0;
+}
+
+.create-facts-container .body-container .input-container{
+    margin: 0;
+    margin-bottom: 25px;
+    align-items: flex-start;
+}
+
+.create-facts-container .body-container .input-container label{
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.create-facts-container .body-container .input-container select{
+    width: 100%;
+}
+
+.create-facts-container .body-container .input-container input{
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif, 'mon';
+    font-size: 1rem;
+    outline: 0;
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--secondary-color);
+    border-radius: 4px;
+    width: 97%;
+    max-width: 286px; 
+    padding: 5px;
+}
+
+.age-input-container{
+    display: flex;
+    font-size: .75rem;
+}
+
+.profile-edit-age-input{
+    margin-right: 15px;
+}
