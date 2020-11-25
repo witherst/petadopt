@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { confirmAlert } from "react-confirm-alert";
 
 const Delete = (props) => {
-  const { pet } = props;
+  const { pet, setMount } = props;
 
   useEffect(() => {}, [pet]);
 
@@ -31,6 +31,7 @@ const Delete = (props) => {
     };
     const promise = await fetch("/api/pet/delete", requestOptions);
     const res = await promise.json();
+    res && setMount && setMount(false);
   };
 
   return (

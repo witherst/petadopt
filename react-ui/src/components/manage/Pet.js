@@ -9,6 +9,7 @@ const Pet = (props) => {
   const { user, isSeeker, pet } = props;
   const [petId, setPetId] = useState(false);
   const [availability, setAvailability] = useState(false);
+  const [mount, setMount] = useState(true);
 
   const initPet = () => {
     setPetId(pet.internal_pet_id);
@@ -19,7 +20,7 @@ const Pet = (props) => {
 
   useEffect(() => {
     initPet();
-  }, [pet, availability]);
+  }, [pet, availability, mount]);
 
   const availabilityOptions = Object.values(availability_options).map((val) => {
     return val;
@@ -34,6 +35,10 @@ const Pet = (props) => {
     await fetch("/api/pet/update/availability", requestOptions);
   };
 
+  if (!mount) {
+    return <div />;
+  }
+
   return (
     <div>
       <IndividualFriend key={petId} pet={pet} linkto={`pet/${petId}`} />
@@ -45,7 +50,7 @@ const Pet = (props) => {
           onChange={updateAvailability}
         />
       )}
-      {!isSeeker && <Delete pet={pet} />}
+      {!isSeeker && <Delete pet={pet} setMount={setMount} />}
 
       <Following user={user} petId={petId} />
     </div>
