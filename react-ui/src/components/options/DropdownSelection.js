@@ -10,13 +10,13 @@ const DropdownSelection = (props) => {
     onChange,
   } = props;
 
+  useEffect(() => {}, [selection]);
+
   const handleChange = (e) => {
     const currSelection = e.target.value;
     setSelection(currSelection);
-    onChange(currSelection);
+    onChange && onChange(currSelection);
   };
-
-  useEffect(() => {}, [selection]);
 
   return (
     <div className="input-container">
@@ -24,11 +24,10 @@ const DropdownSelection = (props) => {
       <select
         value={selection}
         onChange={(e) => {
-          setSelection(e.target.value);
           handleChange(e);
         }}
       >
-        {showEmpty ? <option key={0} value={""}></option> : ""}
+        {showEmpty && <option key={0} value={""}></option>}
         {options
           ? options.map((option, index) => (
               <option key={index} value={option}>

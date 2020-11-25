@@ -37,18 +37,15 @@ const Pet = (props) => {
   return (
     <div>
       <IndividualFriend key={petId} pet={pet} linkto={`pet/${petId}`} />
-      {isSeeker ? (
-        ""
-      ) : (
+      {!isSeeker && (
         <DropdownSelection
           options={availabilityOptions}
           selection={availability}
           setSelection={setAvailability}
-          showEmpty={false}
           onChange={updateAvailability}
         />
       )}
-      {isSeeker ? "" : <Delete pet={pet} />}
+      {!isSeeker && <Delete pet={pet} />}
 
       <Following user={user} petId={petId} />
     </div>
