@@ -2,18 +2,21 @@ import React, { useEffect } from "react";
 
 import Card from "../friends/Card";
 
-import './styles/community-styles.css'
+import "./styles/community-styles.css";
 
 const Community = (props) => {
   const { user, pets } = props;
 
-  useEffect(() => {}, [user, pets]);
+  useEffect(() => {}, [pets]);
 
   return (
     <div className="img-grid">
-      {pets || pets.length > 0 ? (
+      {!pets || pets.length < 1 ? (
+        <p>No result</p>
+      ) : (
         pets.map((pet) => (
-          <Card className="img-wrap"
+          <Card
+            className="img-wrap"
             key={pet.internal_pet_id}
             user={user}
             petId={pet.internal_pet_id}
@@ -23,8 +26,6 @@ const Community = (props) => {
             path={"/pet/" + pet.internal_pet_id}
           />
         ))
-      ) : (
-        <p>No result</p>
       )}
     </div>
   );
