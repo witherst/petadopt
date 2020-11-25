@@ -11,8 +11,14 @@ const Browse = (props) => {
   // search results
   const [pets, setPets] = useState(false);
 
+  const defaultPetFetch = async function () {
+    const promise = await fetch("/api/pet");
+    const res = await promise.json();
+    setPets(() => res);
+  };
+
   useEffect(() => {
-    console.log(pets);
+    !pets && defaultPetFetch();
   }, [pets]);
 
   return (
@@ -20,7 +26,7 @@ const Browse = (props) => {
       {user.is_creator || user.is_admin ? <CreateProfileOption /> : ""}
       <div className="filter-container">
         <h1>Search for your next furrrriend</h1>
-        <Filter user={user} pets={pets} setPets={setPets} />
+        <Filter setPets={setPets} />
       </div>
 
       <div className="pet-community-container">

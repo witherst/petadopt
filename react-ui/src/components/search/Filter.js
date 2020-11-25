@@ -3,10 +3,10 @@ import * as Constants from "../options/constants/animal_options";
 import { option as SortOptions } from "../options/constants/sort_options";
 import DropdownSelection from "../options/DropdownSelection";
 
-import './styles/filter-styles.css'
+import "./styles/filter-styles.css";
 
 const Filter = (props) => {
-  const { user, setPets } = props;
+  const { setPets } = props;
 
   const [dispositionSelection, setDispositionSelection] = useState(false);
   const [breedSelection, setBreedSelection] = useState(false);
@@ -14,11 +14,12 @@ const Filter = (props) => {
   const [colorSelction, setColorSelection] = useState(false);
   const [sortSelection, setSortSelection] = useState(0);
 
+  const [options, setOptions] = useState(false);
+
   useEffect(() => {
-    getFilterResults();
     getOptions();
+    getFilterResults();
   }, [
-    user,
     dispositionSelection,
     breedSelection,
     typeSelection,
@@ -26,52 +27,48 @@ const Filter = (props) => {
     sortSelection,
   ]);
 
-  const [options, setOptions] = useState(false);
-
   const getOptions = async function () {
     const promise = await fetch("/api/disposition");
     const dispositions = await promise.json();
-
+    var breeds = [];
+    var colors = [];
+    switch (typeSelection) {
+      case Constants.types.cat:
+        breeds = Constants.breeds.cat;
+        colors = Constants.colors.cat;
+        break;
+      case Constants.types.dog:
+        breeds = Constants.breeds.dog;
+        colors = Constants.colors.dog;
+        break;
+      case Constants.types.other:
+        breeds = Constants.breeds.other;
+        colors = Constants.colors.other;
+        break;
+      default:
+        breeds = [
+          ...new Set([
+            ...[].concat.apply(
+              [],
+              Object.values(Constants.breeds).map((val) => {
+                return val;
+              })
+            ),
+          ]),
+        ];
+        colors = [
+          ...new Set([
+            ...[].concat.apply(
+              [],
+              Object.values(Constants.colors).map((val) => {
+                return val;
+              })
+            ),
+          ]),
+        ];
+        break;
+    }
     setOptions((prevState) => {
-      var breeds = [];
-      var colors = [];
-      switch (typeSelection) {
-        case Constants.types.cat:
-          breeds = Constants.breeds.cat;
-          colors = Constants.colors.cat;
-          break;
-        case Constants.types.dog:
-          breeds = Constants.breeds.dog;
-          colors = Constants.colors.dog;
-          break;
-        case Constants.types.other:
-          breeds = Constants.breeds.other;
-          colors = Constants.colors.other;
-          break;
-        default:
-          breeds = [
-            ...new Set([
-              ...[].concat.apply(
-                [],
-                Object.values(Constants.breeds).map((val) => {
-                  return val;
-                })
-              ),
-            ]),
-          ];
-          colors = [
-            ...new Set([
-              ...[].concat.apply(
-                [],
-                Object.values(Constants.colors).map((val) => {
-                  return val;
-                })
-              ),
-            ]),
-          ];
-          break;
-      }
-
       return {
         ...prevState,
         type: Object.values(Constants.types).map((val) => {
@@ -194,6 +191,11 @@ const Filter = (props) => {
     return;
   };
 
+  const resetAnimalTypeSelections = () => {
+    setColorSelection(false);
+    setBreedSelection(false);
+  };
+
   return (
     <div>
       <div className="dropdown-container">
@@ -210,6 +212,7 @@ const Filter = (props) => {
           selection={typeSelection}
           setSelection={setTypeSelection}
           showEmpty={true}
+          onChange={resetAnimalTypeSelections}
         />
         <DropdownSelection
           label={"Choose Breed"}
@@ -233,8 +236,15 @@ const Filter = (props) => {
           setSelection={setSortSelection}
         />
       </div>
-      
-      <div><input className="clear-button" type="submit" value="clear filters" onClick={clearSelection}/></div>
+
+      <div>
+        <input
+          className="clear-button"
+          type="submit"
+          value="clear filters"
+          onClick={clearSelection}
+        />
+      </div>
     </div>
   );
 };
