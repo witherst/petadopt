@@ -61,7 +61,11 @@ const Profile = (props) => {
   };
 
   if (!petProfile) {
-    return <div />;
+    return (
+      <div>
+        <p>Profile does not exist</p>
+      </div>
+    );
   }
   return (
     <div className="profile-container">
@@ -75,7 +79,10 @@ const Profile = (props) => {
 
       <Story story={petProfile.story} />
 
-      <Feed petStatuses={petStatuses} external_pet_id={petProfile.external_pet_id}/>
+      <Feed
+        petStatuses={petStatuses}
+        external_pet_id={petProfile.external_pet_id}
+      />
     </div>
   );
 };
