@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./styles/browse-styles.css"
+import "./styles/browse-styles.css";
 
 import Filter from "./Filter";
 import Community from "./Community";
@@ -8,10 +8,12 @@ import { useHistory } from "react-router-dom";
 const Browse = (props) => {
   const { user } = props;
 
-  useEffect(() => {}, []);
-
   // search results
   const [pets, setPets] = useState(false);
+
+  useEffect(() => {
+    console.log(pets);
+  }, [pets]);
 
   return (
     <div className="browse-container">
@@ -34,7 +36,14 @@ const CreateProfileOption = () => {
   return (
     <div className="createprofile-option-div">
       <h1>Add to the Community</h1>
-      <button className="createprofile-submit-button" type="submit" value="submit" onClick={() => { history.push("/profile/create-new"); }}>
+      <button
+        className="createprofile-submit-button"
+        type="submit"
+        value="submit"
+        onClick={() => {
+          history.push("/profile/create-new");
+        }}
+      >
         Create Pet Profile
       </button>
     </div>
