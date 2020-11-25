@@ -10,6 +10,8 @@ import Facts from "./Facts";
 import Info from "./Info";
 import Story from "./Story";
 
+import './styles/createnewprofile-styles.css'
+
 // route: /profile/create-new
 const CreateNewProfile = (props) => {
   const { user } = props;
@@ -189,7 +191,7 @@ const CreateNewProfile = (props) => {
   };
 
   return (
-    <div>
+    <div className="create-profile-container">
       <PetPlate
         petName={petName}
         setPetName={setPetName}

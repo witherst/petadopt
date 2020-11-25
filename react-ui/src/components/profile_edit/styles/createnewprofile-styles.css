@@ -1,0 +1,7 @@
+@import "../../../index.css"; /* Root styles */
+
+.create-profile-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
