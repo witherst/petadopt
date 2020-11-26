@@ -192,6 +192,12 @@ const CreateNewProfile = (props) => {
 
   return (
     <div className="create-profile-container">
+      <input
+        className="create-profile-button"
+        type="submit"
+        value="Click to Create Profile"
+        onClick={handleCreateProfile}/>
+
       <PetPlate
         petName={petName}
         setPetName={setPetName}
@@ -223,11 +229,6 @@ const CreateNewProfile = (props) => {
       />
       <Info dispositions={dispositions} setDispositions={setDispositions} />
       <Story story={story} setStory={setStory} />
-      <input
-        type="submit"
-        value="Create Profile"
-        onClick={handleCreateProfile}
-      />
     </div>
   );
 };
