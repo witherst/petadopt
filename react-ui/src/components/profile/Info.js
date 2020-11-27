@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import check_mark_logo from '../../images/check-mark.png'
 import './styles/info-styles.css'
 import {ReactComponent as CheckIcon} from './icons/check.svg'
 
@@ -25,7 +26,8 @@ const Info = (props) => {
 const Disposition = (props) => {
     return (
         <div className='disposition-container'>
-            <svg viewBox="0 0 700 700"><CheckIcon/></svg>            
+            {/* <svg viewBox="0 0 700 700"><CheckIcon/></svg>             */}
+            <img src={check_mark_logo}/>
             <h3>{props.disposition}</h3>
         </div>
     )

@@ -1,0 +1,49 @@
+@import "../../../index.css"; /* Root styles */
+
+.create-story-container{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg);
+    align-items: flex-start;
+    width: 50%;
+    max-width: 750px;
+    margin-top: 25px;
+    box-shadow: var(--shadow);
+    padding: 25px;
+}
+
+.create-story-container h1{
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.create-story-container .body-container{
+    width: 100%;
+    max-width: 750px;
+    height: 250px;
+    margin: 0;
+}
+
+.create-story-container .body-container .textbox-container{
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif, 'mon';
+    font-size: .85rem;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: var(--secondary-color);
+    width: 100%;
+    min-width: 100px;
+    max-width: 100%;
+
+    min-height: 50px;
+    max-height: 200px;
+
+    padding: 10px;
+    text-align: justify;
+    resize: none;
+} 
+
+.create-story-container .body-container .textbox-container:focus{
+    outline: none;
+}

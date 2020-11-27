@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-
 import check_mark_logo from '../../images/check-mark.png'
+
+import './styles/create-info-styles.css'
 
 const Info = (props) => {
     const {
@@ -44,17 +45,18 @@ const Info = (props) => {
     }
 
     return (
-        <div>
+        <div className="create-info-container">
             <h1>Info</h1>
-            <div className='body-container'>
+            <div className="body-container">
                 <DropdownOptions 
                     options={options}
-                    handleAdd={handleAdd}
-                />
+                    handleAdd={handleAdd} />
+            </div>
+
+            <div className="create-selected-container">
                 <Selection
                     dispositions={dispositions}
-                    handleRemove={handleRemove}
-                />
+                    handleRemove={handleRemove} />
             </div>
         </div>
     )
@@ -91,7 +93,7 @@ const DropdownOptions = (props) => {
                     )
                 }
             </select>
-            <input type='submit' value='Add' 
+            <input type='submit' value='Add Pet Attributes' 
             onClick={() => {handleAdd(currSelection); setCurrSelection(0)}}/>
         </div>
     )
@@ -104,20 +106,19 @@ const Selection = (props) => {
     } = props;
 
     return (
-        <div className='selected-container'>
-            <ul>{ 
-                Object.keys(dispositions).map((key) =>
-                    <li className='item-container' key={key}>
+        <ul className="selected-container">{ 
+            Object.keys(dispositions).map((key) =>
+                <li className='item-container' key={key}>
+                    <div className="checkbox-container">
+                        <input
+                            type='submit' value='X'
+                            onClick={() => handleRemove(key)}/>
                         <img src={check_mark_logo}/>
                         <p>{dispositions[key]}</p>
-                        <input
-                            type='submit' value='-'
-                            onClick={() => handleRemove(key)}
-                        />
-                    </li>
-                )
-            }</ul>
-        </div>
+                    </div> 
+                </li>
+            )
+        }</ul>
     )
 }
 

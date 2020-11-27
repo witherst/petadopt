@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './styles/create-story-styles.css'
 
 const Story = (props) => {
     const {
@@ -10,14 +11,14 @@ const Story = (props) => {
     }, []);
 
     return (
-        <div>
+        <div className="create-story-container">
             <h1>Story</h1>
             <div className='body-container'>
-                <input 
+                <textarea 
                     className='textbox-container' 
                     value={story}
-                    onChange={(e) => setStory(e.target.value)}
-                    />
+                    placeholder="Tell the story of the pet here..."
+                    onChange={(e) => setStory(e.target.value)}/>
             </div> 
         </div>
     )

@@ -32,17 +32,24 @@
     flex: 33%;
     width: 100%;
     margin-bottom: 30px;
-    align-content: center;
+    align-items: center;
 }
 
 .disposition-container h3{
     color: var(--text-color);
     font-weight: 400;
     font-size: 1.1rem;
+    margin-top: 1px;
+    margin-left: 5px;
 }
 
-.disposition-container svg{
+/* .disposition-container svg{
     fill: green;
+    width: 30px;
+    height: 30px;
+} */
+
+.disposition-container img{
     width: 30px;
     height: 30px;
 }
