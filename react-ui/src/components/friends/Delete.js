@@ -35,7 +35,7 @@ const Delete = (props) => {
   };
 
   return (
-    <div>
+    <div style={{cursor: "pointer"}}>
       <a onClick={handleClick}>Delete Profile</a>
     </div>
   );

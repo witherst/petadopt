@@ -69,10 +69,12 @@
     cursor: pointer;
 }
 
-.contact-container .follow-text-div:hover{
-    filter: brightness(.65);
+.contact-container .follow-text-div a:hover{
+    font-weight: 500;
+    color: var(--secondary-color-hover);
 }
 
-.contact-container .message-text-div:hover{
-    filter: brightness(.65);
+.contact-container .message-text-div a:hover{
+    font-weight: 500;
+    color: var(--secondary-color-hover);
 }
