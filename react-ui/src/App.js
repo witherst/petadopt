@@ -120,7 +120,7 @@ const App = () => {
           />
         </Switch>
 
-        {!user && (
+        {/* {!user && (
           <ul>
             <Link to="/">
               <li>home</li>
@@ -132,7 +132,7 @@ const App = () => {
               <li>signin</li>
             </Link>
           </ul>
-        )}
+        )} */}
       </div>
     </Router>
   );

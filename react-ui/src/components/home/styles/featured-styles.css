@@ -1,0 +1,24 @@
+@import "../../../index.css"; /* Root styles */
+
+.featured-card-container{
+    display:flex;
+    width: 750px;
+    max-width: 100%;
+    overflow-x: scroll;
+}
+
+/* Scrollbar in friends container */
+.featured-card-container::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.featured-card-container::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+}
+
+@media only screen and (max-width: 800px){
+  .featured-card-container{
+    flex-direction: column;
+  }
+}

@@ -3,28 +3,30 @@
 .img-grid {
   display: flex;
   flex-wrap: wrap;
-  padding: 0 4px;
   justify-content: space-evenly;
 }
 
 .card-container {
+  display: flex;
+  flex-direction: column;
   flex: 25%;
   border-radius: 4px;
   max-width: 15%;
   padding: 0 45px;
-  padding-bottom: 45px;
+  padding-bottom: 85px;
   margin: 25px;
   background-color: var(--primary-color);
   position: relative;
-  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 1px 8px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: var(--shadow);
+
+  overflow: hidden;
 }
 
 .card-container:hover {
   filter: brightness(1.1);
 }
 
-.card-container h3,
-p {
+.card-container h3, p {
   text-align: center;
   color: var(--text-color);
 }
@@ -39,10 +41,10 @@ p {
   font-size: 0.75rem;
 }
 
-.card-container .profile-pic img {
+.profile-pic img{
   margin-top: 8px;
-  vertical-align: middle;
-  width: 100%;
+  width: 250px;
+  height: auto;
   opacity: 0.8;
 }
 

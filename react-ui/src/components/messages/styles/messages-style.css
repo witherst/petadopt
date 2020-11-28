@@ -43,6 +43,7 @@
 }
 
 .petnames-display h1{
+    text-align: center;
     margin-top: 10px;
     margin-bottom: 0px;
     font-size: 1.25rem;
@@ -111,6 +112,7 @@
 }
 
 .messages-container-title-div h2{
+    text-align: center;
     font-size: 1rem;
     color: var(--text-color);
     font-weight: 400;

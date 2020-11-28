@@ -9,7 +9,7 @@
     width: 50%;
     max-width: 750px;
     margin-top: 25px;
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: var(--shadow);
 }
 
 .info-container h1{
@@ -19,12 +19,15 @@
     font-weight: 500;
 }
 
+.info-container .body-container{
+    max-width: 100%;
+}
+
 .body-container{
     display: flex;
     flex-wrap: wrap;
     margin-left: 40px;
     max-width: fit-content;
-    
 }
 
 .disposition-container{

@@ -1,0 +1,213 @@
+@import "../../../index.css"; /* Root styles */
+
+.landing-container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.landing-header-container{
+  display: flex;
+  justify-content: center;
+}
+
+.landing-header{
+  background-color: var(--bg);
+  min-width: fit-content;
+  width: 50%;
+  max-width: 750px;
+  margin-top: 25px;
+  box-shadow: var(--shadow);
+  padding: 25px;
+  font-weight: 500;
+  text-align: center;
+  color: var(--text-color);
+  border-radius: 10px;
+  letter-spacing: .1rem;
+  font-size: 2.5rem;
+}
+
+.getstarted-container{
+  display: flex;
+  justify-content: center;
+}
+
+.landing-join-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--bg);
+  min-width: 250px;
+  max-height: 45px;
+  margin-right: 100px;
+  margin-top: 10px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+
+.landing-join-btn h3{
+  font-weight: 400;
+  font-size: 2rem;
+  margin-top: 7px;
+  margin-bottom: -15px;
+}
+
+.landing-join-btn p{
+  font-size: .85rem;
+}
+
+.landing-join-btn:hover{
+  background-color: var(--bg-accent);
+}
+
+.landing-login-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--bg);
+  min-width: 250px;
+  max-height: 45px;
+  margin-top: 10px;
+  padding: 15px;
+
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+
+.landing-login-btn h3{
+  font-weight: 400;
+  font-size: 2rem;
+  margin-top: 7px;
+  margin-bottom: -15px;
+}
+
+.landing-login-btn p{
+  font-size: .85rem;
+}
+
+.landing-login-btn:hover{
+  background-color: var(--bg-accent);
+}
+
+.featured-container{
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  background-color: var(--bg);
+  min-width: fit-content;
+  width: 50%;
+  max-width: 750px;
+  margin-top: 25px;
+  box-shadow: var(--shadow);
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.featured-container h1{
+  margin: 0;
+  font-weight: 400;
+  text-align: center;
+  color: var(--text-color);
+  letter-spacing: .1rem;
+  font-size: 2.5rem;
+}
+
+/* Scroll bar appearing when hovering over Featured Furries box */
+.featured-container:hover .featured-card-container::-webkit-scrollbar-thumb{
+  background: var(--secondary-color);
+}
+
+.featured-container:hover .featured-card-container::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color-hover);
+}
+
+.featured-container:hover .featured-card-container::-webkit-scrollbar-thumb:active {
+  background-color: #97b3a8;
+}
+
+/* Features of PetLinked */
+.features-container{
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  background-color: var(--bg);
+  min-width: fit-content;
+  width: 50%;
+  max-width: 750px;
+  margin-top: 25px;
+  box-shadow: var(--shadow);
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.features-container h1{
+  margin: 0;
+  font-weight: 400;
+  text-align: center;
+  color: var(--text-color);
+  letter-spacing: .1rem;
+  font-size: 2.5rem;
+}
+
+.features-list-container{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 750px;
+}
+
+.features-container h1{
+  margin-bottom: 30px;
+}
+
+.feature-container{
+  display: flex;
+  flex: 50%;
+  width: 100%;
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.feature-container h3{
+  color: var(--text-color);
+  font-weight: 400;
+  font-size: 1.1rem;
+  margin-top: 1px;
+  margin-left: 5px;
+}
+
+.feature-container img{
+  height: 30px;
+  width: 30px;
+}
+
+@media only screen and (max-width: 800px){
+  .getstarted-container{
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .landing-join-btn, .landing-login-btn{
+    width: 100%;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .features-container{
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .features-list-container{
+    flex-direction: column;
+  }
+
+  .feature-container{
+    margin-left: 40px;
+  }
+}

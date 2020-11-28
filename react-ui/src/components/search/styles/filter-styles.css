@@ -1,5 +1,9 @@
 @import "../../../index.css"; /* Root styles */
 
+.browse-container h1{
+  margin-left: 15px;
+}
+
 .dropdown-container {
   display: flex;
   flex-wrap: wrap;

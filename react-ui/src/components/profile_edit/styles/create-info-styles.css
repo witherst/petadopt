@@ -14,6 +14,8 @@
 }
 
 .create-info-container h1{
+    margin: 0px;
+    margin-bottom: 20px;
     color: var(--text-color);
     font-weight: 500;
 }
