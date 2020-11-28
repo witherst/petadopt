@@ -3,6 +3,7 @@ import moment from "moment";
 
 import Following from "../Following";
 import ProfilePic from "../../images/ProfilePic";
+import './styles/card-styles.css'
 
 const Card = (props) => {
   const { user, petId, name, timestamp, pic, path } = props;
@@ -10,17 +11,20 @@ const Card = (props) => {
   useEffect(() => {}, [user]);
 
   return (
-    <div className="card-container">
-      <a href={path}>
-        {/* <div> */}
+    <div className="card-link-container">
+
+      <a style={{"display":"block"}} href={path}>
+        <div className="card-container">
           <ProfilePic image={pic} />
-          <div>
+          <div className="card-text-container">
             <h3>{name}</h3>
             <p>{moment(timestamp).fromNow()}</p>
           </div>
-        {/* </div> */}
+
+          {/* <Following user={user} petId={petId} /> */}
+
+        </div>
       </a>
-      <Following user={user} petId={petId} />
     </div>
   );
 };
