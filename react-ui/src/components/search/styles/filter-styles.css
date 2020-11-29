@@ -17,6 +17,10 @@
   margin-left: 15px;
 }
 
+.filter-container{
+  margin-top: 25px;
+}
+
 /* Style the inside of the filter options dropdown menu here */
 .input-container select {
   padding: 5px;

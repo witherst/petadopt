@@ -32,16 +32,18 @@
 
 /* Style the inside of the 'Post as' dropdown menu here */
 .post-as-pet-name select {
-    max-width: 350px;
-    padding: 2px;
-    min-width: 200px;
-    border-style: none;
+    padding: 5px;
+    max-width: 300px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--secondary-color);
     border-radius: 5px;
-    background-color: var(--secondary-color);
-    color: var(--bg);
+    background-color: var(--bg);
+    color: var(--text-color);
     font-family: inherit;
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: .9rem;
+    font-weight: 400;
+    max-height: 32px;
 }
 
 .post-as-container h1{
@@ -49,12 +51,6 @@
     font-size: 1.25rem;
     font-weight: 400;
 }
-
-/* .post-input-container textarea:focus{
-    border-style: solid;
-    border-width: 2px;
-    border-color: var(--secondary-color);
-} */
 
 .post-as-container select:focus {
     outline: none;

@@ -6,8 +6,7 @@ const MessageButton = (props) => {
 
   return (
     <div className="message-text-div">
-      {/* {user && !user.is_creator && !user.is_admin ? ( */}
-      {user && true ? (
+      {user && !user.is_creator && !user.is_admin ? (
         <Link to="/messages">Message</Link>
       ) : (
         ""

@@ -94,6 +94,8 @@
   background-color: var(--bg-accent);
 }
 
+/* Featured furries container */
+
 .featured-container{
   display: flex;
   flex-direction: column;
@@ -115,6 +117,16 @@
   color: var(--text-color);
   letter-spacing: .1rem;
   font-size: 2.5rem;
+}
+
+.featured-container .featured-card-container .card-link-container{
+  margin-bottom: 25px;
+}
+
+.featured-container .featured-card-container .card-link-container .card-container{
+  margin-top: 25px;
+  margin-right: 25px;
+  margin-bottom: 0px;
 }
 
 /* Scroll bar appearing when hovering over Featured Furries box */
@@ -197,8 +209,21 @@
     margin-left: 5px;
   }
 
+  .featured-container{
+    width: 85%;
+  }
+
+  .featured-container .featured-card-container{
+    width: 85%;
+    align-items: center;
+  }
+
+  .featured-container .featured-card-container .card-link-container{
+    align-items: center;
+  }
+
   .features-container{
-    width: 100%;
+    width: 85%;
     margin-left: 10px;
     margin-right: 10px;
   }
