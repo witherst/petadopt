@@ -63,7 +63,7 @@ const Profile = (props) => {
   if (!petProfile) {
     return (
       <div>
-        <p>Profile does not exist</p>
+        <h1 style={{textAlign: 'center'}}>Profile does not exist</h1>
       </div>
     );
   }

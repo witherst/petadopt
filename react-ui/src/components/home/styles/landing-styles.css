@@ -49,7 +49,6 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  /* background-color: var(--bg); */
   background-color: var(--primary-color);
   min-width: 250px;
   max-height: 45px;
@@ -81,7 +80,6 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  /* background-color: var(--bg); */
   background-color: var(--primary-color);
   min-width: 250px;
   max-height: 45px;
@@ -109,7 +107,6 @@
 }
 
 /* Featured furries container */
-
 .featured-container{
   display: flex;
   flex-direction: column;
@@ -211,6 +208,10 @@
   width: 30px;
 }
 
+.link-to-div h3:hover{
+    filter: brightness(5);
+  }
+
 @media only screen and (max-width: 800px){
   .getstarted-container{
     flex-direction: column;
@@ -249,4 +250,5 @@
   .feature-container{
     margin-left: 40px;
   }
+
 }

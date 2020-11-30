@@ -68,7 +68,7 @@ const AlertDialog = (props) => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Successful Alert"}
+          {"Confirm Delete"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">

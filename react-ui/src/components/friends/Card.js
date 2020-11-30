@@ -13,18 +13,17 @@ const Card = (props) => {
   return (
     <div className="card-link-container">
 
-      <a style={{"display":"block"}} href={path}>
         <div className="card-container">
-          <ProfilePic image={pic} />
-          <div className="card-text-container">
-            <h3>{name}</h3>
-            <p>{moment(timestamp).fromNow()}</p>
-          </div>
+          <Following user={user} petId={petId} />
+          <a style={{"display":"block"}} href={path}>
+            <ProfilePic image={pic} />
 
-          {/* <Following user={user} petId={petId} /> */}
-
+            <div className="card-text-container">
+              <h3>{name}</h3>
+              <p>{moment(timestamp).fromNow()}</p>
+            </div>
+          </a>
         </div>
-      </a>
     </div>
   );
 };

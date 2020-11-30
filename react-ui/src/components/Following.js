@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import './styles/following-styles.css'
 
 const Following = (props) => {
   const { user, petId } = props;
@@ -71,8 +72,7 @@ const Following = (props) => {
 
   return (
     <div className="follow-text-div">
-      {/* {user && !user.is_creator && !user.is_admin ? ( */}
-      {user && true ? (
+      {user && !user.is_creator && !user.is_admin ? (
         <a onClick={updateFollowingState}>
           {isFollowing ? "Unfollow" : "Follow"}
         </a>
