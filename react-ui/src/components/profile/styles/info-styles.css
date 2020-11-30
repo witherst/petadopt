@@ -33,7 +33,7 @@
 
 .disposition-container{
     display: flex;
-    flex: 33%;
+    flex: 50%;
     width: 100%;
     margin-bottom: 30px;
     align-items: center;
@@ -46,12 +46,6 @@
     margin-top: 1px;
     margin-left: 5px;
 }
-
-/* .disposition-container svg{
-    fill: green;
-    width: 30px;
-    height: 30px;
-} */
 
 .disposition-container img{
     width: 30px;

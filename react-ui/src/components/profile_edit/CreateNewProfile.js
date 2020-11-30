@@ -179,15 +179,17 @@ const CreateNewProfile = (props) => {
     if (!isValidName) {
       return;
     }
+    else{
 
-    // create profile record
-    const profile_res = await createPetProfile();
-    const petId = profile_res.internal_pet_id;
+      // create profile record
+      const profile_res = await createPetProfile();
+      const petId = profile_res.internal_pet_id;
 
-    // add pet profile dispositions
-    await addPetDispositions(petId);
+      // add pet profile dispositions
+      await addPetDispositions(petId);
 
-    renderProfile(petId);
+      renderProfile(petId);
+    }
   };
 
   return (
