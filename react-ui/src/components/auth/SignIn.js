@@ -23,6 +23,7 @@ const SignIn = (props) => {
     
     return (
         <div className="login-container">
+            <h1>Welcome back!</h1>
             <input
                 className="email-input"
                 type="email"

@@ -16,7 +16,6 @@
   overflow-y: scroll;
   overflow-x: hidden;
 
-
   box-shadow: var(--shadow);
 }
 
@@ -42,6 +41,14 @@
   color: var(--text-color);
   font-weight: 400;
   letter-spacing: 0.1rem;
+}
+
+.friends-container h1:hover{
+  filter: brightness(5);
+}
+
+.friends-container-a{
+  align-self: center;
 }
 
 .spacer {

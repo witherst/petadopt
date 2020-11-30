@@ -1,9 +1,8 @@
 @import "../../../index.css";    /* Root styles */
 
 /* Most of the styles for this particular component are in SignIn.js since both components look nearly identical */
-
 .username-input{
-    margin-bottom: -20px;
+    margin-bottom: 10px;
 }
 
 .checkbox-div{

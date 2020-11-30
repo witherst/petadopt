@@ -6,7 +6,7 @@
  ***************************************************************/
 import React, { useEffect, useState } from "react";
 import Pet from "./Pet";
-// import "./ProfileManageStyle.css";
+import './styles/manage-styles.css'
 
 const Manage = (props) => {
   const { user } = props;
@@ -62,19 +62,21 @@ const Manage = (props) => {
   };
 
   return (
-    <div>
-      <h2>{isSeeker ? "Manage Pets You're Following" : "Manage Your Pets"}</h2>
-      <div>
-        <hr className="spacer" />
-        {petlist &&
-          petlist.map((pet) => (
-            <Pet
-              user={user}
-              key={pet.internal_pet_id}
-              pet={pet}
-              isSeeker={isSeeker}
-            />
-          ))}
+    <div className="manage-container">
+      <div className="manage-container-contents">
+        <h1>{isSeeker ? "Manage Pets You're Following" : "Manage Your Pets"}</h1>
+        <div className="manage-container-animals">
+          <hr className="spacer" />
+          {petlist &&
+            petlist.map((pet) => (
+              <Pet
+                user={user}
+                key={pet.internal_pet_id}
+                pet={pet}
+                isSeeker={isSeeker}
+              />
+            ))}
+        </div>
       </div>
     </div>
   );

@@ -16,9 +16,8 @@ const PetPlate = (props) => {
   return (
     <div className="petplate-container">
       <div className="availability-container">
-        {/* <div>dot color</div> */}
         <div style={ {color: petProfile.availability.toLowerCase() == "adoptable" ? 'green': 
-                    petProfile.availability.toLowerCase() == "not adoptable" ? 'red': 'yellow' } }>{petProfile.availability}</div>
+                    petProfile.availability.toLowerCase() == "not adoptable" ? 'red': 'var(--text-color)' } }>{petProfile.availability}</div>
       </div>
 
       <div className="profile-pic-container">

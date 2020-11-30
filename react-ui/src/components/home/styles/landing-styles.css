@@ -8,10 +8,8 @@
 
 .landing-header-container{
   display: flex;
+  flex-direction: column;
   justify-content: center;
-}
-
-.landing-header{
   background-color: var(--bg);
   min-width: fit-content;
   width: 50%;
@@ -19,17 +17,31 @@
   margin-top: 25px;
   box-shadow: var(--shadow);
   padding: 25px;
+  border-radius: 10px;
+}
+
+.landing-header-container h1{
   font-weight: 500;
   text-align: center;
-  color: var(--text-color);
-  border-radius: 10px;
   letter-spacing: .1rem;
   font-size: 2.5rem;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.landing-header-container h2{
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: .1rem;
+  font-size: 1rem;
+  color: var(--text-color);
+  margin: 0;
 }
 
 .getstarted-container{
   display: flex;
   justify-content: center;
+  margin-top: 50px;
 }
 
 .landing-join-btn{
@@ -37,7 +49,8 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: var(--bg);
+  /* background-color: var(--bg); */
+  /* background-color: var(--primary-color); */
   min-width: 250px;
   max-height: 45px;
   margin-right: 100px;
@@ -68,7 +81,8 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: var(--bg);
+  /* background-color: var(--bg); */
+  /* background-color: var(--primary-color); */
   min-width: 250px;
   max-height: 45px;
   margin-top: 10px;

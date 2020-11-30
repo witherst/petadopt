@@ -136,7 +136,7 @@ const Auth = (props) => {
 
   return (
     <div className="auth">
-      <div className="auth-header">
+      {/* <div className="auth-header">
         <div className="auth-header-container">
           <a href="/">
             <svg viewBox="0 0 278 278">
@@ -146,7 +146,7 @@ const Auth = (props) => {
           </a>
         </div>
         <h2>Make the most of your life with a furfriend</h2>
-      </div>
+      </div> */}
 
       <div className="auth-container">
         <div className="auth-container-buttons-container">

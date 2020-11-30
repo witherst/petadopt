@@ -99,7 +99,7 @@ export function DropdownMenu(props) {
 
   return (
     <div className="dropdown">
-      <DropdownItem route="/settings">Account Settings</DropdownItem>
+      <DropdownItem route="/manage">Manage your Pets</DropdownItem>
       <p onClick={handleLogout}>
         <DropdownItem route="/">Logout</DropdownItem>
       </p>

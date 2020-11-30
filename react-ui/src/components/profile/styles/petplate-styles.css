@@ -22,6 +22,10 @@
     top: 20px;
     right: 20px;
     font-weight: 500;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    padding: 10px;
+    text-transform: capitalize;
 }
 
 .profile-pic-container{
