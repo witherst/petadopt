@@ -12,6 +12,7 @@ import Home from "./components/home/Home";
 import Landing from "./components/home/Landing";
 import Auth from "./components/auth/Auth";
 import Messages from "./components/messages/Messages";
+import Notifications from "./components/notifications/Notification"
 import Settings from "./components/settings/Settings";
 import SearchHome from "./components/search/SearchHome";
 import Browse from "./components/search/Browse";
@@ -113,6 +114,7 @@ const App = () => {
           <Route path="/manage">
             {isSignedIn ? <Manage user={dbUser} /> : <Redirect to="/" />}
           </Route>
+          <Route path="/notifications" render={(props) => <Notifications {...props} />} />
           <Route
             exact
             path="/pet/:petId"
