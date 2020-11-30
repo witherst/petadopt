@@ -1,0 +1,26 @@
+@import "../../../index.css"; /* Root styles */
+.manage-container{
+    display: flex;
+    justify-content: center;
+}
+
+.manage-container-contents{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg);
+    justify-content: center;
+    min-width: 475px;
+    width: 50%;
+    max-width: 750px;
+    margin-top: 25px;
+    box-shadow: var(--shadow);
+    word-wrap: break-word;
+    border-radius: 5px;
+}
+
+.manage-container-contents h1{
+    color: var(--text-color);
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: -2.5px;
+}

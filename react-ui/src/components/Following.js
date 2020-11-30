@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import './styles/following-styles.css'
 
 const Following = (props) => {
   const { user, petId } = props;

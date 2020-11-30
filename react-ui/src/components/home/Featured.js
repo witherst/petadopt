@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "../friends/Card";
+import './styles/featured-styles.css'
 
 const Featured = (props) => {
   const { numFeatured } = props;
@@ -24,7 +25,7 @@ const Featured = (props) => {
   };
 
   return (
-    <div>
+    <div className="featured-card-container">
       {petList
         ? petList.map((pet) => (
             <Card

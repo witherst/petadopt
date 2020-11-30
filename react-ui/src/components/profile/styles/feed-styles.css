@@ -9,7 +9,9 @@
     width: 50%;
     max-width: 750px;
     margin-top: 25px;
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+    margin-bottom: 50px;
 }
 
 .feed-container h1{
@@ -24,6 +26,23 @@
     border-radius: 5px;
     background-color: var(--primary-color);
     width: 75%;
+    margin-bottom: 50px;
+    max-height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.feed-body-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.feed-body-container::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  background: var(--secondary-color);
+}
+
+.feed-body-container::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color-hover);
 }
 
 .feed-body-container .individual-post .individual-post-nameplate-div .nameplate-container .nameplate-text-container h1{

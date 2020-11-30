@@ -4,6 +4,7 @@ import Delete from "../friends/Delete";
 import { IndividualFriend } from "../friends/Friends";
 import { availability_options } from "../options/constants/animal_options";
 import DropdownSelection from "../options/DropdownSelection";
+import './styles/pet-styles.css'
 
 const Pet = (props) => {
   const { user, isSeeker, pet } = props;
@@ -40,7 +41,7 @@ const Pet = (props) => {
   }
 
   return (
-    <div>
+    <div className="manage-individual-pet-container">
       <IndividualFriend key={petId} pet={pet} linkto={`pet/${petId}`} />
       {!isSeeker && (
         <DropdownSelection
@@ -50,10 +51,15 @@ const Pet = (props) => {
           onChange={updateAvailability}
         />
       )}
-      {!isSeeker && <Delete pet={pet} setMount={setMount} />}
 
-      <Following user={user} petId={petId} />
+      <div className="delete-follow-container">
+        {!isSeeker && <Delete pet={pet} setMount={setMount} />}
+        <Following user={user} petId={petId} />
+      </div>
+
+      <hr className="spacer"/>
     </div>
+
   );
 };
 

@@ -1,0 +1,59 @@
+@import "../../../index.css"; /* Root styles */
+
+.manage-individual-pet-container{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.manage-individual-pet-container .input-container{
+    margin-left: 0px;
+}
+
+.manage-individual-pet-container .individual-friend-div-container{
+    min-width: fit-content;
+    width: 35%;
+}
+
+.manage-individual-pet-container .individual-friend-div-container hr{
+    border-color: transparent;
+    margin: 0;
+}
+
+.manage-individual-pet-container .individual-friend-div-container .individual-friend-div-container-content{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.manage-individual-pet-container .individual-friend-div-container .individual-friend-div-container-content h1{
+    margin: 0;
+    margin-left: 15px;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.delete-follow-container{
+    display: flex;
+    align-items: center;
+}
+
+.delete-follow-container .friends-delete-div:hover{
+    filter: brightness(5);
+}
+
+.delete-follow-container .follow-text-div{
+    cursor: pointer;
+    margin-left: 25px;
+}
+
+.delete-follow-container .follow-text-div:hover{
+    filter: brightness(5);
+}
+
+.manage-individual-pet-container .spacer{
+    width: 80%;
+}

@@ -21,6 +21,7 @@ const SignUp = (props) => {
     
     return (
         <div className="login-container">
+            <h1>Join our furry community!</h1>
             <input
                 className="username-input"
                 type="text"

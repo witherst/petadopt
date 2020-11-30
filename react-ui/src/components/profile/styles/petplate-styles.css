@@ -11,7 +11,8 @@
     height: 400px;
     margin-top: 25px;
     position: relative;
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: var(--shadow);
+    border-radius: 5px;
 }
 
 .petplate-container .availability-container{
@@ -21,6 +22,10 @@
     top: 20px;
     right: 20px;
     font-weight: 500;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    padding: 10px;
+    text-transform: capitalize;
 }
 
 .profile-pic-container{
@@ -29,13 +34,22 @@
 }
 
 .profile-pic-container .profile-pic{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
     margin-left: 40px;
-    width: 35%;
-    max-width: 40%;
 }
 
  .profile-pic-container .profile-pic img{
-    width: 100%;
+    position: absolute;
+    width: auto;
+    height: 130%;
+    opacity: 0.8;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .pet-info-container{
@@ -69,10 +83,12 @@
     cursor: pointer;
 }
 
-.contact-container .follow-text-div:hover{
-    filter: brightness(.65);
+.contact-container .follow-text-div a:hover{
+    font-weight: 500;
+    filter:brightness(.2);
 }
 
-.contact-container .message-text-div:hover{
-    filter: brightness(.65);
+.contact-container .message-text-div a:hover{
+    font-weight: 500;
+    filter:brightness(.2);
 }

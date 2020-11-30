@@ -128,8 +128,8 @@ function PostInput(props) {
       <hr className="spacer" />
       <form action="#">
         {" "}
-        {/* TODO: Fill in form action with the actual posting of a post (connect to server, add to DB, whatever) */}
         <textarea
+          style={{resize:"vertical"}}
           name="post-text"
           rows="5"
           cols="30"

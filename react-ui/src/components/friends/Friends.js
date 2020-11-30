@@ -13,7 +13,9 @@ export function Friends(props) {
 
   return (
     <div className="friends-container">
-      <h1>{title}</h1>
+      <a className="friends-container-a" href='/manage'>
+        <h1>{title}</h1>
+      </a>
       <hr className="spacer" />
 
       {pets

@@ -23,7 +23,7 @@ export function Navbar(props) {
       <input
         type="text"
         className="searchbar"
-        placeholder="Find the right pet for you..."
+        placeholder="Searchbar not currently implemented..."
       ></input>
       <div className="navbar">
         <ul className="navbar-nav">{props.children}</ul>
@@ -31,8 +31,8 @@ export function Navbar(props) {
           <NavItem icon={<HomeIcon />} route="/" name="home" />
         )}
         {props.isSignedIn && (
-          <NavItem icon={<SearchIcon />} route="/browse" name="search" />
-        )}
+          <NavItem icon={<SearchIcon />} route="/browse" name="browse" />
+         )} 
         {props.isSignedIn && (
           <NavItem icon={<MessageIcon />} route="/messages" name="messages" />
         )}
@@ -99,7 +99,7 @@ export function DropdownMenu(props) {
 
   return (
     <div className="dropdown">
-      <DropdownItem route="/settings">Account Settings</DropdownItem>
+      <DropdownItem route="/manage">Manage your Pets</DropdownItem>
       <p onClick={handleLogout}>
         <DropdownItem route="/">Logout</DropdownItem>
       </p>

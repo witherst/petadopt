@@ -16,7 +16,6 @@
   overflow-y: scroll;
   overflow-x: hidden;
 
-
   box-shadow: var(--shadow);
 }
 
@@ -35,12 +34,21 @@
 }
 
 .friends-container h1 {
+  text-align: center;
   margin-top: 10px;
   margin-bottom: 0px;
   font-size: 1.25rem;
   color: var(--text-color);
   font-weight: 400;
   letter-spacing: 0.1rem;
+}
+
+.friends-container h1:hover{
+  filter: brightness(5);
+}
+
+.friends-container-a{
+  align-self: center;
 }
 
 .spacer {
@@ -56,14 +64,10 @@
   flex-direction: column;
 }
 
-.individual-friend-div-container:hover div {
+.individual-friend-div-container:hover div:not(.profile-pic){
   background: var(--secondary-color-hover);
   border-radius: 15px;
   cursor: pointer;
-}
-
-.individual-friend-div-container:hover h1 {
-  color: var(--primary-color);
 }
 
 .individual-friend-div-container-content {
@@ -72,19 +76,31 @@
   width: 100%;
 }
 
+/* Profile picture */
+.individual-friend-div-container-content .profile-pic{
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.individual-friend-div-container-content img {
+  position: absolute;
+  width: auto;
+  height: 130%;
+  opacity: 0.8;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Profile name */
 .individual-friend-div-container h1 {
   margin: auto;
   font-size: 1rem;
   word-wrap: normal;
   margin-left: 15px;
-}
-
-.individual-friend-div-container-content img {
-  height: 75px;
-  width: auto;
-  border-radius: 15px;
-  opacity: 0.85;
-  vertical-align: middle;
 }
 
 .create-profile-container {
