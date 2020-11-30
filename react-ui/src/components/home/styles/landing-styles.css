@@ -50,7 +50,7 @@
   justify-content: center;
   flex-direction: column;
   /* background-color: var(--bg); */
-  /* background-color: var(--primary-color); */
+  background-color: var(--primary-color);
   min-width: 250px;
   max-height: 45px;
   margin-right: 100px;
@@ -82,7 +82,7 @@
   justify-content: center;
   flex-direction: column;
   /* background-color: var(--bg); */
-  /* background-color: var(--primary-color); */
+  background-color: var(--primary-color);
   min-width: 250px;
   max-height: 45px;
   margin-top: 10px;

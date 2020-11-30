@@ -70,10 +70,6 @@
   cursor: pointer;
 }
 
-.individual-friend-div-container:hover h1 {
-  color: var(--primary-color);
-}
-
 .individual-friend-div-container-content {
   display: flex;
   justify-content: center;
