@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as Constants from "../options/constants/animal_options";
 import DropdownSelection from "../options/DropdownSelection";
-import './styles/facts-styles.css'
+import "./styles/facts-styles.css";
 
 const Facts = (props) => {
   const {
@@ -54,15 +54,21 @@ const Facts = (props) => {
   };
 
   const handleChangeYears = (numYears) => {
-    console.log("changeYears: " + numYears);
+    var age = 0;
+    age += parseInt(numYears) ? parseInt(numYears) * 12 : 0;
+    age += parseInt(age_months) ? parseInt(age_months) : 0;
+
     setAgeYears(numYears);
-    setAge(numYears * 12 + age_months);
+    setAge(age);
   };
 
   const handleChangeMonths = (numMonths) => {
-    console.log("changeMonths: " + numMonths);
+    var age = 0;
+    age += parseInt(age_years) ? parseInt(age_years) * 12 : 0;
+    age += parseInt(numMonths) ? parseInt(numMonths) : 0;
+
     setAgeMonths(numMonths);
-    setAge(age_years * 12 + numMonths);
+    setAge(age);
   };
 
   return (
@@ -103,7 +109,8 @@ const Facts = (props) => {
             type="number"
             value={weight}
             placeholder="lbs"
-            onChange={(e) => setWeight(e.target.value)}/>
+            onChange={(e) => setWeight(e.target.value)}
+          />
         </div>
         <div className="input-container">
           <label>Age</label>
@@ -113,15 +120,19 @@ const Facts = (props) => {
               value={age_years}
               placeholder="years"
               onChange={(e) => {
-                handleChangeYears(e.target.value);}}
-              className="profile-edit-age-input"/> 
+                handleChangeYears(e.target.value);
+              }}
+              className="profile-edit-age-input"
+            />
             <input
               type="number"
               value={age_months}
               placeholder="months"
               onChange={(e) => {
                 // setAgeMonths(e.target.value);
-                handleChangeMonths(e.target.value);}}/>
+                handleChangeMonths(e.target.value);
+              }}
+            />
           </div>
         </div>
       </div>
