@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as Constants from "../options/constants/animal_options";
 
 import default_pet_profile_pic from "../../images/default-photo-pet.png";
-import './styles/petplate-styles.css'
-
+import "./styles/petplate-styles.css";
 
 const PetPlate = (props) => {
   const {
@@ -59,7 +58,8 @@ const PetPlate = (props) => {
           id="image-select"
           onChange={handlePhotoChange}
           accept="image/*"
-          hidden="hidden"/>
+          hidden="hidden"
+        />
         <a htmlFor="input">Add/Edit Profile Picture</a>
       </div>
 
@@ -69,11 +69,12 @@ const PetPlate = (props) => {
           <select
             required
             value={availability}
-            onChange={(e) => setAvailability(e.target.value)}>
+            onChange={(e) => setAvailability(e.target.value)}
+          >
             {Object.keys(Constants.availability_options).map((key) => (
               <option
                 key={key}
-                value={key}
+                value={Constants.availability_options[key]}
                 onChange={(e) => setAvailability(e.target.value)}
               >
                 {Constants.availability_options[key]}
@@ -81,25 +82,24 @@ const PetPlate = (props) => {
             ))}
           </select>
         </div>
-              
+
         <div className="input-container">
           <label>Animal Type</label>
           <select
             value={animalType}
-            onChange={(e) => setAnimalType(e.target.value)}>
-
+            onChange={(e) => setAnimalType(e.target.value)}
+          >
             {Object.keys(Constants.types).map((key) => (
               <option
                 key={key}
                 value={Constants.types[key]}
-                onChange={(e) => setAnimalType(e.target.value)}>
-
+                onChange={(e) => setAnimalType(e.target.value)}
+              >
                 {Constants.types[key]}
               </option>
             ))}
           </select>
         </div>
-
       </div>
 
       <div className="profile-badge-container">
@@ -110,7 +110,8 @@ const PetPlate = (props) => {
             required
             value={petName}
             placeholder="ex: snuffles"
-            onChange={(e) => setPetName(e.target.value)}/>
+            onChange={(e) => setPetName(e.target.value)}
+          />
           <p className="errorMessage">{petNameError}</p>
         </div>
 
@@ -121,11 +122,10 @@ const PetPlate = (props) => {
             required
             value={location}
             placeholder="ex: Los Angeles, CA"
-            onChange={(e) => setLocation(e.target.value)}/>
+            onChange={(e) => setLocation(e.target.value)}
+          />
         </div>
-
       </div>
-
     </div>
   );
 };
