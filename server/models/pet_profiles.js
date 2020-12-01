@@ -186,6 +186,8 @@ router.route("/petmark/:userId").get((req, res) => {
             SELECT * FROM petmarks
             INNER JOIN pet_profiles
             ON pet_profiles.internal_pet_id = petmarks.pet_id
+            LEFT JOIN photos
+            ON photos.internal_pic_id=pet_profiles.profile_pic_id
             WHERE user_id=($1)
             ORDER BY external_pet_id;
         `;
