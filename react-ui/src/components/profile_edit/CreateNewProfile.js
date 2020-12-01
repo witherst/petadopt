@@ -10,7 +10,7 @@ import Facts from "./Facts";
 import Info from "./Info";
 import Story from "./Story";
 
-import './styles/createnewprofile-styles.css'
+import "./styles/createnewprofile-styles.css";
 
 // route: /profile/create-new
 const CreateNewProfile = (props) => {
@@ -175,21 +175,18 @@ const CreateNewProfile = (props) => {
     clearErrors();
 
     // validate field errors
-    const isValidName = validPetName();
+    const isValidName = await validPetName();
     if (!isValidName) {
       return;
     }
-    else{
+    // create profile record
+    const profile_res = await createPetProfile();
+    const petId = profile_res.internal_pet_id;
 
-      // create profile record
-      const profile_res = await createPetProfile();
-      const petId = profile_res.internal_pet_id;
+    // add pet profile dispositions
+    await addPetDispositions(petId);
 
-      // add pet profile dispositions
-      await addPetDispositions(petId);
-
-      renderProfile(petId);
-    }
+    renderProfile(petId);
   };
 
   return (
@@ -198,7 +195,8 @@ const CreateNewProfile = (props) => {
         className="create-profile-button"
         type="submit"
         value="Click to Create Profile"
-        onClick={handleCreateProfile}/>
+        onClick={handleCreateProfile}
+      />
 
       <PetPlate
         petName={petName}
