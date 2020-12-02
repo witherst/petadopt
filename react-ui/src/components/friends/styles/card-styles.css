@@ -13,6 +13,7 @@
   border-radius: 4px;
   align-items: center;
   width: 275px;
+  max-width: 275px;
   height: 350px;
   background-color: var(--primary-color);
   box-shadow: var(--shadow);
