@@ -111,6 +111,7 @@ router
             SELECT 
                 pet_profiles.internal_pet_id, 
                 pet_profiles.external_pet_id, 
+                photos.endpoint,
                 statuses.status_id,
                 statuses.status,
                 statuses.timestamp
