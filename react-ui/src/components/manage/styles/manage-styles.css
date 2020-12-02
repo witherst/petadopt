@@ -24,3 +24,7 @@
     font-weight: 500;
     margin-bottom: -2.5px;
 }
+
+.manage-container .manage-container-contents .manage-container-animals .manage-individual-pet-container .delete-follow-container .follow-text-div:hover{
+    filter:brightness(1);
+}
