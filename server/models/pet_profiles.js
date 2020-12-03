@@ -18,7 +18,11 @@ const getFilterQuery = (req) => {
     color: req.query.color,
   };
 
-  var getQuery = `SELECT * FROM pet_profiles`;
+  var getQuery = `
+      SELECT * FROM pet_profiles
+      LEFT JOIN photos
+      ON photos.internal_pic_id=pet_profiles.profile_pic_id
+      `;
 
   var andConcat = false;
 
